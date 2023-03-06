@@ -1,7 +1,7 @@
-import { Review } from "./components/LandingSection/Review";
+import { LandingLayout } from "Layout/LandingLayout";
 
 function App() {
-  return <Review />;
+  return  <LandingLayout/>
 }
 
 export default App;
