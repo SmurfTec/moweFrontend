@@ -1,5 +1,7 @@
+import { Review } from "./components/LandingSection/Review";
+
 function App() {
-  return <div className=""></div>;
+  return <Review />;
 }
 
 export default App;
