@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+deploy/values.staging.yaml
+deploy/values.production.yaml
+
+.env.staging
+.env
+.env.production
+
