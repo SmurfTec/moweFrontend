@@ -5,7 +5,7 @@ import { Button } from "components/Common/Button/Button";
 
 export const Footer = () => {
   return (
-    <div className="bg-black h-80 text-white flex flex-col justify-between">
+    <div className="bg-black h-80 text-white flex flex-col justify-between overflow-hidden">
       <div className="flex flex-col gap-8 pt-14">
         <div className="flex justify-center items-center gap-10 text-white">
           <div className="text-x2xl">Legal</div>
