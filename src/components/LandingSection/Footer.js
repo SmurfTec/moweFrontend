@@ -22,7 +22,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex gap-14 justify-end w-full pr-10 pb-10">
-        {/* <Button btnText="Acceptar" /> */}
+        <Button btnText="Acceptar" />
         <Button btnText="Ver cookies" />
 
       </div>
