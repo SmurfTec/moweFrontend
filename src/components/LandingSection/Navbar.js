@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 
 import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
 import { Button } from "components/Common/Button/Button";
+import { Login } from "components/Login/Login";
 export const Navbar = () => {
   const [backgroundImage, setBackgroundImage] = useState(
     "url(/background-image-1.jpg)",
   );
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const images = [`url(${LandinImage})`, `url(${LandinImage1})`];
@@ -22,7 +24,8 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <div
+    <>
+      <div
       className="transition-all duration-1000 ease-in-out h-screen flex flex-col justify-between px-10 pb-20"
       style={{
         backgroundImage: backgroundImage,
@@ -33,7 +36,7 @@ export const Navbar = () => {
       <div className="flex flex-row items-center justify-between -mt-10">
         <AppLogo className="h-80" />
         <div className="flex gap-10">
-          <Button btnText="Log In" className="w-40 bg-[#69A88D] shadow-lg" />
+          <Button btnText="Log In" className="w-40 !bg-green-teal shadow-lg" onClick={()=>{setModalOpen(true)}}/>
           <Button btnText="Tu Invitación" className="w-60 bg-white shadow-lg" />
         </div>
       </div>
@@ -50,5 +53,8 @@ export const Navbar = () => {
 
       </div>
     </div>
+      <Login modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+    </>
+    
   );
 };
