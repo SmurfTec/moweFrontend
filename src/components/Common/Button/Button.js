@@ -16,8 +16,7 @@ export const Button = ({
       disabled={isDisabled}
       onClick={() => onClick?.()}
       className={ClassNames(
-        "flex justify-center items-center border border-transparent rounded-full text-lg font-normal focus:outline-none text-gray-charcol bg-gray-light px-3 py-2",
-
+        "flex justify-center items-center border border-transparent rounded-full  text-lg font-normal focus:outline-none text-gray-charcol bg-gray-light px-3 py-2",
         className,
       )}
     >
