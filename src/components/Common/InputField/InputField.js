@@ -29,7 +29,7 @@ export const InputField = ({
   return (
     <div className="InputField_MainWrapper">
       {label && (
-        <label htmlFor={id} className="sapphire block text-sm font-semibold">
+        <label htmlFor={id} className="sapphire block text-sm font-medium mb-1">
           {label}
         </label>
       )}
