@@ -9,6 +9,7 @@ export const LandingLayout = () => {
     <>
     <Login/>
       <Navbar />
+      <CarouselImages/>
       <Review />;
       <Footer />
     </>
