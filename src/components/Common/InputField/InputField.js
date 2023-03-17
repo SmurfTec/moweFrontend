@@ -16,6 +16,8 @@ export const InputField = ({
   children,
   onKeyDown,
   onIconClick,
+  className,
+  className1
 }) => {
   const [fieldValue, setFieldValue] = useState("");
   const [fieldError, setFieldError] = useState("");
@@ -39,7 +41,8 @@ export const InputField = ({
           fieldError
             ? "border-red-500 focus:ring-red-500 focus:border-red-500"
             : "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500",
-          isDisabled && "bg-gray-100"
+          isDisabled && "bg-gray-100",
+          className
         )}
       >
         <span onClick={onIconClick?.()}>{children}</span>
@@ -54,8 +57,8 @@ export const InputField = ({
           disabled={isDisabled}
           className={ClassNames(
             "appearance-none block w-full placeholder-gray-400 focus:outline-none sm:text-sm",
-
-            isDisabled && "cursor-not-allowed"
+            isDisabled && "cursor-not-allowed",
+            className1
           )}
           onChange={({ target }) => {
             setFieldError(false);
