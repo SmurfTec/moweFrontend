@@ -10,11 +10,11 @@ import ClassNames from "Helpers/Common";
 export const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [prevSlide, setPrevSlide] = useState(null);
-
+  const [isLeftIconClicked, setIsLeftIconClicked] = useState(false);
   useEffect(() => {
     setPrevSlide(currentSlide);
   }, [currentSlide]);
-
+console.log("isLeftIconClicked",isLeftIconClicked)
   return (
     <div
       className={ClassNames(
@@ -32,10 +32,18 @@ export const Carousel = () => {
             if (currentSlide === 1) {
               setCurrentSlide(4);
             } else setCurrentSlide((prevState) => prevState - 1);
+            setIsLeftIconClicked(true);
           }}
         />
       </div>
-      <div className="min-w-[90%] grid grid-cols-2 items-center gap-20">
+      <div
+        className={ClassNames(
+          "min-w-[90%] grid grid-cols-2 items-center gap-20 ",
+          (currentSlide === prevSlide &&!isLeftIconClicked)&& "animate-slide",
+          (currentSlide === prevSlide && isLeftIconClicked)&& "animate-slidel",
+
+        )}
+      >
         {currentSlide === 1 ? (
           <SlideOne />
         ) : currentSlide === 2 ? (
@@ -53,6 +61,7 @@ export const Carousel = () => {
             if (currentSlide === 4) {
               setCurrentSlide(1);
             } else setCurrentSlide((prevState) => prevState + 1);
+            setIsLeftIconClicked(false);
           }}
         />
       </div>
