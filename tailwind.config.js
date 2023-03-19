@@ -13,13 +13,22 @@ module.exports = {
           misty: "#D1D1D1",
           dark: "#686868",
           thin: "#DDDDDD",
-          gunMetal:" #767676",
-          snow:"#FAFAFA",
-          platinum:"#E4E4E4"
+          gunMetal: " #767676",
+          snow: "#FAFAFA",
+          platinum: "#E4E4E4",
+          cool:"#202020F2"
         },
         green: {
           teal: "#69A88D",
+          pale: "#A5D9DC6B",
         },
+        red: {
+          fiery: "#FD26266B",
+        },
+        brown: {
+          deep: "#1E03246B",
+        },
+        beige: "#E2C7BD6B",
       },
       fontSize: {
         //    16px      22px
@@ -31,6 +40,10 @@ module.exports = {
         c2lg: ["1.25rem", "1.875rem"],
         //     24px      36px
         c2xl: ["1.5rem", "2.25rem"],
+         //     24px      36px
+        c2xl2: ["1.5rem", "2.4rem"],
+        //     64px     102.4px
+        c4xl: ["4rem", "6.4rem"],
       },
     },
   },
