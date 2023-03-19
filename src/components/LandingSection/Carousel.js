@@ -14,56 +14,58 @@ export const Carousel = () => {
   useEffect(() => {
     setPrevSlide(currentSlide);
   }, [currentSlide]);
-console.log("isLeftIconClicked",isLeftIconClicked)
   return (
-    <div
-      className={ClassNames(
-        "h-[60rem] mt-40 flex justify-center px-10 ",
-        currentSlide === 1 && "bg-beige",
-        currentSlide === 2 && "bg-green-pale",
-        currentSlide === 3 && "bg-red-fiery",
-        currentSlide === 4 && "bg-brown-deep",
-      )}
-    >
-      <div className="w-full h-full flex  items-center justify-center">
-        <LeftIcon
-          className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
-          onClick={() => {
-            if (currentSlide === 1) {
-              setCurrentSlide(4);
-            } else setCurrentSlide((prevState) => prevState - 1);
-            setIsLeftIconClicked(true);
-          }}
-        />
-      </div>
+    <div className="flex flex-col gap-20 mt-20">
+      <div className="text-c2xl font-semibold pl-8">Features</div>
+
       <div
         className={ClassNames(
-          "min-w-[90%] grid grid-cols-2 items-center gap-20 ",
-          (currentSlide === prevSlide &&!isLeftIconClicked)&& "animate-slide",
-          (currentSlide === prevSlide && isLeftIconClicked)&& "animate-slidel",
-
+          "h-[60rem]  flex justify-center px-10 ",
+          currentSlide === 1 && "bg-beige",
+          currentSlide === 2 && "bg-green-pale",
+          currentSlide === 3 && "bg-red-fiery",
+          currentSlide === 4 && "bg-brown-deep",
         )}
       >
-        {currentSlide === 1 ? (
-          <SlideOne />
-        ) : currentSlide === 2 ? (
-          <SlideTwo />
-        ) : currentSlide === 3 ? (
-          <SlideThree />
-        ) : (
-          currentSlide === 4 && <SlideFour />
-        )}
-      </div>
-      <div className="w-full h-full flex  items-center justify-center">
-        <RightIcon
-          className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
-          onClick={() => {
-            if (currentSlide === 4) {
-              setCurrentSlide(1);
-            } else setCurrentSlide((prevState) => prevState + 1);
-            setIsLeftIconClicked(false);
-          }}
-        />
+        <div className="w-full h-full flex  items-center justify-center">
+          <LeftIcon
+            className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
+            onClick={() => {
+              if (currentSlide === 1) {
+                setCurrentSlide(4);
+              } else setCurrentSlide((prevState) => prevState - 1);
+              setIsLeftIconClicked(true);
+            }}
+          />
+        </div>
+        <div
+          className={ClassNames(
+            "min-w-[90%] grid grid-cols-2 items-center gap-20 ",
+            currentSlide === prevSlide && !isLeftIconClicked && "animate-slide",
+            currentSlide === prevSlide && isLeftIconClicked && "animate-slidel",
+          )}
+        >
+          {currentSlide === 1 ? (
+            <SlideOne />
+          ) : currentSlide === 2 ? (
+            <SlideTwo />
+          ) : currentSlide === 3 ? (
+            <SlideThree />
+          ) : (
+            currentSlide === 4 && <SlideFour />
+          )}
+        </div>
+        <div className="w-full h-full flex  items-center justify-center">
+          <RightIcon
+            className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
+            onClick={() => {
+              if (currentSlide === 4) {
+                setCurrentSlide(1);
+              } else setCurrentSlide((prevState) => prevState + 1);
+              setIsLeftIconClicked(false);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
