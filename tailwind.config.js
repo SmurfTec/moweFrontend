@@ -16,7 +16,7 @@ module.exports = {
           gunMetal: " #767676",
           snow: "#FAFAFA",
           platinum: "#E4E4E4",
-          cool:"#202020F2"
+          cool: "#202020F2",
         },
         green: {
           teal: "#69A88D",
@@ -31,16 +31,19 @@ module.exports = {
         beige: "#E2C7BD6B",
       },
       fontSize: {
+        //    14px      21px
+        csm: ["0.875rem", "1.313rem"],
         //    16px      22px
         cmd1: ["1rem", "1.375rem"],
         //    16px      24px
         cmd: ["1rem", "1.5rem"],
-
+        //    20px      23px
+        cmd2: ["1.25rem", "1.46rem"],
         //      20px       30px
         c2lg: ["1.25rem", "1.875rem"],
         //     24px      36px
         c2xl: ["1.5rem", "2.25rem"],
-         //     24px      36px
+        //     24px      36px
         c2xl2: ["1.5rem", "2.4rem"],
         //     64px     102.4px
         c4xl: ["4rem", "6.4rem"],

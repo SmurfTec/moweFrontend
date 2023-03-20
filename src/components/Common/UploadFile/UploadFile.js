@@ -51,8 +51,8 @@ export const UploadFile = ({
             htmlFor={id}
             className="text-blue-light relative cursor-pointer bg-white rounded-md focus:outline-none"
           >
-            <span className="">
-              {upLoading ? <Spinner width="4" height="4" /> : "Upload"}
+            <span className="bg-gray-snow border border-gray-400 px-6 py-2 rounded-md">
+              {upLoading ? <Spinner width="4" height="4" /> : "Cargar"}
             </span>
             {!upLoading ? (
               <input

@@ -13,6 +13,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+textarea {
+  resize: none;
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 3px;
