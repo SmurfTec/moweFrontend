@@ -13,9 +13,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { UploadFile } from "components/Common/UploadFile/UploadFile";
 import ClassNames from "Helpers/Common";
 import { CheckBox } from "components/Common/CheckBox/CheckBox";
+import "./date.css"
 export const EMAIL_INVALID = "Email is Invalid";
 
-export const FirstStep = ({ modalOpen = false, setModalOpen }) => {
+export const EventCreation = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   return (
     <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)}>
@@ -34,7 +35,7 @@ const EventCreationForms = ({ currentStep }) => {
     case 1:
       return <Content />;
     case 2:
-      return <Content />;
+      return <Content2 />;
     case 3:
       return <Content3 />;
     case 4:
@@ -119,14 +120,72 @@ const Content = () => {
       </div>
       <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} />
       <div className="text-c2lg">Fecha y hora del evento</div>
+      <div className="text-cmd font-medium">Fecha:</div>
+      <div className="react_datepicker">
+
       <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        excludeDateIntervals={[
-          { start: subDays(new Date(), 1), end: addDays(new Date(), 5) },
-        ]}
-        placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
-      />
+      showIcon
+		selected={startDate}
+		onChange={date => setStartDate(date)}
+		excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]}
+		placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
+	  />
+      </div>
+
+    </div>
+  );
+};
+const Content2 = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  return (
+    <div className="flex flex-col gap-10 min-h-[35rem]">
+      <div className="text-c2xl font-medium">
+        ¿Dónde os casáis? La ceremonia y la celebración son en el mismo sitio? A
+        que hora empezáis?
+      </div>
+      <div className="flex justify-between w-11/12">
+        <div className="text-c2lg text-gray-dark">
+          Selecciona el título la <br />
+          ubicación y el texto del evento:
+          <InputField
+            className="w-[25rem] mt-4 shadow-md bg-gray-snow border-gray-platinum"
+            className1="bg-gray-snow py-[.3rem]"
+            id="Contraseña"
+            placeholder="Título: Boda..."
+            type="text"
+            isRequired={true}
+            onChange={(value) => {}}
+          />
+        </div>
+        <div className="flex flex-col mt-8">
+        <div className="text-c2lg flex items-center gap-3">
+          hay una segunda ubicación?
+          <div className="flex h-6 items-center">
+            <input
+              id="comments"
+              aria-describedby="comments-description"
+              name="comments"
+              value={isChecked}
+              onChange={(prevState) => setIsChecked(!prevState)}
+              type="checkbox"
+              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+            />
+          </div>
+          
+        </div>
+        <InputField
+            className="w-[25rem] mt-4 shadow-md bg-gray-snow border-gray-platinum"
+            className1="bg-gray-snow py-[.3rem]"
+            id="Contraseña"
+            placeholder="TÍTULO: Celebración..."
+            type="text"
+            isRequired={true}
+            onChange={(value) => {}}
+          />
+        </div>
+       
+        
+      </div>
     </div>
   );
 };
@@ -135,10 +194,11 @@ const Content3 = () => {
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="text-c2xl font-medium">
-      ¿Cómo quieres que lleguen los invitados a tu boda? Hay alguna indicación?
+        ¿Cómo quieres que lleguen los invitados a tu boda? Hay alguna
+        indicación?
       </div>
       <div className="text-c2lg flex items-center gap-3">
-      ¿Habrá transporte? Cuéntaselo a los invitados
+        ¿Habrá transporte? Cuéntaselo a los invitados
         <div className="flex h-6 items-center">
           <input
             id="comments"
@@ -157,7 +217,7 @@ const Content3 = () => {
       <div className="flex justify-between items-center gap-20">
         <div className="flex flex-col gap-4 w-1/2">
           <div className="text-c2lg">
-          ¿Hay alguna indicación especial para aparcar?
+            ¿Hay alguna indicación especial para aparcar?
           </div>
           <div className="w-full">
             <TextArea
@@ -169,7 +229,8 @@ const Content3 = () => {
         </div>
         <div className="flex flex-col w-1/2 gap-4 -mt-[3%]">
           <div className="text-c2lg ">
-          ¿Tienes un QR de acceso al parking? Compártelo aquí con tus invitados!
+            ¿Tienes un QR de acceso al parking? Compártelo aquí con tus
+            invitados!
           </div>
           <div className="">
             <UploadFile
@@ -189,13 +250,13 @@ const Content3 = () => {
   );
 };
 const Content4 = () => {
-  
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="flex items-center">
         <div className="flex flex-col gap-4 w-full">
           <div className="text-c2lg">
-          ¡El Dresscode es importante! Cuéntales el estilo de tu boda a los invitados!
+            ¡El Dresscode es importante! Cuéntales el estilo de tu boda a los
+            invitados!
           </div>
           <div className="w-10/12">
             <TextArea
@@ -207,7 +268,7 @@ const Content4 = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-      ¿No sabes que frase poner? Inspírate aquí:
+        ¿No sabes que frase poner? Inspírate aquí:
         <Button
           btnText={"Ejemplos dresscode"}
           className={ClassNames("w-60 bg-gray-thin !py-1")}
@@ -215,8 +276,8 @@ const Content4 = () => {
         />
       </div>
       <div className="w-2/3 cmd">
-      Vamos a informar de la meteorología esperada a tus invitados! 
-¿En qué ubicación queréis verla?
+        Vamos a informar de la meteorología esperada a tus invitados! ¿En qué
+        ubicación queréis verla?
       </div>
     </div>
   );
@@ -229,11 +290,14 @@ const Content5 = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="font-medium text-c2xl">¡Vamos a petar las redes sociales! </div>
+      <div className="font-medium text-c2xl">
+        ¡Vamos a petar las redes sociales!{" "}
+      </div>
       <div className="flex items-center">
         <div className="flex flex-col gap-4 w-full">
           <div className="text-cmd1 text-gray-gunMetal">
-          Añade tu hashtag favorito para que todo el mundo lo use en sus fotos y vídeos!
+            Añade tu hashtag favorito para que todo el mundo lo use en sus fotos
+            y vídeos!
           </div>
           <div className="w-10/12">
             <TextArea
@@ -246,7 +310,8 @@ const Content5 = () => {
         </div>
       </div>
       <div className="flex">
-      No te pierdas ninguna foto de tus invitados! dales tus redes sociales y que te etiqueten!
+        No te pierdas ninguna foto de tus invitados! dales tus redes sociales y
+        que te etiqueten!
       </div>
       <div className="flex gap-4 items-center">
         <CheckBox
@@ -324,9 +389,12 @@ const Content6 = () => {
   return (
     <div className="flex flex-col gap-3">
       <div className="font-medium text-c2xl">
-      ¿Quieres recibir un regalo de tus invitados?
+        ¿Quieres recibir un regalo de tus invitados?
       </div>
-      <div className="text-xl"> ¡Hazlo ahora! Aparecerá en la sección de regalo de la invitación</div>
+      <div className="text-xl">
+        {" "}
+        ¡Hazlo ahora! Aparecerá en la sección de regalo de la invitación
+      </div>
       <div className="flex items-center">
         <div className="flex flex-col gap-4 w-full">
           <div className="w-10/12">
@@ -340,7 +408,7 @@ const Content6 = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-      ¿No sabes que frase poner? Inspírate aquí:
+        ¿No sabes que frase poner? Inspírate aquí:
         <Button
           btnText={"Ejemplos regalos de boda"}
           className={ClassNames(
@@ -351,7 +419,7 @@ const Content6 = () => {
       </div>
       <div className="flex">
         <div className="text-black text-c2lg">
-        Opciones de regalo para los invitados
+          Opciones de regalo para los invitados
         </div>
       </div>
       <div className="flex gap-4 items-center">
@@ -418,7 +486,7 @@ const Content7 = () => {
       <div className="font-medium text-c2xl pl-8">Ya casi estamos!!</div>
       <div className="flex flex-col justify-center items-center h-full">
         <div className=" p-t-4 pb-4 w-9/12 text-c2lg">
-        Tu invitación tendrá una URL personalizada, ¿Cuál quieres?
+          Tu invitación tendrá una URL personalizada, ¿Cuál quieres?
         </div>
         <div className="flex justify-between w-9/12">
           {" "}

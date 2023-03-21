@@ -6,13 +6,15 @@ import { useState, useEffect } from "react";
 import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
 import { Button } from "components/Common/Button/Button";
 import { Login } from "components/Login/Login";
-import { FirstStep } from "components/EventCreation/FirstStep";
+import { EventCreation } from "components/EventCreation/EventCreation";
+import { EventSelection } from "components/EventCreation/EventSelection";
 export const Navbar = () => {
   const [backgroundImage, setBackgroundImage] = useState(
     "url(/background-image-1.jpg)",
   );
   const [modalOpen, setModalOpen] = useState(false);
   const [formModalOpen, setFormModalOpen] = useState(false);
+  const [eventFormModal, setEventFormModalOpen] = useState(false);
 
   useEffect(() => {
     const images = [`url(${LandinImage})`, `url(${LandinImage1})`];
@@ -64,13 +66,16 @@ export const Navbar = () => {
           >
             Home
           </div>
-          <div>QUÉ HACEMOS</div>
+          <div  onClick={() => {
+              setEventFormModalOpen(true);
+            }}>QUÉ HACEMOS</div>
           <div>GALERÍA</div>
           <div>FAQ</div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      <FirstStep modalOpen={formModalOpen} setModalOpen={setFormModalOpen} />
+      <EventCreation modalOpen={formModalOpen} setModalOpen={setFormModalOpen} />
+      <EventSelection modalOpen={eventFormModal} setModalOpen={setEventFormModalOpen} />
     </>
   );
 };
