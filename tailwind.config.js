@@ -17,14 +17,13 @@ module.exports = {
           snow: "#FAFAFA",
           platinum: "#E4E4E4",
           cool: "#202020F2",
-
+          medium: "#ADADAD",
         },
         green: {
           teal: "#69A88D",
           pale: "#A5D9DC6B",
-          seafFoam:"#69A88D40"
-          
-
+          seafFoam: "#69A88D40",
+          gray: "rgba(105, 168, 141, 0.25)",
         },
         red: {
           fiery: "#FD26266B",
@@ -33,12 +32,13 @@ module.exports = {
           deep: "#1E03246B",
         },
         beige: "#E2C7BD6B",
-        black:{
-          deep:"#1B1B1B"
+        black: {
+          deep: "#1B1B1B",
+          gray:"#4D4D4D"
         },
-        silver:{
-         dull: "#A7A7A7"
-        }
+        silver: {
+          dull: "#A7A7A7",
+        },
       },
       fontSize: {
         //    14px      21px
