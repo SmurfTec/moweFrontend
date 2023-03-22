@@ -24,14 +24,17 @@ export const EventSelection = ({ modalOpen = false, setModalOpen }) => {
       <div className="bg-white  w-[74rem] min-h-[44rem] rounded-lg  flex flex-col justify-between pt-12 pb-12 pr-8 pl-8 ">
         <div className="flex flex-col gap-10 pb-8 min-h-[40rem]">
           <Header setModalOpen={setModalOpen} currentStep={currentStep} />
-          <Content currentStep={currentStep} />
+          <EventSelecionForms
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
         </div>
       </div>
     </ModalBasic>
   );
 };
 
-const Header = ({ isFirstStep = false, setModalOpen, currentStep }) => {
+const Header = ({ isFirstStep = false, setModalOpen, currentStep = 3 }) => {
   return (
     <div className="flex gap-3 w-full items-center">
       <div>
@@ -40,19 +43,37 @@ const Header = ({ isFirstStep = false, setModalOpen, currentStep }) => {
           onClick={() => setModalOpen(false)}
         />
       </div>
-      <div className="text-c2xl text-gray-dark">Mi Perfil</div>
+      <div className="text-c2xl text-gray-dark">
+        {currentStep === 1
+          ? "Mi Perfi"
+          : currentStep === 2
+          ? "Seguridad y acceso a la cuenta"
+          : "¿Necesitas ayuda?"}
+      </div>
     </div>
   );
 };
+const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
+  switch (currentStep) {
+    case 1:
+      return <Content1 setCurrentStep={setCurrentStep} />;
+    case 2:
+      return <Content2 setCurrentStep={setCurrentStep} />;
+    case 3:
+      return <Content3 setCurrentStep={setCurrentStep} />;
 
-const Content = () => {
+    default:
+      return "No case found";
+  }
+};
+const Content1 = ({ setCurrentStep }) => {
   const [email, setEmail] = useState("");
   const [startDate, setStartDate] = useState(new Date());
 
   return (
     <div className="min-h-full flex px-16">
-      <div className="h-[40rem] bg-green-teal w-1/2 flex flex-col gap-10 justify-center px-20 rounded-2xl">
-        <div className="w-32 h-32 rounded-full bg-white border border-1 border-gray-200 flex items-center justify-center -mt-[60%] ml-[30%] relative">
+      <div className="h-[40rem] bg-green-gray w-1/2 flex flex-col gap-10 justify-center px-20 rounded-2xl">
+        <div className="w-32 h-32 rounded-full bg-white border border-1 border-gray-medium flex items-center justify-center -mt-[60%] ml-[30%] relative">
           <UserIcon className="h-16 w-16" />
           <EditIcon className="h-16 w-16 absolute -mt-[70%] ml-[70%]" />
         </div>
@@ -132,120 +153,125 @@ const Content = () => {
         <Button
           btnText="Guardar cambios"
           className="w-60 !bg-silver-dull shadow-lg py-3 ml-32 mt-10"
-          onClick={() => {}}
+          onClick={() => {
+            setCurrentStep((prevState) => prevState + 1);
+          }}
         />
       </div>
     </div>
   );
 };
-const Content2 = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const Content2 = ({ setCurrentStep }) => {
+  const [password, setPassword] = useState("");
   return (
-    <div className="flex flex-col gap-10 min-h-[35rem]">
-      <div className="text-c2xl font-medium">
-        ¿Dónde os casáis? La ceremonia y la celebración son en el mismo sitio? A
-        que hora empezáis?
+    <div className="flex flex-col  items-center justify-center min-h-[35rem]">
+      <div className="flex w-full justify-end items-start -mt-[10%]">
+        <AppLogo className="h-80" />
       </div>
-      <div className="flex justify-between w-11/12">
-        <div className="text-c2lg text-gray-dark">
-          Selecciona el título la <br />
-          ubicación y el texto del evento:
+      <div className="flex gap-20 w-full items-center -mt-[15%] z-10">
+        <div className="w-32 h-32 rounded-full bg-white  border border-gray-medium flex items-center justify-center relative">
+          <UserIcon className="h-16 w-16" />
+          <EditIcon className="h-16 w-16 -mt-[80%] ml-[70%] absolute" />
+        </div>
+        <div className="text-black text-c3xl  font-medium">Usurario1</div>
+      </div>
+      <div className="h-[28rem] bg-green-gray w-11/12 flex flex-col gap-10 justify-center px-20 rounded-2xl -mt-[3%]">
+        <div className="flex flex-col gap-10 h-full items-center justify-center">
           <InputField
-            className="w-[25rem] mt-4 shadow-md bg-gray-snow border-gray-platinum"
+            id="contraseña anterior"
+            type="password"
+            label="contraseña anterior"
+            placeholder="contraseña anterior"
+            className="shadow-md bg-gray-snow border-gray-platinum w-[30rem]"
             className1="bg-gray-snow py-[.3rem]"
-            id="Contraseña"
-            placeholder="Título: Boda..."
-            type="text"
-            isRequired={true}
-            onChange={(value) => {}}
+            isRequired={false}
+            onChange={(fieldValue) => setPassword(fieldValue.trim())}
+          />
+          <InputField
+            id="Contraseña nueva"
+            type="password"
+            label="Contraseña nueva"
+            placeholder="Contraseña nueva"
+            className="shadow-md bg-gray-snow border-gray-platinum w-[30rem]"
+            className1="bg-gray-snow py-[.3rem]"
+            isRequired={false}
+            onChange={(fieldValue) => setPassword(fieldValue.trim())}
+          />{" "}
+          <InputField
+            id="Confirmar contraseña nueva"
+            type="password"
+            label="Confirmar contraseña nueva"
+            placeholder="Confirmar contraseña nueva"
+            className="shadow-md bg-gray-snow border-gray-platinum w-[30rem]"
+            className1="bg-gray-snow py-[.3rem]"
+            isRequired={false}
+            onChange={(fieldValue) => setPassword(fieldValue.trim())}
           />
         </div>
-        <div className="flex flex-col mt-8">
-          <div className="text-c2lg flex items-center gap-3">
-            hay una segunda ubicación?
-            <div className="flex h-6 items-center">
-              <input
-                id="comments"
-                aria-describedby="comments-description"
-                name="comments"
-                value={isChecked}
-                onChange={(prevState) => setIsChecked(!prevState)}
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              />
-            </div>
-          </div>
-          <InputField
-            className="w-[25rem] mt-4 shadow-md bg-gray-snow border-gray-platinum"
-            className1="bg-gray-snow py-[.3rem]"
-            id="Contraseña"
-            placeholder="TÍTULO: Celebración..."
-            type="text"
-            isRequired={true}
-            onChange={(value) => {}}
-          />
-        </div>
+      </div>
+      <div className="flex w-[85%] justify-end">
+        <Button
+          btnText="Guardar cambios"
+          className="w-60 !bg-silver-dull shadow-lg py-3 ml-32 mt-10"
+          onClick={() => {
+            setCurrentStep((prevState) => prevState + 1);
+          }}
+        />
       </div>
     </div>
   );
 };
-const Content3 = () => {
+const Content3 = ({ setCurrentStep }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [email, setEmail] = useState("");
   return (
-    <div className="flex flex-col gap-10 min-h-[35rem]">
-      <div className="text-c2xl font-medium">
-        ¿Cómo quieres que lleguen los invitados a tu boda? Hay alguna
-        indicación?
-      </div>
-      <div className="text-c2lg flex items-center gap-3">
-        ¿Habrá transporte? Cuéntaselo a los invitados
-        <div className="flex h-6 items-center">
-          <input
-            id="comments"
-            aria-describedby="comments-description"
-            name="comments"
-            value={isChecked}
-            onChange={(prevState) => setIsChecked(!prevState)}
-            type="checkbox"
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+    <div className="flex flex-col gap-10 justify-between min-h-[20rem] pl-12">
+      <div className="text-c2lg text-black-gray">Escribe tu consulta</div>
+      <InputField
+        id="Tema:"
+        type="text"
+        label="Tema:"
+        placeholder="Tema:"
+        className="shadow-md bg-gray-snow border-gray-platinum w-[40rem]"
+        className1="bg-gray-snow py-[.3rem]"
+        isRequired={false}
+      />
+      <InputField
+        id="email"
+        type="email"
+        label="Email"
+        placeholder="Email"
+        className="shadow-md bg-gray-snow border-gray-platinum w-[40rem]"
+        className1="bg-gray-snow py-[.3rem]"
+        isRequired={false}
+        onChange={(fieldValue) => setEmail(fieldValue.trim())}
+        onBlur={(fieldValue, setInputFieldError) => {
+          if (!(fieldValue.includes("@") && fieldValue.includes(".com"))) {
+            setInputFieldError(EMAIL_INVALID);
+          } else if (fieldValue) {
+            setEmail(fieldValue.trim());
+          }
+        }}
+      />
+      <div className="flex flex-col gap-3">
+        <div className="text-xl">Consulta:</div>
+        <div className="w-11/12">
+          <TextArea
+            placeHolder="Escribe aquí tu consulta..."
+            isOptional={false}
+            rows={4}
           />
         </div>
       </div>
-      <div className="w-2/5">
-        <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} />
+      <div className="flex w-[92%] justify-end">
+        <Button
+          btnText="Enviar"
+          className="w-48 !bg-green-teal shadow-lg text-white py-4"
+          onClick={() => {
+            setCurrentStep((prevState) => prevState - 2);
+          }}
+        />
       </div>
-      <div className="flex justify-between items-center gap-20">
-        <div className="flex flex-col gap-4 w-1/2">
-          <div className="text-c2lg">
-            ¿Hay alguna indicación especial para aparcar?
-          </div>
-          <div className="w-full">
-            <TextArea
-              placeHolder="Jaume & Yolanda"
-              isOptional={false}
-              rows={3}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col w-1/2 gap-4 -mt-[3%]">
-          <div className="text-c2lg ">
-            ¿Tienes un QR de acceso al parking? Compártelo aquí con tus
-            invitados!
-          </div>
-          <div className="">
-            <UploadFile
-              mode={"Edit"}
-              onBlur={() => {}}
-              // value={formState?.uploadedFile}
-              onResponse={({ data }) => {
-                console.log(data);
-                // setFormState({ type: SET_RESUME, payload: data });
-              }}
-            />
-          </div>
-        </div>
-      </div>
-      Vamos a ofrecer a los asistentes, hoteles cercanos al lugar que elijas
     </div>
   );
 };
