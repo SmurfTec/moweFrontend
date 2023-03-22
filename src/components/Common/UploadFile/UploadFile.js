@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ClassNames from "Helpers/Common";
-import { ReactComponent as UploadIcon } from "assets/FileUpload.svg";
+import { ReactComponent as UploadIcon } from "assets/Svgs/FileUpload.svg";
 import { Spinner } from "../LoadingSpinner/Spinner";
 
 const UPLOAD_FILE_ERROR = "Sorry! File can not be uploaded. Please try again";

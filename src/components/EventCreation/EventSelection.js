@@ -1,6 +1,5 @@
 import ModalBasic, { Modal } from "components/Modal/BasicModal";
-import { ReactComponent as CrossIcon } from "assets/Cross.svg";
-import { ReactComponent as BackIcon } from "assets/BackArrow.svg";
+import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { useState } from "react";
 import { Button } from "components/Common/Button/Button";
@@ -71,55 +70,60 @@ const Content = () => {
             }
           }}
         />
-        <div className="font-medium text-cmd">Fecha del evento</div>
-        <div className="react_datepicker">
-          <DatePicker
-            showIcon
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            excludeDateIntervals={[
-              { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
-            ]}
-            placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
-          />
+        <div className="flex flex-col gap-3">
+          <div className="font-medium text-cmd">Fecha del evento</div>
+          <div className="react_datepicker">
+            <DatePicker
+              showIcon
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              excludeDateIntervals={[
+                { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
+              ]}
+              placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
+            />
+          </div>
         </div>
-        <div className="font-medium text-cmd">Invitación activa hasta: </div>
-        <div className="react_datepicker">
-          <DatePicker
-            showIcon
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            excludeDateIntervals={[
-              { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
-            ]}
-            placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
-          />
+        <div className="flex flex-col gap-3">
+          <div className="font-medium text-cmd">Invitación activa hasta:</div>
+          <div className="react_datepicker">
+            <DatePicker
+              showIcon
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              excludeDateIntervals={[
+                { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
+              ]}
+              placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
+            />
+          </div>
         </div>
       </div>
       <div className="w-1/2 flex flex-col gap-5 justify-center items-center">
         <AppLogo className="h-72 -mt-[30%]" />
-       <div className="flex flex-col gap-8">
-       <Button
-          btnText="Cerrar sesión"
-          className="w-96 !bg-green-teal shadow-lg text-white py-3"
-          onClick={() => {}}
-        /> <Button
-          btnText="Ayuda"
-          className="w-96 !bg-green-teal shadow-lg text-white py-3"
-          onClick={() => {}}
-        />
-         <Button
-          btnText="Seguridad y acceso a la cuenta"
-          className="w-96 !bg-green-teal shadow-lg text-white py-3"
-          onClick={() => {}}
-        />
-         <Button
-          btnText="BORRAR CUENTA"
-          className="w-96 !bg-green-teal shadow-lg text-white py-3"
-          onClick={() => {}}
-        />
-       </div>
-         <Button
+        <div className="flex flex-col gap-8">
+          <Button
+            btnText="Cerrar sesión"
+            className="w-96 !bg-green-teal shadow-lg text-white py-3"
+            onClick={() => {}}
+          />{" "}
+          <Button
+            btnText="Ayuda"
+            className="w-96 !bg-green-teal shadow-lg text-white py-3"
+            onClick={() => {}}
+          />
+          <Button
+            btnText="Seguridad y acceso a la cuenta"
+            className="w-96 !bg-green-teal shadow-lg text-white py-3"
+            onClick={() => {}}
+          />
+          <Button
+            btnText="BORRAR CUENTA"
+            className="w-96 !bg-green-teal shadow-lg text-white py-3"
+            onClick={() => {}}
+          />
+        </div>
+        <Button
           btnText="Guardar cambios"
           className="w-60 !bg-silver-dull shadow-lg py-3 ml-32 mt-10"
           onClick={() => {}}
