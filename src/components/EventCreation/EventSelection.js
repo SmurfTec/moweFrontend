@@ -1,5 +1,6 @@
 import ModalBasic, { Modal } from "components/Modal/BasicModal";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
+import { ReactComponent as UserIcon } from "assets/Svgs/User.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { useState } from "react";
 import { Button } from "components/Common/Button/Button";
@@ -11,6 +12,7 @@ import { UploadFile } from "components/Common/UploadFile/UploadFile";
 import ClassNames from "Helpers/Common";
 import { CheckBox } from "components/Common/CheckBox/CheckBox";
 import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as EditIcon } from "assets/Svgs/Edit.svg";
 
 import "./date.css";
 export const EMAIL_INVALID = "Email is Invalid";
@@ -50,6 +52,10 @@ const Content = () => {
   return (
     <div className="min-h-full flex px-16">
       <div className="h-[40rem] bg-green-teal w-1/2 flex flex-col gap-10 justify-center px-20 rounded-2xl">
+        <div className="w-32 h-32 rounded-full bg-white border border-1 border-gray-200 flex items-center justify-center -mt-[60%] ml-[30%] relative">
+          <UserIcon className="h-16 w-16" />
+          <EditIcon className="h-16 w-16 absolute -mt-[70%] ml-[70%]" />
+        </div>
         <div className="text-black text-c3xl flex justify-center font-medium">
           Usurario1
         </div>
