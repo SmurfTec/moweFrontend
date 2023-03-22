@@ -1,7 +1,7 @@
 import ModalBasic, { Modal } from "components/Modal/BasicModal";
 
-import { ReactComponent as CrossIcon } from "assets/Cross.svg";
-import { ReactComponent as BackIcon } from "assets/BackArrow.svg";
+import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
+import { ReactComponent as BackIcon } from "assets/Svgs/BackArrow.svg";
 
 import { InputField } from "components/Common/InputField/InputField";
 import { useState } from "react";
