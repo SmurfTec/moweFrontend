@@ -33,6 +33,7 @@ module.exports = {
         },
         beige: "#E2C7BD6B",
         black: {
+          pitch:"#000000",
           deep: "#1B1B1B",
           gray:"#4D4D4D"
         },
