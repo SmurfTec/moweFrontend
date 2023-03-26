@@ -1,0 +1,13 @@
+.react-datepicker__input-container input{
+padding: 2%;
+}
+.react-datepicker__input-container input {
+    
+    background: #FFFFFF;
+    box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 10px;
+    
+}
