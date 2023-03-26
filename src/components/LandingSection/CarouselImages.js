@@ -2,8 +2,8 @@ import CarouselImage1 from "assets/CarouselImage1.jpg";
 import CarouselImage2 from "assets/CarouselImage2.jpg";
 import CarouselImage3 from "assets/CarouselImage3.jpg";
 
-import { ReactComponent as RightIcon } from "assets/CarouselRight.svg";
-import { ReactComponent as LeftIcon } from "assets/CarouselLeft.svg";
+import { ReactComponent as RightIcon } from "assets/Svgs/CarouselRight.svg";
+import { ReactComponent as LeftIcon } from "assets/Svgs/CarouselLeft.svg";
 
 import "./Landing.css";
 import { useEffect, useState } from "react";

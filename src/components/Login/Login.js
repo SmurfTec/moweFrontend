@@ -5,7 +5,7 @@ import FacebookImage from "assets/fb.png";
 import Google from "assets/google.png";
 import OtpInput from "react-otp-input";
 
-import { ReactComponent as CrossIcon } from "assets/Cross.svg";
+import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { useState } from "react";
 import { Button } from "components/Common/Button/Button";
@@ -111,7 +111,9 @@ const ResetPassword = () => {
 
   return (
     <>
-    <div className="flex justify-center text-md">Te hemos enviado un código a ****st@gmail.com</div>
+      <div className="flex justify-center text-md">
+        Te hemos enviado un código a ****st@gmail.com
+      </div>
       <div className="flex justify-center -ml-[5%]">
         <OtpInput
           value={codeVerificationChars}

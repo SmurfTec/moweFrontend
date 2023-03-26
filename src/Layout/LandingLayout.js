@@ -1,3 +1,4 @@
+import { Carousel } from "components/LandingSection/Carousel";
 import { CarouselImages } from "components/LandingSection/CarouselImages";
 import { Footer } from "components/LandingSection/Footer";
 import { Navbar } from "components/LandingSection/Navbar";
@@ -9,6 +10,7 @@ export const LandingLayout = () => {
     <>
     <Login/>
       <Navbar />
+      <Carousel/>
       <CarouselImages/>
       <Review />;
       <Footer />
