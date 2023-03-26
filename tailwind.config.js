@@ -24,6 +24,7 @@ module.exports = {
           pale: "#A5D9DC6B",
           seafFoam: "#69A88D40",
           gray: "rgba(105, 168, 141, 0.25)",
+          none:"#436757"
         },
         red: {
           fiery: "#FD26266B",
@@ -35,11 +36,15 @@ module.exports = {
         black: {
           pitch:"#000000",
           deep: "#1B1B1B",
-          gray:"#4D4D4D"
+          gray:"#4D4D4D",
+          semi:"rgba(0, 0, 0, 0.41)"
         },
         silver: {
           dull: "#A7A7A7",
         },
+      smoke:{
+        white:"rgba(255, 255, 255, 0.6);"
+      }
       },
       fontSize: {
         //    14px      21px

@@ -8,6 +8,7 @@ import { Button } from "components/Common/Button/Button";
 import { Login } from "components/Login/Login";
 import { EventCreation } from "components/EventCreation/EventCreation";
 import { EventSelection } from "components/EventCreation/EventSelection";
+import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
 export const Navbar = () => {
   const [backgroundImage, setBackgroundImage] = useState(
     "url(/background-image-1.jpg)",
@@ -15,7 +16,8 @@ export const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [formModalOpen, setFormModalOpen] = useState(false);
   const [eventFormModal, setEventFormModalOpen] = useState(false);
-
+  const [VideoPhotoEditingModalOpen, setVideoPhotoEditingModalOpen] =
+    useState(false);
   useEffect(() => {
     const images = [`url(${LandinImage})`, `url(${LandinImage1})`];
 
@@ -26,7 +28,6 @@ export const Navbar = () => {
 
     return () => clearInterval(intervalId);
   }, []);
-
   return (
     <>
       <div
@@ -66,16 +67,36 @@ export const Navbar = () => {
           >
             Home
           </div>
-          <div  onClick={() => {
+          <div
+            onClick={() => {
               setEventFormModalOpen(true);
-            }}>QUÉ HACEMOS</div>
-          <div>GALERÍA</div>
+            }}
+          >
+            QUÉ HACEMOS
+          </div>
+          <div
+            onClick={() => {
+              setVideoPhotoEditingModalOpen(true);
+            }}
+          >
+            GALERÍA
+          </div>
           <div>FAQ</div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      <EventCreation modalOpen={formModalOpen} setModalOpen={setFormModalOpen} />
-      <EventSelection modalOpen={eventFormModal} setModalOpen={setEventFormModalOpen} />
+      <EventCreation
+        modalOpen={formModalOpen}
+        setModalOpen={setFormModalOpen}
+      />
+      <EventSelection
+        modalOpen={eventFormModal}
+        setModalOpen={setEventFormModalOpen}
+      />
+      <VideoPhotoEditing
+        modalOpen={VideoPhotoEditingModalOpen}
+        setModalOpen={setVideoPhotoEditingModalOpen}
+      />
     </>
   );
 };
