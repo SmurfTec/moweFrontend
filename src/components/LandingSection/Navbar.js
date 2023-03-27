@@ -9,7 +9,9 @@ import { Login } from "components/Login/Login";
 import { EventCreation } from "components/EventCreation/EventCreation";
 import { EventSelection } from "components/EventCreation/EventSelection";
 import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
+import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [backgroundImage, setBackgroundImage] = useState(
     "url(/background-image-1.jpg)",
   );
@@ -81,7 +83,13 @@ export const Navbar = () => {
           >
             GALERÍA
           </div>
-          <div>FAQ</div>
+          <div
+            onClick={() => {
+              navigate("/payment");
+            }}
+          >
+            FAQ
+          </div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
