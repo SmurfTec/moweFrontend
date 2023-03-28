@@ -1,17 +1,6 @@
-import { useState } from "react";
-import BackgroundImage from "assets/wed.jpg";
-import ConfettiImage from "assets/confetti.png";
-
 import ModalBasic from "components/Modal/BasicModal";
-import { ReactComponent as InstaLogo } from "assets/logos/InstaDark.svg";
-import { ReactComponent as FBLogo } from "assets/logos/Facebook.svg";
-import { ReactComponent as TwitterLogo } from "assets/logos/Twitter.svg";
-import { ReactComponent as CheckIcon } from "assets/Svgs/check.svg";
-
 import { InputField } from "components/Common/InputField/InputField";
 import { Button } from "components/Common/Button/Button";
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
-import { TextArea } from "components/Common/TextArea/TextArea";
 export const Wedding = ({ modalOpen = false, setModalOpen }) => {
   return (
     <ModalBasic

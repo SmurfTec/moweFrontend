@@ -6,7 +6,7 @@ import { ReactComponent as RightIcon } from "assets/Svgs/CarouselRight.svg";
 import { ReactComponent as LeftIcon } from "assets/Svgs/CarouselLeft.svg";
 
 import "./Landing.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 export const CarouselImages = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(2);
