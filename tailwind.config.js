@@ -21,8 +21,10 @@ module.exports = {
           platinum: "#E4E4E4",
           cool: "#202020F2",
           medium: "#ADADAD",
-          lightMedium:"#737373",
-          dark1:"#E0E0E0"
+          lightMedium: "#737373",
+          dark1: "#E0E0E0",
+          white: "#FBFBFB",
+          greenish: "#E0EFE8",
         },
         green: {
           teal: "#69A88D",
@@ -71,6 +73,8 @@ module.exports = {
         c3xl: ["2rem", "3rem"],
         //     40px      60px
         c3xl1: ["2.5rem", "3.75rem"],
+        //     48px      72px
+        c3xl2: ["3rem", "4.5rem"],
         //     64px     96px
         c4xl1: ["4rem", "6rem"],
         //     64px     102.4px
