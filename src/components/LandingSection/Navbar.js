@@ -53,6 +53,9 @@ export const Navbar = () => {
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white shadow-lg"
+              onClick={() => {
+              navigate("/dashboard");
+            }}
             />
           </div>
         </div>
