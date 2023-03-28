@@ -4,6 +4,7 @@ import { ReactComponent as TwitterLogo } from "assets/logos/Twitter.svg";
 import { Button } from "components/Common/Button/Button";
 import { useState } from "react";
 import { ContactUs } from "./ContactUs";
+import { Wedding } from "./Weding";
 
 export const Footer = () => {
   const [wedingPlaner, setWedingPlaner] = useState(false);
@@ -39,6 +40,7 @@ export const Footer = () => {
           setModalOpen={setContactusModal}
         />
       }
+      {<Wedding modalOpen={wedingPlaner} setModalOpen={setWedingPlaner}/>}
     </div>
   );
 };
