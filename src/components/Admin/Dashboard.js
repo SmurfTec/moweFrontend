@@ -31,7 +31,7 @@ export const Dashboard = () => {
       >
         <div className="bg-white  w-[74rem] min-h-[54rem] rounded-lg flex flex-col p-10 ">
           <div className="flex ">
-            <CrossIcon className="h-8 w-8" />
+            <CrossIcon className="h-12 w-12" />
             <AppLogo className="h-40" />
             <div className="flex w-full justify-between">
               <div className="text-c2xl2 text-black-pitch mt-[7%] ml-[25%]">
@@ -42,7 +42,7 @@ export const Dashboard = () => {
           </div>
 
           <div className="grid grid-cols-3  gap-4">
-            <div className="bg-gray-white border border-gray-grennish h-52 p-2">
+            <div className="bg-gray-white border border-gray-grennish h-56 p-2">
               <div className="text-c2xl font-normal flex justify-center">
                 Asistencias totales
               </div>
@@ -77,7 +77,7 @@ export const Dashboard = () => {
               <div className="text-c2xl font-normal flex justify-center w-full text-center">
                 Visulaización de la Invitación
               </div>
-              <div className="h-40 flex items-center">
+              <div className="h-40 flex items-center -ml-16 -mt-8">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart width={400} height={400}>
                     <Pie
@@ -99,7 +99,7 @@ export const Dashboard = () => {
                     </Pie>
                   </PieChart>
                 </ResponsiveContainer>
-                <div className="text-c3xl2 text-green-teal font-semibold">
+                <div className="text-c3xl2 text-green-teal font-semibold mr-4">
                   88%
                 </div>
               </div>
