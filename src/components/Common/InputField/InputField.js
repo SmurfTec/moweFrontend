@@ -17,7 +17,8 @@ export const InputField = ({
   onKeyDown,
   onIconClick,
   className,
-  className1
+  className1,
+  labelClassName
 }) => {
   const [fieldValue, setFieldValue] = useState("");
   const [fieldError, setFieldError] = useState("");
@@ -31,7 +32,7 @@ export const InputField = ({
   return (
     <div className="InputField_MainWrapper">
       {label && (
-        <label htmlFor={id} className="text-black-deep block text-cmd font-medium mb-1">
+        <label htmlFor={id} className={ClassNames("text-black-deep block text-cmd font-medium mb-1",labelClassName)}>
           {label}
         </label>
       )}
