@@ -1,4 +1,5 @@
 import BackgroundImage from "assets/wed.jpg";
+import DressImage from "assets/Dress.png"
 import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
 import { ReactComponent as LocationIcon } from "assets/Svgs/location.svg";
 import { ReactComponent as ShareIcon } from "assets/Svgs/share.svg";
@@ -51,7 +52,7 @@ export const MainMenu = () => {
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
-              <DressIcon className="h-10 w-10" />
+              <img src={DressImage} className="h-10 w-10" alt=""/>
             </div>
             <div className="text-cmd bg-black-pitch bg-opacity-40 px-4 rounded-full py-2">
               Dresscode
