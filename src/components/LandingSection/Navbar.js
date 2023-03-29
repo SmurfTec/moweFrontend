@@ -54,15 +54,23 @@ export const Navbar = () => {
               btnText="Tu Invitación"
               className="w-60 bg-white shadow-lg"
               onClick={() => {
-              navigate("/dashboard");
-            }}
+                navigate("/dashboard");
+              }}
             />
           </div>
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
           <div>Crea una experiencia</div>
-          <div>ÚNICA</div>
-          <div>para tu gran día!</div>
+          <div   onClick={() => {
+              navigate("/menu");
+            }}>ÚNICA</div>
+          <div
+            onClick={() => {
+              navigate("/success");
+            }}
+          >
+            para tu gran día!
+          </div>
         </div>
         <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white">
           <div

@@ -44,8 +44,10 @@ module.exports = {
           pitch: "#000000",
           deep: "#1B1B1B",
           gray: "#4D4D4D",
+          charcol:"#020202B2",
           semi: "rgba(0, 0, 0, 0.41)",
           opaque: "rgba(0, 0, 0, 0.66)",
+
         },
         silver: {
           dull: "#A7A7A7",
