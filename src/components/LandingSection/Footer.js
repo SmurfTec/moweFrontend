@@ -1,11 +1,11 @@
-import { ReactComponent as InstaLogo } from "assets/logos/Insta.svg";
-import { ReactComponent as FBLogo } from "assets/logos/Facebook.svg";
-import { ReactComponent as TwitterLogo } from "assets/logos/Twitter.svg";
-import { Button } from "components/Common/Button/Button";
 import { useState } from "react";
-import { ContactUs } from "./ContactUs";
 import { Wedding } from "./Weding";
+import { ContactUs } from "./ContactUs";
 import { Description } from "./SoboDiscription";
+import { Button } from "components/Common/Button/Button";
+import { ReactComponent as FBLogo } from "assets/Logos/Facebook.svg";
+import { ReactComponent as InstaLogo } from "assets/Logos/Insta.svg";
+import { ReactComponent as TwitterLogo } from "assets/Logos/Twitter.svg";
 
 export const Footer = () => {
   const [wedingPlaner, setWedingPlaner] = useState(false);

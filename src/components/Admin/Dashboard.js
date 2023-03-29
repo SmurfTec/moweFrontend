@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BackgroundImage from "assets/wed.jpg";
+import BackgroundImage from "assets/Images/wed.jpg";
 import ModalBasic from "components/Modal/BasicModal";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { ReactComponent as AdminIcons } from "assets/Svgs/Admin.svg";

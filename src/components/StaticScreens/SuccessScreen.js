@@ -1,15 +1,15 @@
 import { useState } from "react";
-import BackgroundImage from "assets/wed.jpg";
-import ConfettiImage from "assets/confetti.png";
+import BackgroundImage from "assets/Images/wed.jpg";
 import ModalBasic from "components/Modal/BasicModal";
-import { ReactComponent as CheckIcon } from "assets/Svgs/check.svg";
+import ConfettiImage from "assets/Images/confetti.png";
 import { Button } from "components/Common/Button/Button";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
+import { ReactComponent as CheckIcon } from "assets/Svgs/check.svg";
 
 export const SuccessScreen = () => {
-    const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(true);
   return (
-     <div
+    <div
       className=" h-screen flex flex-col justify-between px-10 text-white font-extrabold"
       style={{
         backgroundImage: `url(${BackgroundImage})`,
@@ -67,5 +67,5 @@ export const SuccessScreen = () => {
         </div>
       </ModalBasic>
     </div>
-  )
-}
+  );
+};

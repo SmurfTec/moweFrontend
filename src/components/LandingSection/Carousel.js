@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { ReactComponent as RightIcon } from "assets/Svgs/CarouselRight.svg";
-import { ReactComponent as LeftIcon } from "assets/Svgs/CarouselLeft.svg";
-import { Button } from "components/Common/Button/Button";
-import CarouselImage1 from "assets/CarouselImage1.jpg";
-import CarouselImage3 from "assets/CarouselImage3.jpg";
-import CarouselImage2 from "assets/CarouselImage2.jpg";
 import ClassNames from "Helpers/Common";
+import { Button } from "components/Common/Button/Button";
+import CarouselImage1 from "assets/Images/CarouselImage1.jpg";
+import CarouselImage3 from "assets/Images/CarouselImage3.jpg";
+import CarouselImage2 from "assets/Images/CarouselImage2.jpg";
+import { ReactComponent as LeftIcon } from "assets/Svgs/CarouselLeft.svg";
+import { ReactComponent as RightIcon } from "assets/Svgs/CarouselRight.svg";
 
 export const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(1);

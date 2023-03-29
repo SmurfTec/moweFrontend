@@ -1,5 +1,5 @@
 import ModalBasic from "components/Modal/BasicModal";
-import SectionImage from "assets/StaticScreen.png";
+import SectionImage from "assets/Images/StaticScreen.png";
 import { ReactComponent as BackIcon } from "assets/Svgs/BackArrow.svg";
 
 export const Description = ({ modalOpen = false, setModalOpen }) => {
