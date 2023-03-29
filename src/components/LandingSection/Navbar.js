@@ -60,10 +60,20 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
-          <div>Crea una experiencia</div>
-          <div   onClick={() => {
+          <div
+              onClick={() => {
+              navigate("/adminTable");
+            }}
+          >
+            Crea una experiencia
+          </div>
+          <div
+            onClick={() => {
               navigate("/menu");
-            }}>ÚNICA</div>
+            }}
+          >
+            ÚNICA
+          </div>
           <div
             onClick={() => {
               navigate("/success");

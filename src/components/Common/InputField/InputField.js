@@ -46,7 +46,6 @@ export const InputField = ({
           className
         )}
       >
-        <span onClick={onIconClick?.()}>{children}</span>
         <input
           id={id}
           name={id}
@@ -81,6 +80,8 @@ export const InputField = ({
           }}
           onKeyPress={(e) => onKeyDown?.(e)}
         />
+        <span onClick={onIconClick?.()}>{children}</span>
+
       </div>
       {fieldError && (
         <div className="InputField_ErrorWrapper text-sm text-red-600">
