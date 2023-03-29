@@ -3,13 +3,15 @@ import LandinImage1 from "assets/CarouselImage2.jpg";
 
 import { useState, useEffect } from "react";
 
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { Button } from "components/Common/Button/Button";
 import { Login } from "components/Login/Login";
 import { EventCreation } from "components/EventCreation/EventCreation";
 import { EventSelection } from "components/EventCreation/EventSelection";
 import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
+import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [backgroundImage, setBackgroundImage] = useState(
     "url(/background-image-1.jpg)",
   );
@@ -51,13 +53,34 @@ export const Navbar = () => {
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white shadow-lg"
+              onClick={() => {
+                navigate("/dashboard");
+              }}
             />
           </div>
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
-          <div>Crea una experiencia</div>
-          <div>ÚNICA</div>
-          <div>para tu gran día!</div>
+          <div
+              onClick={() => {
+              navigate("/adminTable");
+            }}
+          >
+            Crea una experiencia
+          </div>
+          <div
+            onClick={() => {
+              navigate("/menu");
+            }}
+          >
+            ÚNICA
+          </div>
+          <div
+            onClick={() => {
+              navigate("/success");
+            }}
+          >
+            para tu gran día!
+          </div>
         </div>
         <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white">
           <div
@@ -81,7 +104,13 @@ export const Navbar = () => {
           >
             GALERÍA
           </div>
-          <div>FAQ</div>
+          <div
+            onClick={() => {
+              navigate("/payment");
+            }}
+          >
+            FAQ
+          </div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />

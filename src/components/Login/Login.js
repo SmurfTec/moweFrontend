@@ -1,4 +1,4 @@
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import ModalBasic, { Modal } from "components/Modal/BasicModal";
 import LoginImage from "assets/Login.jpg";
 import FacebookImage from "assets/fb.png";

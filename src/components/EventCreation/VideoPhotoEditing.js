@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { UploadFile } from "components/Common/UploadFile/UploadFile";
 import ClassNames from "Helpers/Common";
 import { CheckBox } from "components/Common/CheckBox/CheckBox";
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ReactComponent as EditIcon } from "assets/Svgs/Edit.svg";
 import { ReactComponent as ExclaminationIcon } from "assets/Svgs/Exclamination.svg";
 
