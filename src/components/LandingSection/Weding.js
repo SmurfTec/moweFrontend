@@ -8,8 +8,8 @@ export const Wedding = ({ modalOpen = false, setModalOpen }) => {
       onClose={() => setModalOpen(false)}
       bgClassName="bg-black-opaque"
     >
-      <div className="bg-white  w-[55rem] h-[45rem] rounded-3xl flex flex-col bg-opacity-90 shadow-lg">
-        <div className="flex flex-col p-14 gap-8 h-[37rem]">
+      <div className="bg-white  w-[52rem] h-[50rem] rounded-3xl flex flex-col bg-opacity-90 shadow-lg">
+        <div className="flex flex-col p-14 gap-8 h-[40rem]">
           <div className="text-3xl">Eres wedding Planer</div>
 
           <div className="flex flex-col gap-6">

@@ -13,7 +13,7 @@ export const ContactUs = ({ modalOpen = false, setModalOpen }) => {
       onClose={() => setModalOpen(false)}
       bgClassName="bg-black-opaque"
     >
-      <div className="bg-white  w-[77rem] h-[45rem] flex flex-col p-10 rounded-3xl bg-opacity-90 justify-between">
+      <div className="bg-white  w-[86rem] h-[50rem] flex flex-col p-10 rounded-3xl bg-opacity-90 justify-between">
         <div className="flex flex-col gap-8 h-[33rem]">
           <div className="text-c3xl">Contáctanos</div>
           <div className="text-c2lg text-black-gray">Escribe tu consulta</div>

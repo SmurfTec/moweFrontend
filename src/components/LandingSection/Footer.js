@@ -5,10 +5,12 @@ import { Button } from "components/Common/Button/Button";
 import { useState } from "react";
 import { ContactUs } from "./ContactUs";
 import { Wedding } from "./Weding";
+import { Description } from "./SoboDiscription";
 
 export const Footer = () => {
   const [wedingPlaner, setWedingPlaner] = useState(false);
   const [contactUsModal, setContactusModal] = useState(false);
+  const [descriptionModal, setDescriptionModal] = useState(false);
   return (
     <div className="bg-black-pitch h-80 text-white flex flex-col justify-between overflow-hidden">
       <div className="flex flex-col gap-8 pt-14">
@@ -17,7 +19,9 @@ export const Footer = () => {
             Legal
           </div>
           <div className="text-x2xl">Política de privacidad</div>
-          <div className="text-x2xl">Sobre nosotros</div>
+          <div className="text-x2xl" onClick={() => setDescriptionModal(true)}>
+            Sobre nosotros
+          </div>
           <div className="text-x2xl" onClick={() => setContactusModal(true)}>
             Contáctanos
           </div>
@@ -40,7 +44,13 @@ export const Footer = () => {
           setModalOpen={setContactusModal}
         />
       }
-      {<Wedding modalOpen={wedingPlaner} setModalOpen={setWedingPlaner}/>}
+      {<Wedding modalOpen={wedingPlaner} setModalOpen={setWedingPlaner} />}
+      {
+        <Description
+          modalOpen={descriptionModal}
+          setModalOpen={setDescriptionModal}
+        />
+      }
     </div>
   );
 };
