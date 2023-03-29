@@ -1,14 +1,14 @@
-import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-import ModalBasic, { Modal } from "components/Modal/BasicModal";
-import LoginImage from "assets/Login.jpg";
-import FacebookImage from "assets/fb.png";
-import Google from "assets/google.png";
+import { useState } from "react";
 import OtpInput from "react-otp-input";
-
+import Google from "assets/Images/google.png";
+import FacebookImage from "assets/Images/fb.png";
+import LoginImage from "assets/Images/Login.jpg";
+import ModalBasic from "components/Modal/BasicModal";
+import { Button } from "components/Common/Button/Button";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
-import { useState } from "react";
-import { Button } from "components/Common/Button/Button";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
+
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const Login = ({ modalOpen = false, setModalOpen }) => {

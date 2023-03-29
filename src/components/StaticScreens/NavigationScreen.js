@@ -1,5 +1,5 @@
-import BackgroundImage from "assets/wed.jpg";
-import DressImage from "assets/Dress.png"
+import BackgroundImage from "assets/Images/wed.jpg";
+import DressImage from "assets/Images/Dress.png"
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ReactComponent as LocationIcon } from "assets/Svgs/location.svg";
 import { ReactComponent as ShareIcon } from "assets/Svgs/share.svg";
@@ -10,7 +10,7 @@ import { ReactComponent as MenuIcon } from "assets/Svgs/menu.svg";
 import { ReactComponent as PauseIcon } from "assets/Svgs/pause.svg";
 import { ReactComponent as MuteIcon } from "assets/Svgs/mute.svg";
 import { ReactComponent as PlayIcon } from "assets/Svgs/play.svg";
-import { ReactComponent as DressIcon } from "assets/Svgs/Dress.svg";
+
 
 export const MainMenu = () => {
   return (

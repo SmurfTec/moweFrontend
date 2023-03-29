@@ -1,15 +1,14 @@
-import LandinImage from "assets/LandingImage.jpg";
-import LandinImage1 from "assets/CarouselImage2.jpg";
-
 import { useState, useEffect } from "react";
-
-import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-import { Button } from "components/Common/Button/Button";
 import { Login } from "components/Login/Login";
+import { useNavigate } from "react-router-dom";
+import { Button } from "components/Common/Button/Button";
+import LandinImage from "assets/Images/LandingImage.jpg";
+import LandinImage1 from "assets/Images/CarouselImage2.jpg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { EventCreation } from "components/EventCreation/EventCreation";
 import { EventSelection } from "components/EventCreation/EventSelection";
 import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
-import { useNavigate } from "react-router-dom";
+
 export const Navbar = () => {
   const navigate = useNavigate();
   const [backgroundImage, setBackgroundImage] = useState(
@@ -61,7 +60,7 @@ export const Navbar = () => {
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
           <div
-              onClick={() => {
+            onClick={() => {
               navigate("/adminTable");
             }}
           >

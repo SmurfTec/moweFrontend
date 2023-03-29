@@ -1,10 +1,10 @@
 import ModalBasic from "components/Modal/BasicModal";
-import { ReactComponent as InstaLogo } from "assets/logos/InstaDark.svg";
-import { ReactComponent as FBLogo } from "assets/logos/Facebook.svg";
-import { ReactComponent as TwitterLogo } from "assets/logos/Twitter.svg";
-import { InputField } from "components/Common/InputField/InputField";
 import { Button } from "components/Common/Button/Button";
 import { TextArea } from "components/Common/TextArea/TextArea";
+import { InputField } from "components/Common/InputField/InputField";
+import { ReactComponent as FBLogo } from "assets/Logos/Facebook.svg";
+import { ReactComponent as InstaLogo } from "assets/Logos/InstaDark.svg";
+import { ReactComponent as TwitterLogo } from "assets/Logos/Twitter.svg";
 
 export const ContactUs = ({ modalOpen = false, setModalOpen }) => {
   return (

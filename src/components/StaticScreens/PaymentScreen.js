@@ -1,11 +1,11 @@
 import { useState } from "react";
-import BackgroundImage from "assets/wed.jpg";
+import BackgroundImage from "assets/Images/wed.jpg";
 import ModalBasic from "components/Modal/BasicModal";
-import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
+import { Button } from "components/Common/Button/Button";
 import { ReactComponent as EuroIcon } from "assets/Svgs/euro.svg";
 import { ReactComponent as CoinIcon } from "assets/Svgs/coin.svg";
+import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
-import { Button } from "components/Common/Button/Button";
 
 export const PaymentScreen = () => {
   const [modalOpen, setModalOpen] = useState(true);
