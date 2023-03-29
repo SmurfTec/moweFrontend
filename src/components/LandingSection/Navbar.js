@@ -3,7 +3,7 @@ import LandinImage1 from "assets/CarouselImage2.jpg";
 
 import { useState, useEffect } from "react";
 
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { Button } from "components/Common/Button/Button";
 import { Login } from "components/Login/Login";
 import { EventCreation } from "components/EventCreation/EventCreation";

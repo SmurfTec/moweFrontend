@@ -3,7 +3,7 @@ import BackgroundImage from "assets/wed.jpg";
 import ModalBasic from "components/Modal/BasicModal";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { ReactComponent as AdminIcons } from "assets/Svgs/Admin.svg";
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 const data = [{ name: "Group A", value: 200 }];

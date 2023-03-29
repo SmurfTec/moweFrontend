@@ -1,6 +1,6 @@
 import BackgroundImage from "assets/wed.jpg";
 import DressImage from "assets/Dress.png"
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ReactComponent as LocationIcon } from "assets/Svgs/location.svg";
 import { ReactComponent as ShareIcon } from "assets/Svgs/share.svg";
 import { ReactComponent as GiftIcon } from "assets/Svgs/gift.svg";

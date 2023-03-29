@@ -4,7 +4,7 @@ import ConfettiImage from "assets/confetti.png";
 import ModalBasic from "components/Modal/BasicModal";
 import { ReactComponent as CheckIcon } from "assets/Svgs/check.svg";
 import { Button } from "components/Common/Button/Button";
-import { ReactComponent as AppLogo } from "assets/AppLogo.svg";
+import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 
 export const SuccessScreen = () => {
     const [modalOpen, setModalOpen] = useState(true);
