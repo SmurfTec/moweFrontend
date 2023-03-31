@@ -120,6 +120,7 @@ const ResetPassword = () => {
           onChange={(otp) => {
             setCodeVerificationChars(otp);
           }}
+      renderInput={(props) => <input {...props} />}
           numInputs={4}
           autoFocus={true}
           placeholder="XXXX"
