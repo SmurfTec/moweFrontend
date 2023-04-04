@@ -16,7 +16,6 @@ export const Navbar = () => {
   );
   const [modalOpen, setModalOpen] = useState(false);
   const [formModalOpen, setFormModalOpen] = useState(false);
-  const [eventFormModal, setEventFormModalOpen] = useState(false);
   const [VideoPhotoEditingModalOpen, setVideoPhotoEditingModalOpen] =
     useState(false);
   useEffect(() => {
@@ -52,47 +51,37 @@ export const Navbar = () => {
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white shadow-lg"
-              onClick={() => {
-                navigate("/dashboard");
-              }}
+              
             />
           </div>
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
           <div
-            onClick={() => {
-              navigate("/adminTable");
-            }}
+            
           >
             Crea una experiencia
           </div>
           <div
-            onClick={() => {
-              navigate("/menu");
-            }}
+            
           >
             ÚNICA
           </div>
           <div
-            onClick={() => {
-              navigate("/success");
-            }}
+           
           >
             para tu gran día!
           </div>
         </div>
         <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white">
           <div
-            onClick={() => {
-              setFormModalOpen(true);
+onClick={() => {
+              navigate("/menu");
             }}
           >
             Home
           </div>
           <div
-            onClick={() => {
-              setEventFormModalOpen(true);
-            }}
+           
           >
             QUÉ HACEMOS
           </div>
@@ -104,23 +93,15 @@ export const Navbar = () => {
             GALERÍA
           </div>
           <div
-            onClick={() => {
-              navigate("/payment");
-            }}
+           
           >
             FAQ
           </div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      <EventCreation
-        modalOpen={formModalOpen}
-        setModalOpen={setFormModalOpen}
-      />
-      <EventSelection
-        modalOpen={eventFormModal}
-        setModalOpen={setEventFormModalOpen}
-      />
+    
+
       <VideoPhotoEditing
         modalOpen={VideoPhotoEditingModalOpen}
         setModalOpen={setVideoPhotoEditingModalOpen}
