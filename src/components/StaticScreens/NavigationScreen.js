@@ -1,5 +1,5 @@
 import BackgroundImage from "assets/Images/wed.jpg";
-import DressImage from "assets/Images/Dress.png"
+import DressImage from "assets/Images/Dress.png";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ReactComponent as LocationIcon } from "assets/Svgs/location.svg";
 import { ReactComponent as ShareIcon } from "assets/Svgs/share.svg";
@@ -10,9 +10,20 @@ import { ReactComponent as MenuIcon } from "assets/Svgs/menu.svg";
 import { ReactComponent as PauseIcon } from "assets/Svgs/pause.svg";
 import { ReactComponent as MuteIcon } from "assets/Svgs/mute.svg";
 import { ReactComponent as PlayIcon } from "assets/Svgs/play.svg";
-
+import { EventCreation } from "components/EventCreation/EventCreation";
+import { useState } from "react";
+import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
+import { EventSelection } from "components/EventCreation/EventSelection";
+import { useNavigate } from "react-router-dom";
 
 export const MainMenu = () => {
+  const navigate = useNavigate();
+
+  const [formModalOpen, setFormModalOpen] = useState(false);
+  const [eventFormModal, setEventFormModalOpen] = useState(false);
+
+  const [VideoPhotoEditingModalOpen, setVideoPhotoEditingModalOpen] =
+    useState(false);
   return (
     <div
       className=" h-screen flex flex-col px-10 text-white font-extrabold"
@@ -33,7 +44,12 @@ export const MainMenu = () => {
       </div>
       <div className="flex items-center justify-between h-[44rem]">
         <div className="flex flex-col align-baseline gap-32">
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div
+            className="flex flex-col gap-2 items-center justify-center cursor-pointer"
+            onClick={() => {
+              setFormModalOpen(true);
+            }}
+          >
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
               <LocationIcon className="h-10 w-10" />
             </div>
@@ -42,7 +58,12 @@ export const MainMenu = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div
+            className="flex flex-col gap-2 items-center justify-center cursor-pointer"
+            onClick={() => {
+              setEventFormModalOpen(true);
+            }}
+          >
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
               <ClockIcon className="h-10 w-10" />
             </div>
@@ -50,9 +71,9 @@ export const MainMenu = () => {
               Countdown
             </div>
           </div>
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center cursor-pointer">
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
-              <img src={DressImage} className="h-10 w-10" alt=""/>
+              <img src={DressImage} className="h-10 w-10" alt="" />
             </div>
             <div className="text-cmd bg-black-pitch bg-opacity-40 px-4 rounded-full py-2">
               Dresscode
@@ -66,7 +87,7 @@ export const MainMenu = () => {
           </div>
         </div>
         <div className="flex flex-col align-baseline gap-32">
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center cursor-pointer">
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
               <GiftIcon className="h-10 w-10" />
             </div>
@@ -74,7 +95,7 @@ export const MainMenu = () => {
               Regalo
             </div>
           </div>
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center cursor-pointer">
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
               <ShareIcon className="h-10 w-10" />
             </div>
@@ -82,7 +103,7 @@ export const MainMenu = () => {
               RRSS
             </div>
           </div>
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center cursor-pointer">
             <div className="h-20 w-20 rounded-full bg-black-charcol flex items-center justify-center bg-opacity-60">
               <ChatIcon className="h-10 w-10" />
             </div>
@@ -96,13 +117,34 @@ export const MainMenu = () => {
         <div className="py-2 px-4 bg-black-pitch bg-opacity-75 rounded-3xl border border-white">
           Modificar Diseño
         </div>
-        <div className="py-2 px-4 bg-green-teal bg-opacity-75 rounded-3xl border-2 border-green-pale">
+        <div className="py-2 px-4 bg-black-pitch bg-opacity-75 rounded-3xl border border-white">
+          Editar Datos
+        </div>
+        <div
+          className="py-2 px-4 bg-green-teal bg-opacity-75 rounded-3xl border-2 border-green-pale"
+          onClick={() => {
+            navigate("/payment");
+          }}
+        >
           Modificar Diseño
         </div>
-        <div className="py-2 px-8 bg-black-pitch bg-opacity-60 rounded-3xl border border-white">
+        <div
+          className="py-2 px-8 bg-black-pitch bg-opacity-60 rounded-3xl border border-white"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
           La quiero
         </div>
       </div>
+      <EventCreation
+        modalOpen={formModalOpen}
+        setModalOpen={setFormModalOpen}
+      />
+      <EventSelection
+        modalOpen={eventFormModal}
+        setModalOpen={setEventFormModalOpen}
+      />
     </div>
   );
 };

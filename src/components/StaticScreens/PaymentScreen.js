@@ -6,6 +6,7 @@ import { ReactComponent as EuroIcon } from "assets/Svgs/euro.svg";
 import { ReactComponent as CoinIcon } from "assets/Svgs/coin.svg";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
+import { useNavigate } from "react-router-dom";
 
 export const PaymentScreen = () => {
   const [modalOpen, setModalOpen] = useState(true);
@@ -30,6 +31,8 @@ export const PaymentScreen = () => {
   );
 };
 const Payment = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white  w-[74rem] min-h-[54rem] rounded-lg flex flex-col p-10 ">
       <div className="flex flex-col  min-h-[40rem]">
@@ -91,7 +94,9 @@ const Payment = () => {
           <Button
             btnText={"Pagar"}
             className="w-40 !bg-green-teal shadow-lg text-white"
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/success");
+            }}
           />
         </div>
       </div>

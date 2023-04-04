@@ -5,8 +5,10 @@ import ConfettiImage from "assets/Images/confetti.png";
 import { Button } from "components/Common/Button/Button";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ReactComponent as CheckIcon } from "assets/Svgs/check.svg";
+import { useNavigate } from "react-router-dom";
 
 export const SuccessScreen = () => {
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(true);
   return (
     <div
@@ -53,12 +55,17 @@ export const SuccessScreen = () => {
                   <Button
                     btnText={"Home"}
                     className="w-52 !bg-gray-dark1 shadow-lg "
-                    onClick={() => {}}
+                    onClick={() => {
+                      navigate("/");
+                    }}
                   />
                   <Button
                     btnText={"Pagar"}
                     className="w-52 !bg-green-teal shadow-lg text-white"
-                    onClick={() => {}}
+                    onClick={() => {
+
+                      navigate("/adminTable");
+                    }}
                   />
                 </div>
               </div>
