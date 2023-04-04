@@ -63,7 +63,7 @@ export const SuccessScreen = () => {
                     btnText={"Pagar"}
                     className="w-52 !bg-green-teal shadow-lg text-white"
                     onClick={() => {
-                      // navigate("/dashboard");
+
                       navigate("/adminTable");
                     }}
                   />

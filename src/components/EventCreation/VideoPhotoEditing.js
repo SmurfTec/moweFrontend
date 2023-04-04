@@ -64,10 +64,10 @@ const Footer = ({ currentStep, setCurrentStep }) => {
     <div
       className={ClassNames(
         "flex gap-3",
-        currentStep === 4 ? "justify-end" : "justify-between",
+        currentStep === 1 ? "justify-end" : "justify-between",
       )}
     >
-      {currentStep !== 4 && (
+      {currentStep !== 1 && (
         <Button
           btnText={"Atrás"}
           className={ClassNames("w-40 text-gray-dark bg-white")}
@@ -82,7 +82,7 @@ const Footer = ({ currentStep, setCurrentStep }) => {
         btnText={"Siguiente"}
         lassName={ClassNames(
           "w-40 shadow-lg",
-          currentStep === 4
+          currentStep === 1
             ? "bg-gray-whitish text-black"
             : "!bg-green-teal text-white",
         )}
@@ -98,11 +98,11 @@ const Footer = ({ currentStep, setCurrentStep }) => {
 const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
   switch (currentStep) {
     case 1:
-      return <Content1 setCurrentStep={setCurrentStep} />;
-    case 2:
-      return <Content2 setCurrentStep={setCurrentStep} />;
-    case 3:
       return <Content3 setCurrentStep={setCurrentStep} />;
+    case 2:
+      return <Content1 setCurrentStep={setCurrentStep} />;
+    case 3:
+      return <Content2 setCurrentStep={setCurrentStep} />;
     case 4:
       return <Content4 setCurrentStep={setCurrentStep} />;
     case 5:
