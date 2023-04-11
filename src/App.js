@@ -1,5 +1,6 @@
 import { AdminTable } from "components/Admin/AdminTable";
 import { Dashboard } from "components/Admin/Dashboard";
+import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
 import { MainMenu } from "components/StaticScreens/NavigationScreen";
 import { PaymentScreen } from "components/StaticScreens/PaymentScreen";
 import { SuccessScreen } from "components/StaticScreens/SuccessScreen";
@@ -15,7 +16,8 @@ function App() {
         <Route exact path="/menu" element={<MainMenu />} />
         <Route exact path="/adminTable" element={<AdminTable />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<LandingLayout />} />
+        <Route exact path="/gallery" element={<Dashboard />} />
+        <Route path="/" element={<VideoPhotoEditing />} />
       </Routes>
     </BrowserRouter>
   );

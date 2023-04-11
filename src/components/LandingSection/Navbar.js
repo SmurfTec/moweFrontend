@@ -51,56 +51,34 @@ export const Navbar = () => {
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white shadow-lg"
-              
             />
           </div>
         </div>
         <div className="flex flex-col gap-2 text-4xl text-white">
-          <div
-            
-          >
-            Crea una experiencia
-          </div>
-          <div
-            
-          >
-            ÚNICA
-          </div>
-          <div
-           
-          >
-            para tu gran día!
-          </div>
+          <div>Crea una experiencia</div>
+          <div>ÚNICA</div>
+          <div>para tu gran día!</div>
         </div>
         <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white">
           <div
-onClick={() => {
+            onClick={() => {
               navigate("/menu");
             }}
           >
             Home
           </div>
-          <div
-           
-          >
-            QUÉ HACEMOS
-          </div>
+          <div>QUÉ HACEMOS</div>
           <div
             onClick={() => {
-              setVideoPhotoEditingModalOpen(true);
+              navigate("/gallery");
             }}
           >
             GALERÍA
           </div>
-          <div
-           
-          >
-            FAQ
-          </div>
+          <div>FAQ</div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
-    
 
       <VideoPhotoEditing
         modalOpen={VideoPhotoEditingModalOpen}
