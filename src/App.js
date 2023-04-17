@@ -16,8 +16,8 @@ function App() {
         <Route exact path="/menu" element={<MainMenu />} />
         <Route exact path="/adminTable" element={<AdminTable />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/gallery" element={<Dashboard />} />
-        <Route path="/" element={<VideoPhotoEditing />} />
+        <Route exact path="/gallery" element={<VideoPhotoEditing />} />
+        <Route path="/" element={<LandingLayout />} />
       </Routes>
     </BrowserRouter>
   );

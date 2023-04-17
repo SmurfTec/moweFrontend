@@ -19,6 +19,7 @@ import GalleryImage3 from "assets/Images/Upload3.png";
 import GalleryImage4 from "assets/Images/Upload4.png";
 import CarouselImage1 from "assets/Images/VideoCarousel1.png";
 import CarouselImage2 from "assets/Images/VideoCarousel2.png";
+import CarouselImage from "assets/Images/CarouselImage.png";
 
 import { ReactComponent as RightIcon } from "assets/Svgs/LeftColorIcon.svg";
 import { ReactComponent as LeftIcon } from "assets/Svgs/RightColorIcon.svg";
@@ -113,6 +114,8 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
       return <Content4 setCurrentStep={setCurrentStep} />;
     case 5:
       return <Content5 setCurrentStep={setCurrentStep} />;
+    case 6:
+      return <Content6 setCurrentStep={setCurrentStep} />;
     default:
       return "No case found";
   }
@@ -375,5 +378,22 @@ const CustomUploadFile = ({
         </div>
       )}
     </div>
+  );
+};
+
+const Content6 = ({ setCurrentStep }) => {
+  return (
+    <>
+      <div className="text-c2lg text-black-deep"> make it unique</div>
+      <div className="grid grid-cols-2 gap-10">
+
+        <img src={CarouselImage} alt="" className="" />
+        {/* <div className="flex justify-between bg-red-300">
+          <div className="w-1/2 ">hd</div>
+          <div className="w-1/2 ">fds</div>
+
+        </div> */}
+      </div>
+    </>
   );
 };

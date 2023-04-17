@@ -80,10 +80,7 @@ export const Navbar = () => {
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
-      <VideoPhotoEditing
-        modalOpen={VideoPhotoEditingModalOpen}
-        setModalOpen={setVideoPhotoEditingModalOpen}
-      />
+
     </>
   );
 };
