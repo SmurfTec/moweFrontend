@@ -37,6 +37,7 @@ module.exports = {
           seafFoam: "#69A88D40",
           gray: "rgba(105, 168, 141, 0.25)",
           none: "#436757",
+          pastel:"#EAF3EF",
         },
         red: {
           fiery: "#FD26266B",
@@ -66,6 +67,8 @@ module.exports = {
         csm: ["0.875rem", "1.313rem"],
         //    16px      22px
         cmd1: ["1rem", "1.375rem"],
+        //    16px      18.75px
+        cmd3: ["1rem", "1.172rem"],
         //    16px      24px
         cmd: ["1rem", "1.5rem"],
         //    20px      23px

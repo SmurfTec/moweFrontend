@@ -10,8 +10,13 @@ import { ReactComponent as DeleteIcon } from "assets/Svgs/Delete.svg";
 import { ReactComponent as SearchIcon } from "assets/Svgs/Search.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { ReactComponent as ArrowDown } from "assets/Svgs/ArrowDown.svg";
+import { ReactComponent as ArrowUp } from "assets/Svgs/ArrowUp.svg";
+
 
 import Table from "components/Common/Table/Table";
+import ClassNames from "Helpers/Common";
+import { CustomInputField } from "components/Common/InputField/CustomInputField";
+import { TextArea } from "components/Common/TextArea/TextArea";
 const people = [
   {
     name: "Lindsay Walton",
@@ -213,114 +218,177 @@ const TableHeading = () => {
 };
 const TableBody = ({ data }) => {
   const [showEdit, setShowEdit] = useState([]);
+  const [isActiveIndex, setIsActiveIndex] = useState(null);
   return (
     <>
-      {data?.map((admin, index) => (
-        <>
-          <tr key={index} className="divide-x divide-gray-200">
-            <td className="px-6 py-4 whitespace-nowrap">
-              <div className="flex h-6 items-center">
-                <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                />
-              </div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                {admin.name}
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                {admin.email}
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                Si
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                Si
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                amigo
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                4
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                4
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                1
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {}}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                0
-              </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span
-                onClick={() => {
-                  setShowEdit(!showEdit);
-                }}
-                className="text-sm font-medium eclipse cursor-pointer"
-              >
-                <ArrowDown className="h-4 w-4" />
-              </span>
-            </td>
-          </tr>
-          {showEdit && (
-            <tr>
-              <td colSpan="11">
-                <div className="bg-green-teal">hamzah</div>
+      {data?.map((admin, index) => {
+        const isActive = isActiveIndex === index;
+        return (
+          <>
+            <tr
+              key={index}
+              className={ClassNames(
+                "divide-x divide-gray-200",
+                isActive && "bg-green-pastel",
+              )}
+            >
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="flex h-6 items-center">
+                  <input
+                    id="comments"
+                    aria-describedby="comments-description"
+                    name="comments"
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
+                </div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  {admin.name}
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  {admin.email}
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  Si
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  Si
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  amigo
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  4
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  4
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  1
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {}}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                  0
+                </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <span
+                  onClick={() => {
+                    setShowEdit(!showEdit);
+                    setIsActiveIndex(isActive ? null : index);
+                  }}
+                  className="text-sm font-medium eclipse cursor-pointer"
+                >
+                 {isActive?<ArrowUp className="h-4 w-4"/>: <ArrowDown className="h-4 w-4" />}
+                </span>
               </td>
             </tr>
-          )}
-        </>
-      ))}
+            {isActive && (
+              <tr>
+                <td colSpan="11" className="bg-green-pastel p-6">
+                <div className="flex flex-col gap-4">
+
+                  <div className="flex items-center gap-10">
+                    {" "}
+                    <div className="font-semibold text-cmd3">Descripción</div>
+                    <CustomInputField
+                      type="text"
+                      className1="py-1 border border-gray-light"
+                      onChange={(value) => {}}
+                    />
+                    <div className="font-semibold text-cmd3">Transporte:</div>
+                    <input
+                      id="comments"
+                      aria-describedby="comments-description"
+                      name="comments"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    />
+                    <div className="font-semibold text-cmd3">
+                      Canción sugerida:
+                    </div>
+                    <CustomInputField
+                      id="Canción sugerida:"
+                      type="text"
+                      className="w-[25rem]"
+                      className1="py-1 border border-gray-light"
+                      onChange={(value) => {}}
+                    />
+                  </div>
+                  <div className="flex items-center gap-10">
+                    {" "}
+                    <div className="font-semibold text-cmd3">Intolerancias:</div>
+                    <CustomInputField
+                      type="text"
+                      className1="py-1 border border-gray-light"
+                      onChange={(value) => {}}
+                    />
+                  
+                   <div className="flex items-center gap-6 w-full">
+                   <div className="font-semibold text-cmd3">
+                   Feedback:
+                    </div>
+                    <TextArea
+                      id="Canción sugerida:"
+                      type="text"
+                      placeHolder=""
+                      className="w-full h-16"
+                      className1="py-1 border border-gray-light"
+                      onChange={(value) => {}}
+                    />
+                   </div>
+                  </div>
+                </div>
+                </td>
+              </tr>
+            )}
+          </>
+        );
+      })}
     </>
   );
 };
