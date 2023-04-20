@@ -8,7 +8,16 @@ import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { EventCreation } from "components/EventCreation/EventCreation";
 import { EventSelection } from "components/EventCreation/EventSelection";
 import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
-
+import videoBackground from "assets/Videos/LandingVideo.mp4";
+const VideoPlayer = () => {
+  return (
+    <div className="absolute inset-0 z-0">
+      <video className="w-full h-full object-cover" autoPlay muted loop>
+        <source src={videoBackground} type="video/mp4" />
+      </video>
+    </div>
+  );
+};
 export const Navbar = () => {
   const navigate = useNavigate();
   const [backgroundImage, setBackgroundImage] = useState(
@@ -33,12 +42,12 @@ export const Navbar = () => {
       <div
         className="transition-all duration-1000 ease-in-out h-screen flex flex-col justify-between px-10 pb-20"
         style={{
-          backgroundImage: backgroundImage,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex flex-row items-center justify-between -mt-10">
+        <VideoPlayer />
+        <div className="flex flex-row items-center justify-between -mt-10 z-20">
           <AppLogo className="h-80" />
           <div className="flex gap-10">
             <Button
@@ -54,12 +63,12 @@ export const Navbar = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2 text-4xl text-white">
+        <div className="flex flex-col gap-2 text-4xl text-white z-20">
           <div>Crea una experiencia</div>
           <div>ÚNICA</div>
           <div>para tu gran día!</div>
         </div>
-        <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white">
+        <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white z-20">
           <div
             onClick={() => {
               navigate("/menu");
@@ -79,8 +88,6 @@ export const Navbar = () => {
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />
-
-
     </>
   );
 };
