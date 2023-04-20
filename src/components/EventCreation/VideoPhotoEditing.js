@@ -19,9 +19,11 @@ import GalleryImage3 from "assets/Images/Upload3.png";
 import GalleryImage4 from "assets/Images/Upload4.png";
 import CarouselImage1 from "assets/Images/VideoCarousel1.png";
 import CarouselImage2 from "assets/Images/VideoCarousel2.png";
+import CarouselImage from "assets/Images/CarouselImage.png";
 
 import { ReactComponent as RightIcon } from "assets/Svgs/LeftColorIcon.svg";
 import { ReactComponent as LeftIcon } from "assets/Svgs/RightColorIcon.svg";
+import BackgroundImage from "assets/Images/wed.jpg";
 
 import "./date.css";
 import { DragDropFile } from "components/Common/UploadFile/DragDropUploadFile";
@@ -31,28 +33,33 @@ export const EMAIL_INVALID = "Email is Invalid";
 export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   return (
-    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)}>
+    <div
+      className=" h-screen flex flex-col justify-between items-center text-white font-extrabold"
+      style={{
+        backgroundImage: `url(${BackgroundImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {currentStep < 3 && (
-        <div className="text-c2xl text-green-none mb-2 mt-[10%]">
+        <div className="text-c2xl text-green-none mb-2 mt-[5%]">
           ¡Vamos a diseñar tu invitación!
         </div>
       )}
-      <div className="bg-smoke-white w-[87rem] min-h-[47rem] flex flex-col gap-3 p-4 justify-between rounded-2xl">
-        <div className="flex flex-col gap-8 py-6 px-10 min-h-[40rem] rounded-2xl">
-          {currentStep !== 3 && (
-            <div className="flex w-full justify-end">
-              <ExclaminationIcon className="h-8 w-8" />
-            </div>
-          )}
-          {/* <Header setModalOpen={setModalOpen} currentStep={currentStep} /> */}
-          <EventSelecionForms
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-          />
-        </div>
+      <div className="bg-smoke-white w-[87rem]  flex flex-col gap-3 p-4 justify-between rounded-2xl">
+        {currentStep !== 3 && (
+          <div className="flex w-full justify-end">
+            <ExclaminationIcon className="h-8 w-8" />
+          </div>
+        )}
+        {/* <Header setModalOpen={setModalOpen} currentStep={currentStep} /> */}
+        <EventSelecionForms
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
         <Footer currentStep={currentStep} setCurrentStep={setCurrentStep} />
       </div>
-    </ModalBasic>
+    </div>
   );
 };
 
@@ -107,13 +114,15 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
       return <Content4 setCurrentStep={setCurrentStep} />;
     case 5:
       return <Content5 setCurrentStep={setCurrentStep} />;
+    case 6:
+      return <Content6 setCurrentStep={setCurrentStep} />;
     default:
       return "No case found";
   }
 };
 const Content1 = ({ setCurrentStep }) => {
   return (
-    <div className="min-h-full flex flex-col gap-4">
+    <div className=" flex flex-col gap-4">
       <div className="text-c2lg">Carga tu fotos</div>
       <div className="text-csm text-green-none">
         Para empezar, vamos a subir 2 vídeos o fotos. El principal se mostrará
@@ -143,7 +152,7 @@ const Content1 = ({ setCurrentStep }) => {
 };
 const Content2 = ({ setCurrentStep }) => {
   return (
-    <div className="min-h-full flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div className="text-c2lg">Carga tu fotos</div>
       <div className="text-csm text-green-none">
         Para empezar, vamos a subir 2 vídeos o fotos. El principal se mostrará
@@ -198,7 +207,7 @@ const Content3 = ({ setCurrentStep }) => {
 const Content4 = () => {
   const [selectedVideo, setSelectedVideo] = useState(VideoIcon1);
   return (
-    <div className="min-h-full flex flex-col gap-4">
+    <div className=" flex flex-col gap-4">
       <div className="text-c2lg"> ¡Vamos a sorprender a los invitados!</div>
 
       <div className="text-csm text-black-semi">
@@ -246,7 +255,7 @@ const Content5 = () => {
     setPrevSlide(currentSlide);
   }, [currentSlide]);
   return (
-    <div className="min-h-full flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div className="text-c2lg">
         {" "}
         Elige un diseño que te guste, después lo podrás personalizar
@@ -267,7 +276,7 @@ const Content5 = () => {
           </div>
           <div
             className={ClassNames(
-              "flex justify-between items-center w-[60rem]",
+              "flex justify-between items-center w-[65rem]",
               currentSlide === prevSlide &&
                 !isLeftIconClicked &&
                 "animate-slide",
@@ -369,5 +378,22 @@ const CustomUploadFile = ({
         </div>
       )}
     </div>
+  );
+};
+
+const Content6 = ({ setCurrentStep }) => {
+  return (
+    <>
+      <div className="text-c2lg text-black-deep"> make it unique</div>
+      <div className="grid grid-cols-2 gap-10">
+
+        <img src={CarouselImage} alt="" className="" />
+        {/* <div className="flex justify-between bg-red-300">
+          <div className="w-1/2 ">hd</div>
+          <div className="w-1/2 ">fds</div>
+
+        </div> */}
+      </div>
+    </>
   );
 };
