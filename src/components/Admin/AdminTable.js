@@ -138,9 +138,9 @@ export const AdminTable = () => {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         bgClassName="bg-black-opaque"
-        mainModalClass="2xl:overflow-y-hidden 2xl:-mt-12"
+        mainModalClass="2xl:overflow-y-hidden 2xl:-mt-8"
       >
-        <div className="flex flex-col gap-5 p-10 bg-white 2xl:w-[115rem] 2xl:h-[60rem] rounded-2xl">
+        <div className="flex flex-col gap-5 p-10 bg-white 2xl:w-[110rem] 2xl:h-[58rem] rounded-2xl">
           <div className="flex">
             <CrossIcon className="h-12 w-12" />
             <AppLogo className="2xl:h-96 -mt-28 ml-10" />
