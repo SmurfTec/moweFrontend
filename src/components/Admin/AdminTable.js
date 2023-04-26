@@ -12,7 +12,6 @@ import { InputField } from "components/Common/InputField/InputField";
 import { ReactComponent as ArrowDown } from "assets/Svgs/ArrowDown.svg";
 import { ReactComponent as ArrowUp } from "assets/Svgs/ArrowUp.svg";
 
-
 import Table from "components/Common/Table/Table";
 import ClassNames from "Helpers/Common";
 import { CustomInputField } from "components/Common/InputField/CustomInputField";
@@ -139,11 +138,12 @@ export const AdminTable = () => {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         bgClassName="bg-black-opaque"
+        mainModalClass="2xl:overflow-y-hidden 2xl:-mt-12"
       >
-        <div className="flex flex-col gap-5 p-10 bg-white w-[90rem] h-[56rem] -mt-10">
+        <div className="flex flex-col gap-5 p-10 bg-white 2xl:w-[115rem] 2xl:h-[60rem] rounded-2xl">
           <div className="flex">
             <CrossIcon className="h-12 w-12" />
-            <AppLogo className="h-40" />
+            <AppLogo className="2xl:h-96 -mt-28 ml-10" />
             <div className="flex w-full justify-between mt-10">
               <div className=" w-[90%] flex flex-col gap-3 justify-center items-center h-24">
                 <div className="text-c2lg bg-green-teal text-white px-[24%] py-2 shadow-2xl rounded-full flex justify-center items-center">
@@ -156,7 +156,7 @@ export const AdminTable = () => {
               <AdminIcons />
             </div>
           </div>
-          <div className="flex justify-between mt-10">
+          <div className="flex justify-between 2xl:-mt-20">
             <div className="flex gap-4">
               <Button
                 btnText={"Exportar"}
@@ -193,7 +193,7 @@ export const AdminTable = () => {
               </InputField>
             </div>
           </div>
-          <div className="min-h-[35rem] overflow-y-auto">
+          <div className=" overflow-y-auto ">
             {" "}
             <Table
               heading={<TableHeading />}
@@ -323,66 +323,68 @@ const TableBody = ({ data }) => {
                   }}
                   className="text-sm font-medium eclipse cursor-pointer"
                 >
-                 {isActive?<ArrowUp className="h-4 w-4"/>: <ArrowDown className="h-4 w-4" />}
+                  {isActive ? (
+                    <ArrowUp className="h-4 w-4" />
+                  ) : (
+                    <ArrowDown className="h-4 w-4" />
+                  )}
                 </span>
               </td>
             </tr>
             {isActive && (
               <tr>
                 <td colSpan="11" className="bg-green-pastel p-6">
-                <div className="flex flex-col gap-4">
-
-                  <div className="flex items-center gap-10">
-                    {" "}
-                    <div className="font-semibold text-cmd3">Descripción</div>
-                    <CustomInputField
-                      type="text"
-                      className1="py-1 border border-gray-light"
-                      onChange={(value) => {}}
-                    />
-                    <div className="font-semibold text-cmd3">Transporte:</div>
-                    <input
-                      id="comments"
-                      aria-describedby="comments-description"
-                      name="comments"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <div className="font-semibold text-cmd3">
-                      Canción sugerida:
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-10">
+                      {" "}
+                      <div className="font-semibold text-cmd3">Descripción</div>
+                      <CustomInputField
+                        type="text"
+                        className1="py-1 border border-gray-light"
+                        onChange={(value) => {}}
+                      />
+                      <div className="font-semibold text-cmd3">Transporte:</div>
+                      <input
+                        id="comments"
+                        aria-describedby="comments-description"
+                        name="comments"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      />
+                      <div className="font-semibold text-cmd3">
+                        Canción sugerida:
+                      </div>
+                      <CustomInputField
+                        id="Canción sugerida:"
+                        type="text"
+                        className="w-[25rem]"
+                        className1="py-1 border border-gray-light"
+                        onChange={(value) => {}}
+                      />
                     </div>
-                    <CustomInputField
-                      id="Canción sugerida:"
-                      type="text"
-                      className="w-[25rem]"
-                      className1="py-1 border border-gray-light"
-                      onChange={(value) => {}}
-                    />
-                  </div>
-                  <div className="flex items-center gap-10">
-                    {" "}
-                    <div className="font-semibold text-cmd3">Intolerancias:</div>
-                    <CustomInputField
-                      type="text"
-                      className1="py-1 border border-gray-light"
-                      onChange={(value) => {}}
-                    />
-                  
-                   <div className="flex items-center gap-6 w-full">
-                   <div className="font-semibold text-cmd3">
-                   Feedback:
+                    <div className="flex items-center gap-10">
+                      {" "}
+                      <div className="font-semibold text-cmd3">
+                        Intolerancias:
+                      </div>
+                      <CustomInputField
+                        type="text"
+                        className1="py-1 border border-gray-light"
+                        onChange={(value) => {}}
+                      />
+                      <div className="flex items-center gap-6 w-full">
+                        <div className="font-semibold text-cmd3">Feedback:</div>
+                        <TextArea
+                          id="Canción sugerida:"
+                          type="text"
+                          placeHolder=""
+                          className="w-full h-16"
+                          className1="py-1 border border-gray-light"
+                          onChange={(value) => {}}
+                        />
+                      </div>
                     </div>
-                    <TextArea
-                      id="Canción sugerida:"
-                      type="text"
-                      placeHolder=""
-                      className="w-full h-16"
-                      className1="py-1 border border-gray-light"
-                      onChange={(value) => {}}
-                    />
-                   </div>
                   </div>
-                </div>
                 </td>
               </tr>
             )}

@@ -1,4 +1,5 @@
 import ModalBasic, { Modal } from "components/Modal/BasicModal";
+import { ReactComponent as ArrowDown } from "assets/Svgs/ArrowDown.svg";
 import { ReactComponent as UserIcon } from "assets/Svgs/User.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { useState, useEffect } from "react";
@@ -388,12 +389,70 @@ const Content6 = ({ setCurrentStep }) => {
       <div className="grid grid-cols-2 gap-10">
 
         <img src={CarouselImage} alt="" className="" />
-        {/* <div className="flex justify-between bg-red-300">
-          <div className="w-1/2 ">hd</div>
+        <div className="flex justify-between">
+          <div className="w-1/2 "><ColorPicker/></div>
           <div className="w-1/2 ">fds</div>
 
-        </div> */}
+        </div>
       </div>
     </>
   );
 };
+
+
+const ColorPicker = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [color, setColor] = useState("#ffffff");
+
+  const colors = [
+    { name: "Red", code: "#ff0000" },
+    { name: "Green", code: "#00ff00" },
+    { name: "Blue", code: "#0000ff" },
+  ];
+
+  const handleColorChange = (colorCode) => {
+    setColor(colorCode);
+    setIsOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+
+  return (
+    <div className="relative border border-silver-light py-2 w-[40%] px-2">
+      <div className="flex items-center">
+        <div className="mr-2 text-black-pitch">Color:</div>
+        <div
+          className="w-6 h-6 rounded-md border border-gray-400 ml-1"
+          style={{ backgroundColor: color }}
+        />
+        <div className="ml-2 cursor-pointer" onClick={toggleDropdown}>
+          <ArrowDown className="h-4 w-4 ml-1" />
+        </div>
+      </div>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-full bg-white rounded-md shadow-lg z-10">
+          {colors.map((colorOption) => (
+            <div
+              key={colorOption.name}
+              className={`flex items-center p-2 cursor-pointer hover:bg-gray-100 ${
+                colorOption.code === color && "bg-gray-100"
+              }`}
+              onClick={() => handleColorChange(colorOption.code)}
+            >
+              <div
+                className="w-6 h-6 rounded-md border border-gray-400"
+                style={{ backgroundColor: colorOption.code }}
+              />
+              {/* <div className="ml-2">{colorOption.name}</div> */}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ColorPicker;

@@ -57,6 +57,7 @@ module.exports = {
         },
         silver: {
           dull: "#A7A7A7",
+          light:"#C9C9C9"
         },
         smoke: {
           white: "rgba(255, 255, 255, 0.6);",
