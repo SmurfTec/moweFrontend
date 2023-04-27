@@ -14,13 +14,14 @@ export default function ModalBasic({
   onClose,
   isDisabled = false,
   classNameModal,
-  bgClassName
+  bgClassName,
+  mainModalClass
 }) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className={ClassNames("fixed z-10 inset-0 overflow-y-auto",mainModalClass)}
         onClose={() => onClose?.()}
       >
         <div className={ClassNames("flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0",bgClassName)}>
@@ -60,7 +61,7 @@ export default function ModalBasic({
                   </div>
                 )}
               </div>
-              <div>{children}</div>
+              {children}
             </div>
           </Transition.Child>
         </div>

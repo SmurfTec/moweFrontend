@@ -26,7 +26,9 @@ module.exports = {
           white: "#FBFBFB",
           greenish: "#E0EFE8",
           slate:"#294439",
-          whitish:"#DADADA"
+          whitish:"#DADADA",
+          extraDark:"#656565",
+          dark12:"#414141"
         },
         grey:{
           light:"#EDEDED"
@@ -57,6 +59,7 @@ module.exports = {
         },
         silver: {
           dull: "#A7A7A7",
+          light:"#C9C9C9"
         },
         smoke: {
           white: "rgba(255, 255, 255, 0.6);",

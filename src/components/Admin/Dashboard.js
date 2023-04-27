@@ -22,14 +22,17 @@ export const Dashboard = () => {
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        
       }}
     >
       <ModalBasic
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         bgClassName="bg-black-opaque"
+        mainModalClass="2xl:overflow-y-hidden 2xl:-mt-8"
+
       >
-        <div className="bg-white  w-[74rem] min-h-[54rem] rounded-lg flex flex-col p-10 ">
+        <div className="bg-white  2xl:w-[100rem] 2xl:h-[58rem] rounded-2xl flex flex-col p-10 ">
           <div className="flex ">
             <CrossIcon className="h-12 w-12" />
             <AppLogo className="h-40" />
@@ -77,7 +80,7 @@ export const Dashboard = () => {
               <div className="text-c2xl font-normal flex justify-center w-full text-center">
                 Visulaización de la Invitación
               </div>
-              <div className="h-40 flex items-center -ml-16 -mt-8">
+              <div className="h-40 flex items-center -ml-16 ">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart width={400} height={400}>
                     <Pie
