@@ -7,6 +7,7 @@ export const Button = ({
   isLoading = false,
   children,
   id = 1,
+  rightAlignTex=false,
   variant = "Default",
 }) => {
   return (
@@ -20,7 +21,7 @@ export const Button = ({
         className,
       )}
     >
-      {children}
+     {!rightAlignTex&& children}
       <div className="flex items-center justify-center gap-2 px-2">
         {isLoading ? (
           <div className="w-4 h-4 border-l-2 border-b-2 border-white rounded-full animate-spin" />
@@ -28,6 +29,7 @@ export const Button = ({
           btnText && <span>{btnText}</span>
         )}
       </div>
+      {rightAlignTex&&children}
     </button>
   );
 };
