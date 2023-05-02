@@ -1,15 +1,16 @@
 .img-container {
-    transform: scale(1.2);
+    transform: scale(1.005);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
+    -webkit-transform: scale(1.005);
+    -moz-transform: scale(1.005);
+    -ms-transform: scale(1.005);
+    -o-transform: scale(1.005);
 }
   .img-container img {
-    height: 100%;
-    object-fit: contain;
+    /* height: 100%;
+    width: 100%; */
+    object-fit: cover;
   }

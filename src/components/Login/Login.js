@@ -14,8 +14,8 @@ export const EMAIL_INVALID = "Email is Invalid";
 export const Login = ({ modalOpen = false, setModalOpen }) => {
   const [resetPassword, setResetPassword] = useState(false);
   return (
-    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)}>
-      <div className="bg-white h-[44rem] w-[74rem] rounded-lg overflow-hidden">
+    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)} bgClassName={"bg-gray-400 bg-opacity-50"}>
+      <div className="bg-white h-[44rem] w-[74rem] rounded-lg overflow-hidden z-20">
         <div className="flex">
           <div className="hidden md:flex min-w-[45%]">
             <img

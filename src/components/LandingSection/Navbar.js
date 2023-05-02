@@ -5,10 +5,14 @@ import { Button } from "components/Common/Button/Button";
 import LandinImage from "assets/Images/LandingImage.jpg";
 import LandinImage1 from "assets/Images/CarouselImage2.jpg";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-import { EventCreation } from "components/EventCreation/EventCreation";
-import { EventSelection } from "components/EventCreation/EventSelection";
-import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
 import videoBackground from "assets/Videos/LandingVideo.mp4";
+import ClassNames from "Helpers/Common";
+
+const TAB1 = "Home";
+const TAB2 = "QUÉ HACEMOS";
+const TAB3 = "GALERÍA";
+const TAB4 = "FAQ";
+
 const VideoPlayer = () => {
   return (
     <div className="absolute inset-0 z-0">
@@ -20,23 +24,12 @@ const VideoPlayer = () => {
 };
 export const Navbar = () => {
   const navigate = useNavigate();
-  const [backgroundImage, setBackgroundImage] = useState(
-    "url(/background-image-1.jpg)",
-  );
+
   const [modalOpen, setModalOpen] = useState(false);
-  const [formModalOpen, setFormModalOpen] = useState(false);
-  const [VideoPhotoEditingModalOpen, setVideoPhotoEditingModalOpen] =
-    useState(false);
-  useEffect(() => {
-    const images = [`url(${LandinImage})`, `url(${LandinImage1})`];
+  const [activeTab, setActiveTab] = useState(TAB1);
 
-    const intervalId = setInterval(() => {
-      const index = Math.floor(Math.random() * images.length);
-      setBackgroundImage(images[index]);
-    }, 5000);
 
-    return () => clearInterval(intervalId);
-  }, []);
+  
   return (
     <>
       <div
@@ -47,44 +40,86 @@ export const Navbar = () => {
         }}
       >
         <VideoPlayer />
-        <div className="flex flex-row items-center justify-between -mt-10 z-20">
+        <div className="flex flex-row items-center justify-between -mt-10 z-10">
           <AppLogo className="h-80" />
           <div className="flex gap-10">
             <Button
               btnText="Log In"
-              className="w-40 !bg-green-teal shadow-lg"
+              className="w-40 !bg-green-teal !shadow-6xl text-white"
               onClick={() => {
                 setModalOpen(true);
               }}
             />
             <Button
               btnText="Tu Invitación"
-              className="w-60 bg-white shadow-lg"
+              className="w-60 bg-white !shadow-6xl"
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2 text-4xl text-white z-20">
+        <div className="flex flex-col gap-2 text-4xl text-white z-10">
           <div>Crea una experiencia</div>
-          <div>ÚNICA</div>
+          <div className="font-semibold">ÚNICA</div>
           <div>para tu gran día!</div>
         </div>
-        <div className="flex w-full items-center justify-center gap-10 underline text-xl text-white z-20">
+        <div className="flex w-full items-start justify-center gap-10  text-xl text-white z-10">
           <div
             onClick={() => {
+              setActiveTab(TAB1);
               navigate("/menu");
             }}
+            className={ClassNames(
+              "flex justify-center flex-col items-center",
+              activeTab === TAB1 && "font-semibold",
+            )}
           >
             Home
+            {activeTab === TAB1 && (
+              <div className="border border-t-white w-20 rounded-none mt-3" />
+            )}
           </div>
-          <div>QUÉ HACEMOS</div>
           <div
             onClick={() => {
+              setActiveTab(TAB2);
+            }}
+            className={ClassNames(
+              "flex justify-center flex-col items-center",
+              activeTab === TAB2 && "font-semibold",
+            )}
+          >
+            QUÉ HACEMOS
+            {activeTab === TAB2 && (
+              <div className="border border-t-white w-40 rounded-none mt-3" />
+            )}
+          </div>
+          <div
+            onClick={() => {
+              setActiveTab(TAB3);
               navigate("/gallery");
             }}
+            className={ClassNames(
+              "flex justify-center flex-col items-center",
+              activeTab === TAB3 && "font-semibold",
+            )}
           >
             GALERÍA
+            {activeTab === TAB3 && (
+              <div className="border border-t-white w-32 rounded-none mt-3" />
+            )}
           </div>
-          <div>FAQ</div>
+          <div
+            onClick={() => {
+              setActiveTab(TAB4);
+            }}
+            className={ClassNames(
+              "flex justify-center flex-col items-center",
+              activeTab === TAB4 && "font-semibold",
+            )}
+          >
+            FAQ
+            {activeTab === TAB4 && (
+              <div className="border border-t-white w-20 rounded-none mt-3" />
+            )}
+          </div>
         </div>
       </div>
       <Login modalOpen={modalOpen} setModalOpen={setModalOpen} />

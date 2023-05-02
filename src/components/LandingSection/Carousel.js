@@ -15,12 +15,12 @@ export const Carousel = () => {
     setPrevSlide(currentSlide);
   }, [currentSlide]);
   return (
-    <div className="flex flex-col gap-20 mt-20">
+    <div className="flex flex-col gap-20 mt-14">
       <div className="text-c2xl font-semibold pl-8">Features</div>
 
       <div
         className={ClassNames(
-          "h-[60rem]  flex justify-center px-10 ",
+          "h-[60rem]  flex justify-center px-10 -mt-8",
           currentSlide === 1 && "bg-beige",
           currentSlide === 2 && "bg-green-pale",
           currentSlide === 3 && "bg-red-fiery",
@@ -29,7 +29,7 @@ export const Carousel = () => {
       >
         <div className="w-full h-full flex  items-center justify-center">
           <LeftIcon
-            className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
+            className="h-8 w-8 lg:h-16 lg:w-16 cursor-pointer"
             onClick={() => {
               if (currentSlide === 1) {
                 setCurrentSlide(4);
@@ -57,7 +57,7 @@ export const Carousel = () => {
         </div>
         <div className="w-full h-full flex  items-center justify-center">
           <RightIcon
-            className="h-8 w-8 lg:h-20 lg:w-20 cursor-pointer"
+            className="h-8 w-8 lg:h-16 lg:w-16 cursor-pointer"
             onClick={() => {
               if (currentSlide === 4) {
                 setCurrentSlide(1);
@@ -77,12 +77,15 @@ const SlideOne = () => {
       <div>
         <img
           src={CarouselImage2}
-          className=" w-full h-[46rem] ml-[3%]"
+          className=" w-[85%] h-[44rem] ml-[3%]"
           alt="Image2"
         />
       </div>
       <div className="flex flex-col gap-20">
-        <div className="text-c4xl font-semibold">TU INVITACIÓN ES ÚNICA!</div>
+        <div className="text-c4xl font-semibold">
+          TU INVITACIÓN ES <br />
+          ÚNICA!
+        </div>
         <div className="text-c2xl2 font-normal text-gray-cool">
           Con Mowe, tendrás la oportunidad de crear una invitación totalmente
           personalizada con tus propias fotos y videos. Además, podrás elegir
@@ -92,7 +95,9 @@ const SlideOne = () => {
         <div className="flex w-full justify-end">
           <Button
             btnText={"Crea tu diseño"}
-            className={ClassNames("w-72 !bg-black text-white py-3 text-md")}
+            className={ClassNames(
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+            )}
             onClick={() => {}}
           />
         </div>
@@ -116,13 +121,19 @@ const SlideTwo = () => {
         <div className="flex w-full justify-end">
           <Button
             btnText={"Crea tu diseño"}
-            className={ClassNames("w-72 !bg-black text-white py-3 text-md")}
+            className={ClassNames(
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+            )}
             onClick={() => {}}
           />
         </div>
       </div>
       <div>
-        <img src={CarouselImage1} className=" w-full h-[46rem]" alt="Image2" />
+        <img
+          src={CarouselImage1}
+          className=" w-[85%] h-[44rem] ml-[13%]"
+          alt="Image2"
+        />
       </div>
     </>
   );
@@ -133,7 +144,7 @@ const SlideThree = () => {
       <div>
         <img
           src={CarouselImage3}
-          className=" w-full h-[46rem] ml-[3%]"
+          className=" w-[85%] h-[44rem] ml-[3%]"
           alt="Image2"
         />
       </div>
@@ -147,7 +158,9 @@ const SlideThree = () => {
         <div className="flex w-full justify-end">
           <Button
             btnText={"Crea tu diseño"}
-            className={ClassNames("w-72 !bg-black text-white py-3 text-md")}
+            className={ClassNames(
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+            )}
             onClick={() => {}}
           />
         </div>
@@ -171,13 +184,19 @@ const SlideFour = () => {
         <div className="flex w-full justify-end">
           <Button
             btnText={"Crea tu diseño"}
-            className={ClassNames("w-72 !bg-black text-white py-3 text-md")}
+            className={ClassNames(
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+            )}
             onClick={() => {}}
           />
         </div>
       </div>
       <div>
-        <img src={CarouselImage1} className=" w-full h-[46rem]" alt="Image2" />
+        <img
+          src={CarouselImage1}
+          className=" w-[85%] h-[44rem] ml-[13%]"
+          alt="Image2"
+        />
       </div>
     </>
   );
