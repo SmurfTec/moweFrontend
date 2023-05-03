@@ -7,13 +7,18 @@ import { ReactComponent as CoinIcon } from "assets/Svgs/coin.svg";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { useNavigate } from "react-router-dom";
+import ClassNames from "Helpers/Common";
 
 export const PaymentScreen = () => {
   const [modalOpen, setModalOpen] = useState(true);
 
   return (
     <div
-      className=" h-screen flex flex-col justify-between px-10 text-white font-extrabold"
+      
+      className={ClassNames(
+          "h-screen flex flex-col justify-between px-10 text-white font-extrabold",
+          modalOpen && "filter blur-[18px]",
+        )}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",

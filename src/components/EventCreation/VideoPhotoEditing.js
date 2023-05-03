@@ -38,7 +38,7 @@ import { Spinner } from "components/Common/LoadingSpinner/Spinner";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
-  const [currentStep, setCurrentStep] = useState(5);
+  const [currentStep, setCurrentStep] = useState(1);
   const [ExclaminationIconClicked, setExclaminationIconClicked] =
     useState(false);
     const [openGalleryModal,setOpenGalleryModal] = useState(false);

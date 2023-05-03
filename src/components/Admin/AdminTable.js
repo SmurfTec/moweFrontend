@@ -127,7 +127,10 @@ export const AdminTable = () => {
 
   return (
     <div
-      className="h-screen text-white font-extrabold"
+      className={ClassNames(
+          "h-screen text-white font-extrabold",
+          modalOpen && "filter blur-md",
+        )}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",

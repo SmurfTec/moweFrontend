@@ -28,12 +28,13 @@ export const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(TAB1);
 
-
-  
   return (
     <>
       <div
-        className="transition-all duration-1000 ease-in-out h-screen flex flex-col justify-between px-10 pb-20"
+        className={ClassNames(
+          "transition-all duration-1000 ease-in-out h-screen flex flex-col justify-between px-10 pb-20",
+          modalOpen && "filter blur-md",
+        )}
         style={{
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",

@@ -5,6 +5,7 @@ import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { ReactComponent as AdminIcons } from "assets/Svgs/Admin.svg";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import ClassNames from "Helpers/Common";
 
 const data = [{ name: "Group A", value: 200 }];
 
@@ -17,12 +18,14 @@ export const Dashboard = () => {
 
   return (
     <div
-      className=" h-screen flex flex-col justify-between px-10 text-white font-extrabold"
+      className={ClassNames(
+        "h-screen flex flex-col justify-between px-10 text-white font-extrabold",
+        modalOpen && "filter blur-md",
+      )}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        
       }}
     >
       <ModalBasic
@@ -30,7 +33,6 @@ export const Dashboard = () => {
         onClose={() => setModalOpen(false)}
         bgClassName="bg-black-opaque"
         mainModalClass="2xl:overflow-y-hidden 2xl:-mt-8"
-
       >
         <div className="bg-white  2xl:w-[100rem] 2xl:h-[58rem] rounded-2xl flex flex-col p-10 ">
           <div className="flex ">

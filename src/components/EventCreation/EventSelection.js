@@ -20,7 +20,7 @@ export const EMAIL_INVALID = "Email is Invalid";
 export const EventSelection = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   return (
-    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)}>
+    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)} bgClassName={"bg-black-opaque"}>
       <div className="bg-white  w-[74rem] min-h-[44rem] rounded-lg  flex flex-col justify-between pt-12 pb-12 pr-8 pl-8 ">
         <div className="flex flex-col gap-10 pb-8 min-h-[40rem]">
           <Header setModalOpen={setModalOpen} currentStep={currentStep} />

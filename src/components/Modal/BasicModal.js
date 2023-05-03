@@ -21,10 +21,10 @@ export default function ModalBasic({
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className={ClassNames("fixed z-10 inset-0 overflow-y-auto",mainModalClass)}
+        className={ClassNames("fixed z-10 inset-0 overflow-y-auto ",mainModalClass)}
         onClose={() => onClose?.()}
       >
-        <div className={ClassNames("flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0",bgClassName)}>
+        <div className={ClassNames("flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 ",bgClassName)}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
