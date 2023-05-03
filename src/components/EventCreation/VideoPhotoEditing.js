@@ -27,9 +27,10 @@ import { ReactComponent as LeftIcon } from "assets/Svgs/RightColorIcon.svg";
 import { ReactComponent as RightArrow } from "assets/Svgs/rightArrow.svg";
 import { ReactComponent as BackArrow } from "assets/Svgs/BackArrow.svg";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
-
+import { ChromePicker } from "react-color";
 import BackgroundImage from "assets/Images/EventCreation.jpg";
 import GalleryIcon from "assets/Images/GalleryIcon.jpg";
+ 
 
 import "./date.css";
 import { DragDropFile } from "components/Common/UploadFile/DragDropUploadFile";
@@ -466,6 +467,7 @@ const CustomUploadFile = ({
 };
 
 const Content6 = ({ setCurrentStep }) => {
+
   return (
     <>
       <div className="text-c2lg text-black-deep"> make it unique</div>
@@ -476,7 +478,12 @@ const Content6 = ({ setCurrentStep }) => {
             <ColorPicker />
           </div>
           <div className="w-1/2 ">fds</div>
+          <div>
+               
+                <p className="apply-font">The font will be applied to this text.</p>
+            </div>
         </div>
+        {/* <FontPicker/> */}
       </div>
     </>
   );
@@ -486,14 +493,8 @@ const ColorPicker = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState("#ffffff");
 
-  const colors = [
-    { name: "Red", code: "#ff0000" },
-    { name: "Green", code: "#00ff00" },
-    { name: "Blue", code: "#0000ff" },
-  ];
-
-  const handleColorChange = (colorCode) => {
-    setColor(colorCode);
+  const handleColorChange = (colorObject) => {
+    setColor(colorObject.hex);
     setIsOpen(false);
   };
 
@@ -502,7 +503,7 @@ const ColorPicker = () => {
   };
 
   return (
-    <div className="relative border border-silver-light py-2 w-[40%] px-2">
+    <div className="relative border border-silver-light py-2 w-[50%] px-2">
       <div className="flex items-center">
         <div className="mr-2 text-black-pitch">Color:</div>
         <div
@@ -514,26 +515,16 @@ const ColorPicker = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-full bg-white rounded-md shadow-lg z-10">
-          {colors.map((colorOption) => (
-            <div
-              key={colorOption.name}
-              className={`flex items-center p-2 cursor-pointer hover:bg-gray-100 ${
-                colorOption.code === color && "bg-gray-100"
-              }`}
-              onClick={() => handleColorChange(colorOption.code)}
-            >
-              <div
-                className="w-6 h-6 rounded-md border border-gray-400"
-                style={{ backgroundColor: colorOption.code }}
-              />
-              {/* <div className="ml-2">{colorOption.name}</div> */}
-            </div>
-          ))}
+        <div className="absolute right-0 mt-2 z-10">
+          <ChromePicker color={color} onChange={handleColorChange} />
         </div>
       )}
     </div>
   );
 };
+
+
+
+
 
 export default ColorPicker;

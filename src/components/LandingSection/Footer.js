@@ -11,10 +11,15 @@ export const Footer = () => {
   const [wedingPlaner, setWedingPlaner] = useState(false);
   const [contactUsModal, setContactusModal] = useState(false);
   const [descriptionModal, setDescriptionModal] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+
+  const toggleAccepted = () => {
+    setAccepted(!accepted);
+  };
   return (
     <div className="bg-black-pitch h-80 text-white flex flex-col justify-between overflow-hidden">
-      <div className="flex flex-col gap-8 pt-14">
-        <div className="flex justify-center items-center gap-10 text-white">
+      <div className="flex flex-col gap-10 pt-14">
+        <div className="flex justify-center items-center gap-14 text-white">
           <div className="text-x2xl" onClick={() => setWedingPlaner(true)}>
             Legal
           </div>
@@ -35,7 +40,28 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex gap-14 justify-end w-full pr-10 pb-10">
-        <Button btnText="Acceptar" />
+
+ <div className="flex justify-between px-4 items-center bg-black-deep text-white rounded-3xl w-1/5 cursor-pointer">
+  <span
+    className={`px-3 py-1 rounded-full ${!accepted ? 'bg-gray-300 transition-colors duration-500' : ''} `}
+    onClick={toggleAccepted}
+    style={{ transform: accepted ? 'translateX(10px)' : '' }}
+  >
+    Esta web utiliza Cookies
+  </span>
+  <span
+    className={`px-3 py-1 rounded-full ${accepted ? 'bg-gray-300 text-black transition-colors duration-500' : ''} `}
+    onClick={toggleAccepted}
+    style={{ transform: accepted ? 'translateX(10px)' : '' }}
+  >
+    Aceptar
+  </span>
+</div>
+
+
+
+
+
         <Button btnText="Ver cookies" />
       </div>
       {

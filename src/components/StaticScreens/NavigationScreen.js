@@ -15,6 +15,7 @@ import { useState } from "react";
 import { VideoPhotoEditing } from "components/EventCreation/VideoPhotoEditing";
 import { EventSelection } from "components/EventCreation/EventSelection";
 import { useNavigate } from "react-router-dom";
+import ClassNames from "Helpers/Common";
 
 export const MainMenu = () => {
   const navigate = useNavigate();
@@ -26,7 +27,11 @@ export const MainMenu = () => {
     useState(false);
   return (
     <div
-      className=" h-screen flex flex-col px-10 text-white font-extrabold"
+      
+      className={ClassNames(
+          "h-screen flex flex-col px-10 text-white font-extrabold",
+          (formModalOpen||eventFormModal) && "filter blur-[12px]",
+        )}
       style={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",

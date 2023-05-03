@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      boxShadow: {
+        '5xl': ' -8px 4px 10px rgba(0, 0, 0, 0.32)',
+        '6xl': ' -10px 6px 12px rgba(0, 0, 0, .75)'
+
+      },
       colors: {
         yellow: {
           pale: "#F1E8D1",
