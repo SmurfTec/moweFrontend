@@ -72,7 +72,7 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
           placeholder="Contraseña"
           type="password"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {setPassword(value)}}
         />
       </div>
       <div

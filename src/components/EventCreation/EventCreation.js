@@ -1,4 +1,4 @@
-import ModalBasic, { Modal } from "components/Modal/BasicModal";
+import ModalBasic from "components/Modal/BasicModal";
 
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { ReactComponent as BackIcon } from "assets/Svgs/BackArrow.svg";
@@ -14,6 +14,7 @@ import { UploadFile } from "components/Common/UploadFile/UploadFile";
 import ClassNames from "Helpers/Common";
 import { CheckBox } from "components/Common/CheckBox/CheckBox";
 import "./date.css"
+import  MapContainer  from "components/Common/Map/Map";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const EventCreation = ({ modalOpen = false, setModalOpen }) => {
@@ -108,6 +109,7 @@ const Footer = ({ currentStep, setCurrentStep }) => {
   );
 };
 const Content = () => {
+  const [invitationNames,setInvitationNames] =useState("")
   const [startDate, setStartDate] = useState(new Date());
 
   return (
@@ -118,7 +120,7 @@ const Content = () => {
       <div className="text-c2lg">
         ¿Cómo os llamáis? (Así aparecerá en vuestra invitación)
       </div>
-      <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} />
+      <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} onChange={(value)=>setInvitationNames(value)}/>
       <div className="text-c2lg">Fecha y hora del evento</div>
       <div className="text-cmd font-medium">Fecha:</div>
       <div className="react_datepicker">
@@ -137,6 +139,8 @@ const Content = () => {
 };
 const Content2 = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [mainLocation,setMainLocation] = useState("")
+  const [secondLoacation,setSecondLoacation] = useState("")
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="text-c2xl font-medium">
@@ -154,8 +158,14 @@ const Content2 = () => {
             placeholder="Título: Boda..."
             type="text"
             isRequired={true}
-            onChange={(value) => {}}
+            onChange={(value) => {setMainLocation(value)}}
           />
+        </div>
+        <div>
+        <div className="bg-red-900">
+
+        <MapContainer/>
+        </div>
         </div>
         <div className="flex flex-col mt-8">
         <div className="text-c2lg flex items-center gap-3">
@@ -180,7 +190,7 @@ const Content2 = () => {
             placeholder="TÍTULO: Celebración..."
             type="text"
             isRequired={true}
-            onChange={(value) => {}}
+            onChange={(value) => {setSecondLoacation("")}}
           />
         </div>
        
@@ -191,6 +201,9 @@ const Content2 = () => {
 };
 const Content3 = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [transpotationTextarea,setTransTextarea] = useState("");
+  const [parkingIndications,setParkingIndications] = useState("")
+  const [uploadedFile,setUploadedFile] = useState("")
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="text-c2xl font-medium">
@@ -212,7 +225,7 @@ const Content3 = () => {
         </div>
       </div>
       <div className="w-2/5">
-        <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} />
+        <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} onChange={(value)=>setTransTextarea(value)}/>
       </div>
       <div className="flex justify-between items-center gap-20">
         <div className="flex flex-col gap-4 w-1/2">
@@ -224,6 +237,7 @@ const Content3 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={3}
+              onChange={(value)=>setParkingIndications(value)}
             />
           </div>
         </div>
@@ -239,17 +253,17 @@ const Content3 = () => {
               // value={formState?.uploadedFile}
               onResponse={({ data }) => {
                 console.log(data);
-                // setFormState({ type: SET_RESUME, payload: data });
+                setUploadedFile(data)
               }}
             />
           </div>
         </div>
       </div>
-      Vamos a ofrecer a los asistentes, hoteles cercanos al lugar que elijas
     </div>
   );
 };
 const Content4 = () => {
+  const [dressCode,setDressCode] = useState("")
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="flex items-center">
@@ -263,6 +277,7 @@ const Content4 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={5}
+              onChange={(value)=>setDressCode(value)}
             />
           </div>
         </div>
