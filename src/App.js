@@ -6,7 +6,7 @@ import { PaymentScreen } from "components/StaticScreens/PaymentScreen";
 import { SuccessScreen } from "components/StaticScreens/SuccessScreen";
 import { EventCreationForm } from "Context/EventCreationForms";
 import { LandingLayout } from "Layout/LandingLayout";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, } from "react-router-dom";
 
 function App() {
   return (

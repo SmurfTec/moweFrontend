@@ -13,14 +13,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import { UploadFile } from "components/Common/UploadFile/UploadFile";
 import ClassNames from "Helpers/Common";
 import { CheckBox } from "components/Common/CheckBox/CheckBox";
-import "./date.css"
-import  MapContainer  from "components/Common/Map/Map";
+import "./date.css";
+import MapContainer from "components/Common/Map/Map";
+import {
+  EventCreationForm,
+  useEventCreationFormContext,
+} from "Context/EventCreationForms";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const EventCreation = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   return (
-    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)} bgClassName={"bg-black-opaque"}>
+    <ModalBasic
+      open={modalOpen}
+      onClose={() => setModalOpen(false)}
+      bgClassName={"bg-black-opaque"}
+    >
       <div className="bg-white  w-[74rem] min-h-[44rem] rounded-lg  flex flex-col justify-between pt-12 pb-12 pr-8 pl-8 ">
         <div className="flex flex-col gap-10 pb-8 min-h-[40rem]">
           <Header setModalOpen={setModalOpen} currentStep={currentStep} />
@@ -109,8 +117,7 @@ const Footer = ({ currentStep, setCurrentStep }) => {
   );
 };
 const Content = () => {
-  const [invitationNames,setInvitationNames] =useState("")
-  const [startDate, setStartDate] = useState(new Date());
+  const { form1, setFormState1 } = useEventCreationFormContext();
 
   return (
     <div className="min-h-[30rem] flex flex-col gap-10">
@@ -120,27 +127,42 @@ const Content = () => {
       <div className="text-c2lg">
         ¿Cómo os llamáis? (Así aparecerá en vuestra invitación)
       </div>
-      <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} onChange={(value)=>setInvitationNames(value)}/>
+      <TextArea
+        placeHolder="Jaume & Yolanda"
+        isOptional={false}
+        textMsg={form1?.invitationNames}
+        rows={3}
+        onChange={({ value }) =>
+          setFormState1({
+            ...form1,
+            invitationNames: value,
+          })
+        }
+      />
       <div className="text-c2lg">Fecha y hora del evento</div>
       <div className="text-cmd font-medium">Fecha:</div>
       <div className="react_datepicker">
-
-      <DatePicker
-      showIcon
-		selected={startDate}
-		onChange={date => setStartDate(date)}
-		excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]}
-		placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
-	  />
+        <DatePicker
+          showIcon
+          selected={form1?.date}
+          onChange={(date) =>
+            setFormState1({
+              ...form1,
+              date: date,
+              time: date,
+            })
+          }
+          excludeDateIntervals={[
+            { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
+          ]}
+          placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
+        />
       </div>
-
     </div>
   );
 };
 const Content2 = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [mainLocation,setMainLocation] = useState("")
-  const [secondLoacation,setSecondLoacation] = useState("")
+  const { form2, setFormState2 } = useEventCreationFormContext();
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="text-c2xl font-medium">
@@ -158,52 +180,61 @@ const Content2 = () => {
             placeholder="Título: Boda..."
             type="text"
             isRequired={true}
-            onChange={(value) => {setMainLocation(value)}}
+            onChange={(value) => {
+              console.log(value);
+              setFormState2({
+                ...form2,
+                mainTitle: value,
+              });
+            }}
           />
         </div>
         <div>
-        <div className="bg-red-900">
-
-        <MapContainer/>
-        </div>
+          {/* <div className="bg-red-900">
+            <MapContainer />
+          </div> */}
         </div>
         <div className="flex flex-col mt-8">
-        <div className="text-c2lg flex items-center gap-3">
-          hay una segunda ubicación?
-          <div className="flex h-6 items-center">
-            <input
-              id="comments"
-              aria-describedby="comments-description"
-              name="comments"
-              value={isChecked}
-              onChange={(prevState) => setIsChecked(!prevState)}
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
+          <div className="text-c2lg flex items-center gap-3">
+            hay una segunda ubicación?
+            <div className="flex h-6 items-center">
+              <input
+                id="comments"
+                aria-describedby="comments-description"
+                name="comments"
+                ischecked={form2?.form2Check}
+                onChange={() => {
+                  setFormState2({
+                    ...form2,
+                    form2Check: !form2?.form2Check,
+                  });
+                }}
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+            </div>
           </div>
-          
-        </div>
-        <InputField
+          <InputField
             className="w-[25rem] mt-4 shadow-md bg-gray-snow border-gray-platinum"
             className1="bg-gray-snow py-[.3rem]"
             id="Contraseña"
             placeholder="TÍTULO: Celebración..."
             type="text"
             isRequired={true}
-            onChange={(value) => {setSecondLoacation("")}}
+            onChange={(value) => {
+              setFormState2({
+                ...form2,
+                secondTitle: value,
+              });
+            }}
           />
         </div>
-       
-        
       </div>
     </div>
   );
 };
 const Content3 = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [transpotationTextarea,setTransTextarea] = useState("");
-  const [parkingIndications,setParkingIndications] = useState("")
-  const [uploadedFile,setUploadedFile] = useState("")
+  const { form3, setFormState3 } = useEventCreationFormContext();
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="text-c2xl font-medium">
@@ -217,15 +248,30 @@ const Content3 = () => {
             id="comments"
             aria-describedby="comments-description"
             name="comments"
-            value={isChecked}
-            onChange={(prevState) => setIsChecked(!prevState)}
+            value={form3?.offerTransportation}
+            onChange={() => {
+              setFormState3({
+                ...form3,
+                offerTransportation: !form3?.offerTransportation,
+              });
+            }}
             type="checkbox"
             className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
           />
         </div>
       </div>
       <div className="w-2/5">
-        <TextArea placeHolder="Jaume & Yolanda" isOptional={false} rows={3} onChange={(value)=>setTransTextarea(value)}/>
+        <TextArea
+          placeHolder="Jaume & Yolanda"
+          isOptional={false}
+          rows={3}
+          onChange={(value) => {
+            setFormState3({
+              ...form3,
+              transportaionDescriptions: value,
+            });
+          }}
+        />
       </div>
       <div className="flex justify-between items-center gap-20">
         <div className="flex flex-col gap-4 w-1/2">
@@ -237,7 +283,12 @@ const Content3 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={3}
-              onChange={(value)=>setParkingIndications(value)}
+              onChange={(value) => {
+                setFormState3({
+                  ...form3,
+                  parkingIndications: value,
+                });
+              }}
             />
           </div>
         </div>
@@ -252,8 +303,10 @@ const Content3 = () => {
               onBlur={() => {}}
               // value={formState?.uploadedFile}
               onResponse={({ data }) => {
-                console.log(data);
-                setUploadedFile(data)
+                setFormState3({
+                  ...form3,
+                  QRimage: data,
+                });
               }}
             />
           </div>
@@ -263,7 +316,8 @@ const Content3 = () => {
   );
 };
 const Content4 = () => {
-  const [dressCode,setDressCode] = useState("")
+  const { form4, setFormState4 } = useEventCreationFormContext();
+
   return (
     <div className="flex flex-col gap-10 min-h-[35rem]">
       <div className="flex items-center">
@@ -277,7 +331,12 @@ const Content4 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={5}
-              onChange={(value)=>setDressCode(value)}
+              onChange={(value) => {
+                setFormState4({
+                  ...form4,
+                  dressCode: value,
+                });
+              }}
             />
           </div>
         </div>
@@ -298,10 +357,7 @@ const Content4 = () => {
   );
 };
 const Content5 = () => {
-  const [googleUrl, setGoogleUrl] = useState(false);
-  const [instaUrl, setInstaUrl] = useState(false);
-  const [fbUrl, setFBUrl] = useState(false);
-  const [tikTokUrl, settikTokUrl] = useState(false);
+  const { form5, setFormState5 } = useEventCreationFormContext();
 
   return (
     <div className="flex flex-col gap-6">
@@ -320,6 +376,12 @@ const Content5 = () => {
               isOptional={false}
               rows={4}
               className="bg-gray-snow"
+              onChange={(value) => {
+                setFormState5({
+                  ...form5,
+                  hashtags: value,
+                });
+              }}
             />
           </div>
         </div>
@@ -330,8 +392,13 @@ const Content5 = () => {
       </div>
       <div className="flex gap-4 items-center">
         <CheckBox
-          isChecked={googleUrl}
-          onChange={(prevState) => setGoogleUrl(!prevState)}
+          isChecked={form5?.googlePhotosCheck}
+          onChange={() => {
+            setFormState5({
+              ...form5,
+              offerTransportation: !form5?.googlePhotosCheck,
+            });
+          }}
         />
         <div className="text-c2lg w-40">Google Photos:</div>
         <InputField
@@ -341,13 +408,23 @@ const Content5 = () => {
           placeholder="Escribe aquí..."
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState5({
+              ...form5,
+              googleDescription: value,
+            });
+          }}
         />
       </div>
       <div className="flex gap-4 items-center">
         <CheckBox
-          isChecked={googleUrl}
-          onChange={(prevState) => setGoogleUrl(!prevState)}
+          isChecked={form5?.instagramCheck}
+          onChange={() => {
+            setFormState5({
+              ...form5,
+              offerTransportation: !form5?.instagramCheck,
+            });
+          }}
         />
         <div className="text-c2lg w-40">Instagram:</div>
         <InputField
@@ -357,13 +434,23 @@ const Content5 = () => {
           placeholder="Escribe aquí..."
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState5({
+              ...form5,
+              instaDescription: value,
+            });
+          }}
         />
       </div>
       <div className="flex gap-4 items-center">
         <CheckBox
-          isChecked={googleUrl}
-          onChange={(prevState) => setGoogleUrl(!prevState)}
+          isChecked={form5?.titkTokcheck}
+          onChange={() => {
+            setFormState5({
+              ...form5,
+              offerTransportation: !form5?.titkTokcheck,
+            });
+          }}
         />
         <div className="text-c2lg w-40">Tik Tok:</div>
         <InputField
@@ -373,13 +460,23 @@ const Content5 = () => {
           placeholder="Escribe aquí..."
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState5({
+              ...form5,
+              tikTokDescription: value,
+            });
+          }}
         />
       </div>{" "}
       <div className="flex gap-4 items-center">
         <CheckBox
-          isChecked={googleUrl}
-          onChange={(prevState) => setGoogleUrl(!prevState)}
+          isChecked={!form5?.fbCheck}
+          onChange={() => {
+            setFormState5({
+              ...form5,
+              offerTransportation: !form5?.fbCheck,
+            });
+          }}
         />
         <div className="text-c2lg w-40">Facebook:</div>
         <InputField
@@ -389,17 +486,19 @@ const Content5 = () => {
           placeholder="Escribe aquí..."
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState5({
+              ...form5,
+              fbDescription: value,
+            });
+          }}
         />
       </div>
     </div>
   );
 };
 const Content6 = () => {
-  const [googleUrl, setGoogleUrl] = useState(false);
-  const [instaUrl, setInstaUrl] = useState(false);
-  const [fbUrl, setFBUrl] = useState(false);
-  const [tikTokUrl, settikTokUrl] = useState(false);
+  const { form6, setFormState6 } = useEventCreationFormContext();
 
   return (
     <div className="flex flex-col gap-3">
@@ -418,6 +517,12 @@ const Content6 = () => {
               isOptional={false}
               rows={4}
               className="bg-gray-snow"
+              onChange={(value) => {
+                setFormState6({
+                  ...form6,
+                  recieveGiftsDescription: value,
+                });
+              }}
             />
           </div>
         </div>
@@ -446,7 +551,12 @@ const Content6 = () => {
           placeholder="Cuenta Bancaria:"
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState6({
+              ...form6,
+              bizumDescription: value,
+            });
+          }}
         />
       </div>
       <div className="flex gap-4 items-center">
@@ -458,7 +568,12 @@ const Content6 = () => {
           placeholder="Cuenta Bancaria:"
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState6({
+              ...form6,
+              cuentaDescription: value,
+            });
+          }}
         />
       </div>
       <div className="flex gap-4 items-center">
@@ -470,7 +585,12 @@ const Content6 = () => {
           placeholder="Cuenta Bancaria:"
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState6({
+              ...form6,
+              listaDescription: value,
+            });
+          }}
         />
       </div>{" "}
       <div className="flex gap-4 items-center">
@@ -482,14 +602,24 @@ const Content6 = () => {
           placeholder="Cuenta Bancaria:"
           type="text"
           isRequired={true}
-          onChange={(value) => {}}
+          onChange={(value) => {
+            setFormState6({
+              ...form6,
+              paypalDescription: value,
+            });
+          }}
         />
       </div>
       <div className="flex gap-4 items-center mt-4">
         <div className="text-c2lg">No quiero regalos:</div>
         <CheckBox
-          isChecked={googleUrl}
-          onChange={(prevState) => setGoogleUrl(!prevState)}
+          isChecked={form6?.noGiftsCheck}
+          onChange={() => {
+            setFormState6({
+              ...form6,
+              noGiftsCheck: !form6?.noGiftsCheck,
+            });
+          }}
         />
       </div>
     </div>

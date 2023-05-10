@@ -3,7 +3,7 @@ import { createContext, useReducer, useContext } from "react";
 const initialFormState = {
   form1: {
     invitationNames: "",
-    date: "",
+    date: new Date(),
     time: "",
   },
   form2: {
@@ -12,6 +12,7 @@ const initialFormState = {
     secondTitle: "",
     secondTitleLocation: "",
     mapDescriptions: "",
+    form2Check:false
   },
   form3: {
     offerTransportation: false,
@@ -51,7 +52,6 @@ const SET_FORM_4 = "form4";
 const SET_FORM_5 = "form5";
 const SET_FORM_6 = "form6";
 const SET_FORM_7 = "form7";
-
 const RESET_PROVIDER = "resetProvider";
 const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -121,7 +121,8 @@ const reducer = (state, { type, payload }) => {
 };
 
 const AppContext = createContext();
-const EventCreationForm = ({ children }) => {
+const EventCreationForm = (props) => {
+    const { children } = props || {};
   const [providerState, setProviderState] = useReducer(
     reducer,
     initialFormState,
@@ -131,7 +132,7 @@ const EventCreationForm = ({ children }) => {
     setProviderState({ type, payload });
   };
 
-  const setForm1State = (form1) => setValToProviderCxt(SET_FORM_1, form1);
+  const setFormState1 = (form1) => setValToProviderCxt(SET_FORM_1, form1);
   const setFormState2 = (form2) => setValToProviderCxt(SET_FORM_2, form2);
   const setFormState3 = (form3) => setValToProviderCxt(SET_FORM_3, form3);
   const setFormState4 = (form4) => setValToProviderCxt(SET_FORM_4, form4);
@@ -150,7 +151,7 @@ const EventCreationForm = ({ children }) => {
         form5: providerState.form5,
         form6: providerState.form6,
         form7: providerState.form7,
-        setForm1State,
+        setFormState1,
         setFormState2,
         setFormState3,
         setFormState4,
@@ -164,7 +165,7 @@ const EventCreationForm = ({ children }) => {
     </AppContext.Provider>
   );
 };
-export const useProviderFormContext = () => {
+export const useEventCreationFormContext = () => {
   return useContext(AppContext);
 };
 export { AppContext, EventCreationForm };

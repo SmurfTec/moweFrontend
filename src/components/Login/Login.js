@@ -8,7 +8,7 @@ import { Button } from "components/Common/Button/Button";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-
+import {RequestLogin} from "Services/LoginSignup/Login"
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const Login = ({ modalOpen = false, setModalOpen }) => {
@@ -94,12 +94,27 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
         <Button
           btnText="Sign Up"
           className="bg-gray-misty shadow-lg hover:rounded-2xl"
+          onClick={async() => {
+            if(email&&password){
+            const loginToken=await  RequestLogin({
+              email,
+              password
+            })
+            console.log("Login token is",loginToken)
+            }
+          }}
         />
         <Button
           btnText="Log In"
           className=" !bg-green-teal shadow-lg text-white px-5 hover:rounded-2xl"
-          onClick={() => {
-            setModalOpen(true);
+          onClick={async() => {
+            if(email&&password){
+            const loginToken=await  RequestLogin({
+              email,
+              password
+            })
+            console.log("Login token is",loginToken)
+            }
           }}
         />
       </div>
