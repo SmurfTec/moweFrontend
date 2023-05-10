@@ -2,6 +2,7 @@ import { useState } from "react";
 import ClassNames from "Helpers/Common";
 import { ReactComponent as UploadIcon } from "assets/Svgs/FileUpload.svg";
 import { Spinner } from "../LoadingSpinner/Spinner";
+import {UploadFileToServer} from "Services/EventCreation/FileUpload.service"
 
 const UPLOAD_FILE_ERROR = "Sorry! File can not be uploaded. Please try again";
 const formatUploadFile = (file) => {
@@ -18,7 +19,28 @@ export const UploadFile = ({
   const [fieldError, setFieldError] = useState("");
   const [upLoading, setUploading] = useState(false);
   const [fileName, setFileName] = useState("");
-
+  const FileUploadToServer = async (target) => {
+    setUploading(true);
+    let fileData = new FormData();
+    fileData.append("file", target.files[0]);
+    try {
+      const response = await UploadFileToServer(fileData);
+      setFileName(formatUploadFile(target.value));
+      onResponse?.({
+        data: response?.data?.result,
+        setFieldError,
+        setUploading,
+      });
+      setUploading(false);
+      setFieldError("");
+    } catch (error) {
+      setFileName("");
+      setFieldError(UPLOAD_FILE_ERROR);
+      onResponse?.({ error: error });
+      setUploading(false);
+      console.error("[FileUpload][APIError] is", error);
+    }
+  };
   return (
     <>
       <label className="block text-sm font-semibold sapphire">{label}</label>
@@ -60,8 +82,7 @@ export const UploadFile = ({
                 name="file-upload"
                 type={"file"}
                 onChange={({ target }) => {
-                  console.log("Target file is", target);
-                  // FileUploadToServer(target);
+                  FileUploadToServer(target);
                 }}
                 className="sr-only"
               />

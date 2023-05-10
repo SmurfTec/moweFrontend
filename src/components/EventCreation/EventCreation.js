@@ -19,6 +19,7 @@ import {
   EventCreationForm,
   useEventCreationFormContext,
 } from "Context/EventCreationForms";
+import { CreateEvent } from "Services/EventCreation/CreateEvent";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const EventCreation = ({ modalOpen = false, setModalOpen }) => {
@@ -87,6 +88,9 @@ const Header = ({ isFirstStep = false, setModalOpen, currentStep }) => {
   );
 };
 const Footer = ({ currentStep, setCurrentStep }) => {
+  const { form1, form2, form3, form4, form5, form6, form7 } =
+    useEventCreationFormContext();
+
   const isFirstStep = currentStep === 1;
   const isLastStep = currentStep === 7;
 
@@ -107,10 +111,45 @@ const Footer = ({ currentStep, setCurrentStep }) => {
       <Button
         btnText={isLastStep ? "Ya lo tienes" : "Siguiente"}
         className="w-40 !bg-green-teal shadow-lg text-white"
-        onClick={() => {
+        onClick={async () => {
           if (currentStep < 7) {
             setCurrentStep((prevState) => prevState + 1);
-          } else setCurrentStep(7);
+          } else {
+            setCurrentStep(7);
+            const eventCcreation = await CreateEvent({
+              date: form1?.date,
+              time: "04:00",
+              headerNames: "dirty herry",
+              primarytitle: "Birthday Party",
+              primaryLocation: { lat: 120, long: 130, text: "Islamabad" },
+              isTransport: false,
+              transportDescription: null,
+              parkingDescription: null,
+              image: null,
+              dressCode: "no code",
+              hashtags: ["birthday", "party"],
+              fbLink: "www.facebook.com/",
+              instaLink: "www.insta.com/",
+              tikTokLink: "www.tiktok.com/",
+              googlePhotosLink: "wwwgoogle.photos.com/",
+              isGifts: false,
+              bizum: null,
+              paypalAccount: null,
+              bankAccount: null,
+              weddingList: null,
+              customURL: "www.event.planner.com/birthday/dirty-herry",
+            });
+            console.log(
+              "CForms data is",
+              form1,
+              form2,
+              form3,
+              form4,
+              form5,
+              form6,
+              form7,
+            );
+          }
         }}
       />
     </div>
@@ -265,7 +304,7 @@ const Content3 = () => {
           placeHolder="Jaume & Yolanda"
           isOptional={false}
           rows={3}
-          onChange={(value) => {
+          onChange={({ value }) => {
             setFormState3({
               ...form3,
               transportaionDescriptions: value,
@@ -283,7 +322,7 @@ const Content3 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={3}
-              onChange={(value) => {
+              onChange={({ value }) => {
                 setFormState3({
                   ...form3,
                   parkingIndications: value,
@@ -303,10 +342,12 @@ const Content3 = () => {
               onBlur={() => {}}
               // value={formState?.uploadedFile}
               onResponse={({ data }) => {
-                setFormState3({
-                  ...form3,
-                  QRimage: data,
-                });
+                if (data) {
+                  setFormState3({
+                    ...form3,
+                    QRimage: data,
+                  });
+                }
               }}
             />
           </div>
@@ -331,7 +372,7 @@ const Content4 = () => {
               placeHolder="Jaume & Yolanda"
               isOptional={false}
               rows={5}
-              onChange={(value) => {
+              onChange={({ value }) => {
                 setFormState4({
                   ...form4,
                   dressCode: value,
@@ -376,7 +417,7 @@ const Content5 = () => {
               isOptional={false}
               rows={4}
               className="bg-gray-snow"
-              onChange={(value) => {
+              onChange={({ value }) => {
                 setFormState5({
                   ...form5,
                   hashtags: value,
@@ -517,7 +558,7 @@ const Content6 = () => {
               isOptional={false}
               rows={4}
               className="bg-gray-snow"
-              onChange={(value) => {
+              onChange={({ value }) => {
                 setFormState6({
                   ...form6,
                   recieveGiftsDescription: value,
