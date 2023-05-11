@@ -25,9 +25,10 @@ export const UploadFile = ({
     fileData.append("file", target.files[0]);
     try {
       const response = await UploadFileToServer(fileData);
+      console.log("File upload res is",response)
       setFileName(formatUploadFile(target.value));
       onResponse?.({
-        data: response?.data?.result,
+        data: response?.secure_url,
         setFieldError,
         setUploading,
       });

@@ -20,6 +20,7 @@ import {
   useEventCreationFormContext,
 } from "Context/EventCreationForms";
 import { CreateEvent } from "Services/EventCreation/CreateEvent";
+import { Timepicker } from "components/Common/TimePicker/TimePicker";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const EventCreation = ({ modalOpen = false, setModalOpen }) => {
@@ -179,7 +180,10 @@ const Content = () => {
         }
       />
       <div className="text-c2lg">Fecha y hora del evento</div>
-      <div className="text-cmd font-medium">Fecha:</div>
+      <div className="flex items-center gap-[13%]">
+
+     <div className="flex flex-col gap-5">
+     <div className="text-cmd font-medium">Fecha:</div>
       <div className="react_datepicker">
         <DatePicker
           showIcon
@@ -196,6 +200,25 @@ const Content = () => {
           ]}
           placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
         />
+      </div>
+     </div>
+     <div className="flex flex-col gap-5">
+     <div className="text-cmd font-medium">Hora:</div>
+      <div className="">
+      <Timepicker
+            value={form1.time}
+            onBlur={(startTime) => {
+              setFormState1({
+              ...form1,
+              time: startTime,
+            })
+            }}
+          />
+      </div>
+     </div>
+     
+      </div>
+      <div>
       </div>
     </div>
   );
@@ -342,6 +365,7 @@ const Content3 = () => {
               onBlur={() => {}}
               // value={formState?.uploadedFile}
               onResponse={({ data }) => {
+                console.log("data is",data)
                 if (data) {
                   setFormState3({
                     ...form3,
