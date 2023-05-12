@@ -8,13 +8,17 @@ import { Button } from "components/Common/Button/Button";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-
+import { RequestLogin, RequestSignUp } from "Services/LoginSignup/Login";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const Login = ({ modalOpen = false, setModalOpen }) => {
   const [resetPassword, setResetPassword] = useState(false);
   return (
-    <ModalBasic open={modalOpen} onClose={() => setModalOpen(false)} bgClassName={"bg-black-opaque"}>
+    <ModalBasic
+      open={modalOpen}
+      onClose={() => setModalOpen(false)}
+      bgClassName={"bg-black-opaque"}
+    >
       <div className="bg-white h-[44rem] w-[74rem] rounded-lg overflow-hidden z-20">
         <div className="flex">
           <div className="hidden md:flex min-w-[45%]">
@@ -50,6 +54,8 @@ export const Login = ({ modalOpen = false, setModalOpen }) => {
 const LoginForm = ({ setResetPassword, setModalOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSignUploading, setIsSignUploading] = useState(false);
   return (
     <>
       <div className="flex flex-col gap-4 justify-center md:px-40">
@@ -72,7 +78,9 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
           placeholder="Contraseña"
           type="password"
           isRequired={true}
-          onChange={(value) => {setPassword(value)}}
+          onChange={(value) => {
+            setPassword(value);
+          }}
         />
       </div>
       <div
@@ -93,13 +101,50 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
       <div className="flex justify-center gap-10">
         <Button
           btnText="Sign Up"
-          className="bg-gray-misty shadow-lg hover:rounded-2xl"
+          isLoading={isSignUploading}
+          className="bg-gray-misty shadow-lg"
+          onClick={async () => {
+            if (email && password) {
+              setIsSignUploading(true);
+              const loginToken = await RequestSignUp({
+                email,
+                password,
+              });
+              if (loginToken) {
+                setIsSignUploading(false);
+                localStorage.setItem(
+                  "USER_CREDENTIALS",
+                  JSON.stringify({
+                    accessToken: loginToken?.token?.accessToken,
+                    expiresIn: loginToken?.token?.expiresIn,
+                  }),
+                );
+              }
+            }
+          }}
         />
         <Button
           btnText="Log In"
-          className=" !bg-green-teal shadow-lg text-white px-5 hover:rounded-2xl"
-          onClick={() => {
-            setModalOpen(true);
+          isLoading={isLoading}
+          className=" !bg-green-teal shadow-lg text-white px-5"
+          onClick={async () => {
+            if (email && password) {
+              setIsLoading(true);
+              const loginToken = await RequestLogin({
+                email,
+                password,
+              });
+              if (loginToken) {
+                setIsLoading(false);
+                localStorage.setItem(
+                  "USER_CREDENTIALS",
+                  JSON.stringify({
+                    accessToken: loginToken?.token?.accessToken,
+                    expiresIn: loginToken?.token?.expiresIn,
+                  }),
+                );
+              }
+            }
           }}
         />
       </div>
@@ -120,7 +165,7 @@ const ResetPassword = () => {
           onChange={(otp) => {
             setCodeVerificationChars(otp);
           }}
-      renderInput={(props) => <input {...props} />}
+          renderInput={(props) => <input {...props} />}
           numInputs={4}
           autoFocus={true}
           placeholder="XXXX"
@@ -164,7 +209,7 @@ const ResetPassword = () => {
       </div>
       <Button
         btnText="Guardar nueva contraseña"
-        className=" !bg-green-teal shadow-lg text-white px-5 hover:rounded-2xl mx-40"
+        className=" !bg-green-teal shadow-lg text-white px-5 mx-40"
         onClick={() => {}}
       />
     </>

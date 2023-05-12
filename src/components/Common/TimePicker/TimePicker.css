@@ -1,0 +1,43 @@
+.react-time-picker__wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border: thick solid gray;
+  align-items: center;
+  border: none;
+}
+.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute {
+  padding: 0.3rem;
+  width: 6rem !important;
+  border: 2px solid  rgba(255, 255, 255, 0.7) !important;
+  background: #FFFFFF;
+box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.16);
+backdrop-filter: blur(1px);
+  border-radius: 3px;
+}
+.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour {
+  padding: 0.3rem;
+  width: 5.5rem !important;
+  border: 2px solid  rgba(255, 255, 255, 0.7) !important;
+  background: #FFFFFF;
+  box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(1px);
+
+  border-radius: 3px;
+}
+.react-time-picker__inputGroup__divider {
+  display: none !important;
+}
+.react-time-picker__inputGroup__leadingZero {
+  padding: 0.4rem;
+  padding-top: 0.1rem;
+}
+.react-time-picker__inputGroup__input.react-time-picker__inputGroup__amPm {
+  padding: 0.3rem; 
+  width: 5rem !important;
+  border: 2px solid  rgba(255, 255, 255, 0.7) !important;
+  background: #FFFFFF;
+  box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(1px);
+  border-radius: 3px;
+}
