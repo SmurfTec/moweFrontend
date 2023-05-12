@@ -1,5 +1,7 @@
 import ModalBasic from "components/Modal/BasicModal";
 import { ReactComponent as ArrowDown } from "assets/Svgs/ArrowDown.svg";
+import { ReactComponent as ArrowUp } from "assets/Svgs/ArrowUp.svg";
+
 import { useState, useEffect } from "react";
 import { Button } from "components/Common/Button/Button";
 import "react-datepicker/dist/react-datepicker.css";
@@ -27,7 +29,6 @@ import { ChromePicker } from "react-color";
 import BackgroundImage from "assets/Images/EventCreation.jpg";
 import "./date.css";
 import { DragDropFile } from "components/Common/UploadFile/DragDropUploadFile";
-import { Spinner } from "components/Common/LoadingSpinner/Spinner";
 import { useMediaCreationContext } from "Context/EventEditing";
 
 export const EMAIL_INVALID = "Email is Invalid";
@@ -53,7 +54,12 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
       <div className="text-c2xl text-green-none mb-[.5%] w-full px-[4.5%] -mt-28">
         ¡Vamos a diseñar tu invitación!
       </div>
-      <div className="bg-smoke-white w-[110rem]  flex flex-col gap-3 py-4 justify-between rounded-2xl h-[55rem] overflow-y-auto px-20">
+      <div
+        className={ClassNames(
+          "bg-smoke-white w-[110rem]  flex flex-col gap-3 py-4 justify-between rounded-2xl h-[55rem] overflow-y-auto px-20",
+          // currentStep===5?"bg-white":""
+        )}
+      >
         {currentStep !== 4 && (
           <div className="flex w-full justify-end ">
             <ExclaminationIcon
@@ -197,7 +203,6 @@ const Content1 = ({ currentStep }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-       
         setMediaState({
           ...media,
           media1: { url: reader.result, type: file.type },
@@ -211,7 +216,6 @@ const Content1 = ({ currentStep }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-     
         setMediaState({
           ...media,
           media2: { url: reader.result, type: file.type },
@@ -252,7 +256,7 @@ const Content1 = ({ currentStep }) => {
             Foto/Video Secundario
           </div>
           <DragDropFile
-            key={media?.media2|| "no-file"}
+            key={media?.media2 || "no-file"}
             id="file-upload2"
             srcFile={media?.media2}
             handleFileUpload={handleImageUpload2}
@@ -269,7 +273,6 @@ const Content2 = ({ currentStep }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-       
         setMediaState({
           ...media,
           media1: { url: reader.result, type: file.type },
@@ -283,7 +286,6 @@ const Content2 = ({ currentStep }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-     
         setMediaState({
           ...media,
           media2: { url: reader.result, type: file.type },
@@ -313,10 +315,10 @@ const Content2 = ({ currentStep }) => {
             Foto/Video Principal 2
           </div>
           <DragDropFile
-            key={media?.media2|| "no-file"}
+            key={media?.media2 || "no-file"}
             id="file-upload2"
             srcFile={media?.media2}
-            handleFileUpload={handleImageUpload2}
+            handleFileUpload={handleImageUpload1}
           />
         </div>
         <div className="flex flex-col gap-3">
@@ -324,7 +326,7 @@ const Content2 = ({ currentStep }) => {
             Foto/Video Secundario
           </div>
           <DragDropFile
-            key={media?.media2|| "no-file"}
+            key={media?.media2 || "no-file"}
             id="file-upload2"
             srcFile={media?.media2}
             handleFileUpload={handleImageUpload2}
@@ -478,40 +480,101 @@ const Content5 = () => {
   );
 };
 const Content6 = ({ setCurrentStep }) => {
+  const [color, setColor] = useState("#F2C8DC");
+  const [color2, setColor2] = useState("#C4EBD8");
+  const [color3, setColor3] = useState("#000000");
+  const [color4, setColor4] = useState("#FFFFFF");
+  const [titleFont, setSelectedTitle] = useState("");
+  const [nameFont, setNameFont] = useState("");
+  const [textBoxFont, setTextBoxFont] = useState("");
+  const [textFont, setTextFont] = useState("");
+
   return (
-    <>
+    <div className="bg-white">
       <div className="text-c2lg text-black-deep"> make it unique</div>
       <div className="grid grid-cols-2 gap-10">
         <img src={CarouselImage} alt="" className="" />
-        <div className="flex justify-between">
-          <div className="w-1/2 ">
-            <ColorPicker />
+        <div className="grid grid-cols-2">
+          <div className="">
+            <div>
+              <div>
+                <p style={{ color: `${color}`, fontFamily: `${titleFont}` }}>
+                  The font will be applied to this text.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="w-1/2 ">fds</div>
-          <div>
-            <p className="apply-font">The font will be applied to this text.</p>
+
+          <div className="h-full p-0">
+            <div className="flex flex-col gap-10 items-center h-full p-0">
+              <div className="h-20 flex items-center justify-between gap-6">
+                <FontPicker
+                  selectedFont={titleFont}
+                  setSelectedFont={setSelectedTitle}
+                  heading="Titles:"
+                />
+                <div className=" mt-7 ">
+                  <ColorPicker color={color} setColor={setColor} />
+                </div>
+              </div>
+              <div className="h-20 flex items-center justify-between gap-6">
+                <FontPicker
+                  selectedFont={nameFont}
+                  setSelectedFont={setNameFont}
+                  heading="Your names:"
+                />
+                <div className=" mt-7 ">
+                  <ColorPicker color={color2} setColor={setColor2} />
+                </div>
+              </div>
+              <div className="h-20 flex items-center justify-between gap-6">
+                <FontPicker
+                  selectedFont={textBoxFont}
+                  setSelectedFont={setTextBoxFont}
+                  heading="customized text boxes:"
+                />
+                <div className=" mt-7 ">
+                  <ColorPicker color={color3} setColor={setColor3} />
+                </div>
+              </div>
+              <div className="h-20 flex items-center justify-between gap-6">
+                <FontPicker
+                  selectedFont={textFont}
+                  setSelectedFont={setTextFont}
+                  heading="main plain text:"
+                />
+                <div className=" mt-7 ">
+                  <ColorPicker color={color4} setColor={setColor4} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* <FontPicker/> */}
       </div>
-    </>
+    </div>
   );
 };
-const ColorPicker = () => {
+const ColorPicker = ({ color, setColor }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [color, setColor] = useState("#ffffff");
 
   const handleColorChange = (colorObject) => {
     setColor(colorObject.hex);
-    setIsOpen(false);
   };
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className="relative border border-silver-light py-2 w-[50%] px-2">
+    <div
+      className="relative border border-silver-light h-[2.5rem]  px-2 flex items-center rounded-md"
+      onClick={() => {
+        if (isOpen) {
+          setIsOpen(false);
+        }
+      }}
+    >
       <div className="flex items-center">
         <div className="mr-2 text-black-pitch">Color:</div>
         <div
@@ -519,16 +582,58 @@ const ColorPicker = () => {
           style={{ backgroundColor: color }}
         />
         <div className="ml-2 cursor-pointer" onClick={toggleDropdown}>
-          <ArrowDown className="h-4 w-4 ml-1" />
+          {isOpen ? (
+            <ArrowUp className="h-4 w-4 ml-1" />
+          ) : (
+            <ArrowDown className="h-4 w-4 ml-1" />
+          )}
         </div>
       </div>
       {isOpen && (
-        <div className="absolute right-0 mt-2 z-10">
+        <div
+          className="absolute right-0 mt-2 z-10"
+          onClick={(e) => e.stopPropagation()}
+        >
           <ChromePicker color={color} onChange={handleColorChange} />
         </div>
       )}
     </div>
   );
 };
+const fontList = [
+  "Arial",
+  "Times New Roman",
+  "Helvetica",
+  "Georgia",
+  "Verdana",
+  "Comic Sans MS",
+  "Trebuchet MS",
+  "Calibri",
+  "Courier New",
+  "Palatino",
+];
+const FontPicker = ({ heading = "ds", selectedFont, setSelectedFont }) => {
+  const handleFontChange = (event) => {
+    setSelectedFont(event.target.value);
+  };
 
-export default ColorPicker;
+  return (
+    <div>
+      <label htmlFor="font-picker" style={{ color: "black" }}>
+        {heading}
+      </label>
+      <select
+        id="font-picker"
+        value={selectedFont}
+        onChange={handleFontChange}
+        className="block w-full mt-1 rounded-md border border-gray-400 focus:outline-none bg-transparent text-black-deep py-2"
+      >
+        {fontList.map((font) => (
+          <option key={font} value={font} className="bg-white text-black-pitch">
+            {font}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
