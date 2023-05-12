@@ -5,8 +5,9 @@ import { MainMenu } from "components/StaticScreens/NavigationScreen";
 import { PaymentScreen } from "components/StaticScreens/PaymentScreen";
 import { SuccessScreen } from "components/StaticScreens/SuccessScreen";
 import { EventCreationForm } from "Context/EventCreationForms";
+import { EventEditing } from "Context/EventEditing";
 import { LandingLayout } from "Layout/LandingLayout";
-import { BrowserRouter, Route, Routes, } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -25,7 +26,15 @@ function App() {
         />
         <Route exact path="/adminTable" element={<AdminTable />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/gallery" element={<VideoPhotoEditing />} />
+        <Route
+          exact
+          path="/gallery"
+          element={
+            <EventEditing>
+              <VideoPhotoEditing />
+            </EventEditing>
+          }
+        />
         <Route path="/" element={<LandingLayout />} />
       </Routes>
     </BrowserRouter>

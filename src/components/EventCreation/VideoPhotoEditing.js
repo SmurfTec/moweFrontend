@@ -1,14 +1,10 @@
-import ModalBasic, { Modal } from "components/Modal/BasicModal";
+import ModalBasic from "components/Modal/BasicModal";
 import { ReactComponent as ArrowDown } from "assets/Svgs/ArrowDown.svg";
-import { ReactComponent as UserIcon } from "assets/Svgs/User.svg";
-import { InputField } from "components/Common/InputField/InputField";
 import { useState, useEffect } from "react";
 import { Button } from "components/Common/Button/Button";
-import { TextArea } from "components/Common/TextArea/TextArea";
 import "react-datepicker/dist/react-datepicker.css";
 import ClassNames from "Helpers/Common";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
-import { ReactComponent as EditIcon } from "assets/Svgs/Edit.svg";
 import VideoIcon1 from "assets/Images/Video.png";
 import VideoIcon2 from "assets/Images/Video1.png";
 import VideoIcon3 from "assets/Images/Video2.png";
@@ -29,19 +25,17 @@ import { ReactComponent as BackArrow } from "assets/Svgs/BackArrow.svg";
 import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { ChromePicker } from "react-color";
 import BackgroundImage from "assets/Images/EventCreation.jpg";
-import GalleryIcon from "assets/Images/GalleryIcon.jpg";
- 
-
 import "./date.css";
 import { DragDropFile } from "components/Common/UploadFile/DragDropUploadFile";
 import { Spinner } from "components/Common/LoadingSpinner/Spinner";
-export const EMAIL_INVALID = "Email is Invalid";
+import { useMediaCreationContext } from "Context/EventEditing";
 
+export const EMAIL_INVALID = "Email is Invalid";
 export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [ExclaminationIconClicked, setExclaminationIconClicked] =
     useState(false);
-    const [openGalleryModal,setOpenGalleryModal] = useState(false);
+  const [openGalleryModal, setOpenGalleryModal] = useState(false);
   return (
     <div
       className="h-screen flex flex-col justify-between items-center text-white font-extrabold py-[1%]"
@@ -70,11 +64,12 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
             />
           </div>
         )}
-        {ExclaminationIconClicked && currentStep===1&&(
-          <div 
-          className={ClassNames("flex w-full justify-end",
-          openGalleryModal?"hidden":"z-20 -ml-[19%] mt-1 absolute"
-          )}
+        {ExclaminationIconClicked && currentStep === 1 && (
+          <div
+            className={ClassNames(
+              "flex w-full justify-end",
+              openGalleryModal ? "hidden" : "z-20 -ml-[19%] mt-1 absolute",
+            )}
           >
             <div className="bg-gray-extraDark  rounded-lg w-80 flex flex-col gap-2 items-center justify-center py-4">
               <div className="text-white font-bold mb-2 text-csm flex flex-col items-center justify-center">
@@ -83,7 +78,7 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
                   <CrossIcon
                     className="h-5 w-5 text-white cursor-pointer"
                     onClick={() => {
-                      setOpenGalleryModal(false)
+                      setOpenGalleryModal(false);
                       setExclaminationIconClicked(!ExclaminationIconClicked);
                     }}
                   />
@@ -98,7 +93,9 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
                   className={ClassNames(
                     "w-24 shadow-lg  !bg-gray-whitish border border-gray-light text-gray-dark12 h-10",
                   )}
-                  onClick={() => {setOpenGalleryModal(true)}}
+                  onClick={() => {
+                    setOpenGalleryModal(true);
+                  }}
                 />
               </div>
             </div>
@@ -109,26 +106,39 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
-        <Footer currentStep={currentStep} setCurrentStep={setCurrentStep} setExclaminationIconClicked={setExclaminationIconClicked}/>
+        <Footer
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+          setExclaminationIconClicked={setExclaminationIconClicked}
+        />
       </div>
-     {openGalleryModal&&
-      <ModalBasic open={openGalleryModal} onClose={() => setOpenGalleryModal(false)} bgClassName="bg-black-pitch bg-opacity-75 backdrop-filter backdrop-blur-lg">
-      <div className="bg-white py-14 px-16  overflow-hidden z-50 flex flex-col gap-10 rounded-2xl">
-      <div className="text-c2lg text-black-deep font-medium flex gap-10 items-center ">
-      <BackArrow className="h-5 w-5 cursor-pointer" onClick={() => setOpenGalleryModal(false)}/>
-      Galería de ejemplos</div>
-        <Content3/>
-      </div>
-    </ModalBasic>
-     }
+      {openGalleryModal && (
+        <ModalBasic
+          open={openGalleryModal}
+          onClose={() => setOpenGalleryModal(false)}
+          bgClassName="bg-black-pitch bg-opacity-75 backdrop-filter backdrop-blur-lg"
+        >
+          <div className="bg-white py-14 px-16  overflow-hidden z-50 flex flex-col gap-10 rounded-2xl">
+            <div className="text-c2lg text-black-deep font-medium flex gap-10 items-center ">
+              <BackArrow
+                className="h-5 w-5 cursor-pointer"
+                onClick={() => setOpenGalleryModal(false)}
+              />
+              Galería de ejemplos
+            </div>
+            <Content3 />
+          </div>
+        </ModalBasic>
+      )}
     </div>
   );
 };
 
-const Footer = ({ currentStep, setCurrentStep,setExclaminationIconClicked }) => {
-  const isFirstStep = currentStep === 1;
-  const isLastStep = currentStep === 7;
-
+const Footer = ({
+  currentStep,
+  setCurrentStep,
+  setExclaminationIconClicked,
+}) => {
   return (
     <div className={ClassNames("flex gap-3 justify-between")}>
       <Button
@@ -147,7 +157,7 @@ const Footer = ({ currentStep, setCurrentStep,setExclaminationIconClicked }) => 
           if (currentStep < 7) {
             setCurrentStep((prevState) => prevState + 1);
           } else setCurrentStep(7);
-          setExclaminationIconClicked(false)
+          setExclaminationIconClicked(false);
         }}
       />
     </div>
@@ -181,6 +191,35 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
   }
 };
 const Content1 = ({ currentStep }) => {
+  const { media, setMediaState } = useMediaCreationContext();
+
+  const handleImageUpload1 = (file) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+       
+        setMediaState({
+          ...media,
+          media1: { url: reader.result, type: file.type },
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageUpload2 = (file) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+     
+        setMediaState({
+          ...media,
+          media2: { url: reader.result, type: file.type },
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <div className=" flex flex-col gap-2">
       <div className="text-c2lg text-black-gray pl-2">Carga tu fotos</div>
@@ -201,19 +240,58 @@ const Content1 = ({ currentStep }) => {
           <div className="text-c2lg font-normal flex w-full justify-center text-black-pitch">
             Foto/Video Principal
           </div>
-          <DragDropFile />
+          <DragDropFile
+            key={media?.media1?.url || "no-file"}
+            id="file-upload1"
+            srcFile={media?.media1}
+            handleFileUpload={handleImageUpload1}
+          />
         </div>
         <div className="flex flex-col gap-3">
           <div className="text-c2lg font-normal flex w-full justify-center text-black-pitch">
             Foto/Video Secundario
           </div>
-          <DragDropFile />
+          <DragDropFile
+            key={media?.media2|| "no-file"}
+            id="file-upload2"
+            srcFile={media?.media2}
+            handleFileUpload={handleImageUpload2}
+          />
         </div>
       </div>
     </div>
   );
 };
 const Content2 = ({ currentStep }) => {
+  const { media, setMediaState } = useMediaCreationContext();
+
+  const handleImageUpload1 = (file) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+       
+        setMediaState({
+          ...media,
+          media1: { url: reader.result, type: file.type },
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageUpload2 = (file) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+     
+        setMediaState({
+          ...media,
+          media2: { url: reader.result, type: file.type },
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <div className="flex flex-col gap-3 -mt-4">
       <div className="text-c2lg text-black-gray pl-2">Carga tu fotos</div>
@@ -234,13 +312,23 @@ const Content2 = ({ currentStep }) => {
           <div className="text-c2lg font-normal flex w-full justify-center">
             Foto/Video Principal 2
           </div>
-          <DragDropFile srcFile={GalleryImage1} />
+          <DragDropFile
+            key={media?.media2|| "no-file"}
+            id="file-upload2"
+            srcFile={media?.media2}
+            handleFileUpload={handleImageUpload2}
+          />
         </div>
         <div className="flex flex-col gap-3">
           <div className="text-c2lg font-normal flex w-full justify-center">
             Foto/Video Secundario
           </div>
-          <DragDropFile />
+          <DragDropFile
+            key={media?.media2|| "no-file"}
+            id="file-upload2"
+            srcFile={media?.media2}
+            handleFileUpload={handleImageUpload2}
+          />
         </div>
       </div>
     </div>
@@ -389,85 +477,7 @@ const Content5 = () => {
     </div>
   );
 };
-const CustomUploadFile = ({
-  id = "upload-file",
-  label = "Imagen:",
-  value = "",
-  onResponse,
-  mode = "View",
-}) => {
-  const [fieldError, setFieldError] = useState("");
-  const [upLoading, setUploading] = useState(false);
-  const [fileName, setFileName] = useState("");
-
-  return (
-    <div className="flex items-center gap-4">
-      <div
-        className={ClassNames(
-          "flex text-sm justify-center items-center mt-4",
-          // fieldError ? "bg-red-500" : "bg-blue-500",
-        )}
-      >
-        <label
-          htmlFor={id}
-          className="text-blue-light relative cursor-pointer bg-white rounded-md focus:outline-none"
-        >
-          <span className="bg-gray-snow border border-gray-400 px-6 py-2 rounded-md">
-            {upLoading ? <Spinner width="4" height="4" /> : "Cargar"}
-          </span>
-          {!upLoading ? (
-            <input
-              id={id}
-              name="file-upload"
-              type={"file"}
-              onChange={({ target }) => {
-                console.log("Target file is", target);
-                // FileUploadToServer(target);
-              }}
-              className="sr-only"
-            />
-          ) : (
-            ""
-          )}
-        </label>
-      </div>
-      <div className="flex flex-col w-11/12">
-        <label className="block text-sm font-semibold sapphire">{label}</label>
-
-        <div
-          className={ClassNames(
-            "mt-1 border-2 border-gray-300 rounded-md py-10 px-4 flex justify-between items-center w-full",
-            fieldError
-              ? "border-red-500 focus:ring-red-500 focus:border-red-500"
-              : "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500",
-          )}
-        >
-          <div
-            className={ClassNames(
-              "relative",
-              fieldError ? "bg-red-500" : "light_grayish_navy",
-            )}
-          >
-            {fileName && (
-              <span className="text-sm pl-6 sapphire">{fileName}</span>
-            )}
-          </div>
-        </div>
-      </div>
-      {fieldError && (
-        <div
-          className="pt-2 text-sm text-red-600 font-poppins"
-          id={`${label}-error`}
-        >
-          {fieldError}
-        </div>
-      )}
-    </div>
-  );
-};
-
 const Content6 = ({ setCurrentStep }) => {
-
   return (
     <>
       <div className="text-c2lg text-black-deep"> make it unique</div>
@@ -479,16 +489,14 @@ const Content6 = ({ setCurrentStep }) => {
           </div>
           <div className="w-1/2 ">fds</div>
           <div>
-               
-                <p className="apply-font">The font will be applied to this text.</p>
-            </div>
+            <p className="apply-font">The font will be applied to this text.</p>
+          </div>
         </div>
         {/* <FontPicker/> */}
       </div>
     </>
   );
 };
-
 const ColorPicker = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState("#ffffff");
@@ -522,9 +530,5 @@ const ColorPicker = () => {
     </div>
   );
 };
-
-
-
-
 
 export default ColorPicker;
