@@ -11,3 +11,18 @@ padding: 2%;
     border-radius: 10px;
     
 }
+.bg-smoke-white{
+    max-width: 1376px;
+    max-height: 771px;
+    width: 75%;
+    height: 80%;
+    min-width: 700px;
+    min-height: 500px;
+    margin-top: 0px;
+}
+.step_1{
+    width: 70%;
+    height: 80%;
+    border-radius: 6px;
+    margin: auto;
+}

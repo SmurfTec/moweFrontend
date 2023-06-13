@@ -19,6 +19,7 @@ import GalleryImage4 from "assets/Images/Upload4.png";
 import CarouselImage1 from "assets/Images/VideoCarousel1.png";
 import CarouselImage2 from "assets/Images/VideoCarousel2.png";
 import CarouselImage from "assets/Images/CarouselImage.png";
+import welcomImg from "assets/Svgs/Hand.svg"
 
 import { ReactComponent as RightIcon } from "assets/Svgs/LeftColorIcon.svg";
 import { ReactComponent as LeftIcon } from "assets/Svgs/RightColorIcon.svg";
@@ -32,6 +33,7 @@ import { DragDropFile } from "components/Common/UploadFile/DragDropUploadFile";
 import { useMediaCreationContext } from "Context/EventEditing";
 
 export const EMAIL_INVALID = "Email is Invalid";
+
 export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [ExclaminationIconClicked, setExclaminationIconClicked] =
@@ -51,12 +53,12 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
         <AppLogo className="2xl:h-96 " />
       </div>
 
-      <div className="text-c2xl text-green-none mb-[.5%] w-full px-[4.5%] -mt-28">
+      {/* <div className="text-c2xl text-green-none mb-[.5%] w-full px-[4.5%] -mt-28">
         ¡Vamos a diseñar tu invitación!
-      </div>
+      </div> */}
       <div
         className={ClassNames(
-          "bg-smoke-white w-[110rem]  flex flex-col gap-3 py-4 justify-between rounded-2xl h-[55rem] overflow-y-auto px-20",
+          "bg-smoke-white w-100 flex flex-col gap-3 py-4 justify-between rounded-2xl overflow-y-auto px-18",
           // currentStep===5?"bg-white":""
         )}
       >
@@ -70,6 +72,7 @@ export const VideoPhotoEditing = ({ modalOpen = false, setModalOpen }) => {
             />
           </div>
         )}
+
         {ExclaminationIconClicked && currentStep === 1 && (
           <div
             className={ClassNames(
@@ -146,7 +149,7 @@ const Footer = ({
   setExclaminationIconClicked,
 }) => {
   return (
-    <div className={ClassNames("flex gap-3 justify-between")}>
+    <div style={currentStep===1 && {display: 'none'}} className={ClassNames("flex gap-3 justify-between")}>
       <Button
         btnText={"Atrás"}
         className={ClassNames("w-40 text-gray-dark bg-white")}
@@ -169,6 +172,7 @@ const Footer = ({
     </div>
   );
 };
+
 const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
   switch (currentStep) {
     case 1:
@@ -196,76 +200,19 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
       return "No case found";
   }
 };
+
 const Content1 = ({ currentStep }) => {
-  const { media, setMediaState } = useMediaCreationContext();
-
-  const handleImageUpload1 = (file) => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setMediaState({
-          ...media,
-          media1: { url: reader.result, type: file.type },
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleImageUpload2 = (file) => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setMediaState({
-          ...media,
-          media2: { url: reader.result, type: file.type },
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
   return (
-    <div className=" flex flex-col gap-2">
-      <div className="text-c2lg text-black-gray pl-2">Carga tu fotos</div>
-      <div className="text-csm text-green-none pl-2">
-        Para empezar, vamos a subir 2 vídeos o fotos. El principal se mostrará
-        en la portada de la invitación y el secundario en el apartado “cuenta
-        atrás”.
-        <div className="text-csm text-black-semi">
-          Si no encuentras la foto perfecta, no te preocupes, vas a poder
-          modificarla después.
-        </div>
-        <div className="flex w-full justify-end pr-2 text-cmd text-black-deep">
-          Paso {currentStep} de 4
-        </div>
+    <div className="step_1 bg-white">
+      <div className="flex items-center pt-9">
+      <img src={welcomImg} className="m-auto" alt="" />
       </div>
-      <div className="flex gap-10 justify-between items-center bg-white opacity-100 h-[28rem] rounded-2xl px-5">
-        <div className="flex flex-col gap-3">
-          <div className="text-c2lg font-normal flex w-full justify-center text-black-pitch">
-            Foto/Video Principal
-          </div>
-          <DragDropFile
-            key={media?.media1?.url || "no-file"}
-            id="file-upload1"
-            srcFile={media?.media1}
-            handleFileUpload={handleImageUpload1}
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <div className="text-c2lg font-normal flex w-full justify-center text-black-pitch">
-            Foto/Video Secundario
-          </div>
-          <DragDropFile
-            key={media?.media2 || "no-file"}
-            id="file-upload2"
-            srcFile={media?.media2}
-            handleFileUpload={handleImageUpload2}
-          />
-        </div>
-      </div>
+      <h2 className="text-3xl text-black-gray text-center my-8 pl-2">Welcome to your wedding invitation designer!</h2>
+      <p className="text-xl text-black-gray text-center my-8 pl-2">if you’re ready, let’s design the perfect invitation for the Big Day! </p>
     </div>
   );
 };
+
 const Content2 = ({ currentStep }) => {
   const { media, setMediaState } = useMediaCreationContext();
 
@@ -336,6 +283,7 @@ const Content2 = ({ currentStep }) => {
     </div>
   );
 };
+
 const Content3 = ({ setCurrentStep }) => {
   return (
     <div className="grid grid-cols-3 gap-10">
@@ -360,6 +308,7 @@ const Content3 = ({ setCurrentStep }) => {
     </div>
   );
 };
+
 const Content4 = ({ currentStep }) => {
   const [selectedVideo, setSelectedVideo] = useState(VideoIcon1);
   return (
@@ -409,6 +358,7 @@ const Content4 = ({ currentStep }) => {
     </div>
   );
 };
+
 const Content5 = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [prevSlide, setPrevSlide] = useState(null);
@@ -479,6 +429,7 @@ const Content5 = () => {
     </div>
   );
 };
+
 const Content6 = ({ setCurrentStep }) => {
   const [color, setColor] = useState("#F2C8DC");
   const [color2, setColor2] = useState("#C4EBD8");
@@ -554,6 +505,7 @@ const Content6 = ({ setCurrentStep }) => {
     </div>
   );
 };
+
 const ColorPicker = ({ color, setColor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -600,6 +552,7 @@ const ColorPicker = ({ color, setColor }) => {
     </div>
   );
 };
+
 const fontList = [
   "Arial",
   "Times New Roman",
@@ -612,6 +565,7 @@ const fontList = [
   "Courier New",
   "Palatino",
 ];
+
 const FontPicker = ({ heading = "ds", selectedFont, setSelectedFont }) => {
   const handleFontChange = (event) => {
     setSelectedFont(event.target.value);

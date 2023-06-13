@@ -1,0 +1,18 @@
+.event_creation_main{
+    width: 100vw;
+    height: 100vh;
+    background: url("../../assets/Images/EventCreation.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    position: relative;
+}
+.event_creation_main .app-logo{
+    position: absolute;
+    top: 0%;
+    left: 2%;
+}
+.event_creation_main .app-logo img{
+    width: auto;
+    height: 240px;
+}
