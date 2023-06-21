@@ -1,0 +1,99 @@
+.user_profile{
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+.profile_inner{
+    width: 80%;
+    height: 90%;
+}
+.profile_inner .left{
+    width: 40%;
+    height: 80%;
+    background: rgba(105, 168, 141, 0.25);
+    border-radius: 30px;
+    position: relative;
+    margin-top: 100px;
+}
+.profile_inner .right{
+    width: 40%;
+    height: 90%;
+    border-radius: 30px;
+}
+.profilePic{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ADADAD;
+    margin-top: -80px;
+    position: relative;
+}
+.editIcon{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 40px;
+    height: 40px;
+    background: #69A88D;
+}
+.profile_inner .left input{
+    width: 300px;
+    height: 47px;
+    background: #FFFFFF;
+    border: 1px solid #C9C9C9;
+    border-radius: 5px;
+}
+.profile_btns{
+    width: 100%!important;
+    min-width: 350px;
+    height: 55px;
+}
+.change_pass{
+    width: 80%;
+    height: 90%;
+    background: #FFFFFF;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+}
+.change_pass .left{
+    width: 90%;
+    height: 90%;
+    background: rgba(105, 168, 141, 0.25);
+    border-radius: 30px;
+    position: relative;
+}
+.change_pass .profilePic{
+    position: absolute;
+    top: -20px;
+    left: -30px;
+}
+.change_pass .fixed_name{
+    position: absolute;
+    top: -30px;
+    left: 15%;
+}
+.change_pass .inputs_ input{
+    width: 100%;
+}
+.change_pass .inputs_{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+}
+.need_help{
+    width: 50%;
+    height: 70%;
+    max-width: 900px;
+    max-height: 680px;
+    background: #FFFFFF;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+}
+.need_help .help_ input{
+    width: 497px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #C9C9C9;
+}
+.need_help .help_ textarea{
+    background: #FFFFFF;
+    border: 1px solid #C9C9C9;
+}

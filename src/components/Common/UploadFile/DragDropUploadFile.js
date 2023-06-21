@@ -14,12 +14,12 @@ export const DragDropFile = ({
 
   return (
     <div
-      className="mt-2 min-w-[35rem] h-[20rem]"
+      className="mt-2 min-w-[20rem] h-[20rem]"
       style={{
         backgroundImage: isImage ? `url(${srcFile.url})` : "",
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundPosition: "10% 90%",
       }}
     >
       <div className="text-center">

@@ -9,11 +9,13 @@ export const Button = ({
   id = 1,
   rightAlignTex=false,
   variant = "Default",
+  style
 }) => {
   return (
     <button
       type="button"
       key={id}
+      style={style}
       disabled={isDisabled}
       onClick={() => onClick?.()}
       className={ClassNames(

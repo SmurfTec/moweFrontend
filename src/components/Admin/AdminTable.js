@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./admintable.css"
 import BackgroundImage from "assets/Images/wed.jpg";
 import ModalBasic from "components/Modal/BasicModal";
 import { Button } from "components/Common/Button/Button";
@@ -16,6 +17,7 @@ import Table from "components/Common/Table/Table";
 import ClassNames from "Helpers/Common";
 import { CustomInputField } from "components/Common/InputField/CustomInputField";
 import { TextArea } from "components/Common/TextArea/TextArea";
+import AddUser from "./AddUser";
 const people = [
   {
     name: "Lindsay Walton",
@@ -124,7 +126,10 @@ const TABLE_HEADINGS = [" ", "Name", "Email", " ", " ", " ", " ", " ", " "];
 
 export const AdminTable = () => {
   const [modalOpen, setModalOpen] = useState(true);
-
+  const[openUserModal, setOpenUserModal] = useState(false)
+const handleClose = () => {
+  setOpenUserModal(false)
+}
   return (
     <div
       className={ClassNames(
@@ -144,6 +149,10 @@ export const AdminTable = () => {
         mainModalClass="2xl:overflow-y-hidden 2xl:-mt-8"
       >
         <div className="flex flex-col gap-5 p-10 bg-white 2xl:w-[110rem] 2xl:h-[58rem] rounded-2xl">
+          <AddUser 
+            openUserModal={openUserModal}
+            handleClose={handleClose}
+          />
           <div className="flex">
             <CrossIcon className="h-12 w-12" />
             <AppLogo className="2xl:h-96 -mt-28 ml-10" />
@@ -171,7 +180,7 @@ export const AdminTable = () => {
               <Button
                 btnText={"+  Añadir"}
                 className="w-40 !bg-green-teal shadow-lg text-white"
-                onClick={() => {}}
+                onClick={() => setOpenUserModal(true)}
               />
 
               <Button

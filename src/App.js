@@ -7,7 +7,9 @@ import { SuccessScreen } from "components/StaticScreens/SuccessScreen";
 import { EventCreationForm } from "Context/EventCreationForms";
 import { EventEditing } from "Context/EventEditing";
 import { LandingLayout } from "Layout/LandingLayout";
+import EventCreate from "pages/create-event/EventCreate";
 import MainBg from "pages/Event-creation/MainBg";
+import EventHome from "pages/Event-home/EventHome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
             </EventCreationForm>
           }
         />
+        <Route exact path="/event-creation" element={<EventCreate />} />
+        <Route exact path="/event-home" element={<EventHome />} />
         <Route exact path="/invitation" element={<MainBg />} />
         <Route exact path="/adminTable" element={<AdminTable />} />
         <Route exact path="/dashboard" element={<Dashboard />} />

@@ -1,0 +1,17 @@
+.add_user{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.add_user .user_inner{
+    width: 478px;
+    height: 478px;
+    background: rgba(255, 255, 255, 0.87);
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+}
+.add_user .user_inner input{
+    width: 412.88px;
+    height: 47px;
+    background: #FFFFFF;
+    border: 1px solid #C9C9C9;
+    border-radius: 5px;
+}

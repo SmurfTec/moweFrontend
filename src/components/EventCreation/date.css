@@ -26,3 +26,17 @@ padding: 2%;
     border-radius: 6px;
     margin: auto;
 }
+.welcome_auto{
+    width: 85%;
+    margin: auto;
+}
+.welcome_auto p{
+    font-weight: 500;
+    padding: 6px 2rem;
+    font-size: 32px;
+    line-height: 38px;
+}
+.btn_Wraper{
+    display: flex;
+    justify-content: center;
+}

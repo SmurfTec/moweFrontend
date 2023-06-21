@@ -151,6 +151,7 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
     </>
   );
 };
+
 const ResetPassword = () => {
   const [codeVerificationChars, setCodeVerificationChars] = useState("");
 

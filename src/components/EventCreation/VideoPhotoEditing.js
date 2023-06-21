@@ -177,7 +177,7 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
   switch (currentStep) {
     case 1:
       return (
-        <Content1 setCurrentStep={setCurrentStep} currentStep={currentStep} />
+        <Content2 setCurrentStep={setCurrentStep} currentStep={currentStep} />
       );
     case 2:
       return (
@@ -201,14 +201,25 @@ const EventSelecionForms = ({ currentStep, setCurrentStep }) => {
   }
 };
 
-const Content1 = ({ currentStep }) => {
+const Content1 = ({ currentStep, setCurrentStep }) => {
   return (
     <div className="step_1 bg-white">
-      <div className="flex items-center pt-9">
+      <div className="flex items-center pt-9 px-2">
       <img src={welcomImg} className="m-auto" alt="" />
       </div>
-      <h2 className="text-3xl text-black-gray text-center my-8 pl-2">Welcome to your wedding invitation designer!</h2>
-      <p className="text-xl text-black-gray text-center my-8 pl-2">if you’re ready, let’s design the perfect invitation for the Big Day! </p>
+      <div className="welcome_auto">
+        <h2 className="text-3xl text-black-gray text-center my-9 pl-2">Welcome to your wedding invitation designer!</h2>
+        <p className="text-3xl text-black-gray text-center my-8 pl-2">if you’re ready, let’s design the perfect invitation for the Big Day! </p>
+      </div>  
+      <div className="btn_Wraper">
+        <Button
+          btnText={"Start"}
+          className={ClassNames("w-40 shadow-lg !bg-green-teal text-white")}
+          onClick={() => {
+            setCurrentStep(3)
+          }}
+        />
+      </div>
     </div>
   );
 };

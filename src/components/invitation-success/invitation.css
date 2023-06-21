@@ -1,0 +1,54 @@
+.invitaion_modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 9);
+}
+.invitaion_modal .inner{
+    width: 1184px;
+    height: 90%;
+    max-height: 900px;
+    background: #FFFFFF;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 100px;
+}
+.money_div{
+    width: 396px;
+    height: 113px;
+    border: 3px solid #FFFFFF;
+    background: #F1E8D1;
+    box-shadow: 0px 0px 20px rgba(179, 126, 0, 0.8);
+    border-radius: 56.5px;
+}
+.date_div{
+    background-color: #FAFAFA;
+    width: 250px;
+    background: #FAFAFA;
+    border: 1px solid #E4E4E4;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+}
+.pay-success_modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+.imgwraper{
+    position: relative;
+    width: 1184px;
+    height: 90%;
+    max-height: 900px;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.16);
+    background-color: white;
+}
+.success-inner{
+    padding: 50px;
+}

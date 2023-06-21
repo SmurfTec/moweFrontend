@@ -54,6 +54,7 @@ export const Navbar = () => {
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white !shadow-6xl"
+              onClick={() => navigate("/event-creation")}
             />
           </div>
         </div>
@@ -95,7 +96,7 @@ export const Navbar = () => {
           <div
             onClick={() => {
               setActiveTab(TAB3);
-              navigate("/gallery");
+              navigate("/event-creation");
             }}
             className={ClassNames(
               "flex justify-center flex-col items-center",
