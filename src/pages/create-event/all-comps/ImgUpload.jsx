@@ -1,19 +1,36 @@
 import { Button } from 'components/Common/Button/Button'
 import { DragDropFile } from 'components/Common/UploadFile/DragDropUploadFile'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getFile1, getFile2 } from 'redux/slices/eventSlice'
 import { dragDrop, infoIcon } from 'svg-icons/icons'
 
-const ImgUpload = () => {
+const ImgUpload = (props) => {
+  const dispatch = useDispatch()
+  const eventDetails = useSelector(state => state.event.eventDetails)
+  const[files, setFiles] = useState({
+    file1: "",
+    file2: "",
+    preview1: "",
+    preview2: ""
+  })
   const fileInputRef1 = useRef(null);
   const fileInputRef2 = useRef(null);
 
   const handleFileSelect1 = () => {
     const file = fileInputRef1.current.files[0];
-    console.log(file);
+    const previewUrl = URL.createObjectURL(file)
+    console.log(previewUrl)
+    setFiles({...files, file1: file, preview1: previewUrl})
+
+    dispatch(getFile1(file))
   };
   const handleFileSelect2 = () => {
     const file = fileInputRef2.current.files[0];
-    console.log(file);
+    const previewUrl = URL.createObjectURL(file)
+    setFiles({...files, file2: file, preview2: previewUrl})
+
+    dispatch(getFile2(file))
   };
 
   const handleClick1 = () => {
@@ -23,6 +40,23 @@ const ImgUpload = () => {
     fileInputRef2.current.click();
   };
 
+  useEffect(() => {
+    if(eventDetails?.file1){
+      console.log("url from details ", URL.createObjectURL(eventDetails?.file1))
+      setFiles({
+        ...files,
+        preview1: URL.createObjectURL(eventDetails?.file1)
+      })
+    }
+    if(eventDetails?.file2){
+      console.log("url from details ", URL.createObjectURL(eventDetails?.file2))
+      setFiles({
+        ...files,
+        preview2: URL.createObjectURL(eventDetails?.file2)
+      })
+    }
+  }, [eventDetails])
+  console.log(files)
   return (
     <div >
         <div className='flex'>
@@ -44,7 +78,11 @@ const ImgUpload = () => {
             <div className="inner text-center">
                 <p className='mb-3'>Foto/Video Principal</p>
                 <div className="img_vid_1 flex flex-col items-center justify-center cursor-pointer border-dashed border-gray-500 border rounded-lg">
+                    {files?.preview1 ? 
+                      <img src={files.preview1} className='w-100 h-100' alt="" />
+                    :
                     <span>{dragDrop}</span>
+                    }
                     <Button onClick={handleClick1} className={'upload_btns text-white pl-5'}>Cargar</Button>
                 </div>
                 <input

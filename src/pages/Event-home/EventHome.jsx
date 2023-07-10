@@ -4,20 +4,32 @@ import EventMenus from './EventMenus'
 import HomeDesignCreated from './HomeDesignCreated'
 import AllCompsSwitch from './AllCompsSwitch'
 import { Button } from 'components/Common/Button/Button'
-import Countdown from './all-comps/Countdown'
 import { optionBtns } from './allbtns'
 import OtherCompSwitch from './OtherCompSwitch'
+import { useEffect } from 'react'
+import { getUserProfile } from 'redux/slices/userSlices'
+import { useSelector } from 'react-redux'
 
 const EventHome = () => {
+    const eventDetails = useSelector(state => state.event.eventDetails)
     const[currComp, setCurrComp] = useState(0)
+    const[preview, setPreview] = useState("")
 
     const changeCurrComp = (id) => {
         setCurrComp(id)
     }
+
+    useEffect(() => {
+        getUserProfile()
+        setPreview(URL.createObjectURL(eventDetails?.file1))
+    }, [])
   
     if(currComp===0 || currComp===1 ){
         return (
-            <div className='event_home_main w-100 h-100'>
+            <div 
+                className='event_home_main w-100 h-100'
+                style={{backgroundImage: `url(${preview})`}}
+            >
                 <EventMenus 
                     menuIndex="1"
                     currComp={currComp}

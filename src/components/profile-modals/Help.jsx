@@ -25,7 +25,7 @@ const Help = (props) => {
                     <label className='mb-2 mt-3 text-xl'>
                         your email:
                     </label>
-                    <input 
+                    <input
                         type="password" 
                         className='p-3 rounded-lg mb-2 w-50' 
                         placeholder='Enter password' 

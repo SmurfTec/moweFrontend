@@ -9,6 +9,8 @@ import { ReactComponent as CrossIcon } from "assets/Svgs/Cross.svg";
 import { InputField } from "components/Common/InputField/InputField";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import { RequestLogin, RequestSignUp } from "Services/LoginSignup/Login";
+import axios from "axios";
+import { API_BASE } from "Configs/secrets";
 export const EMAIL_INVALID = "Email is Invalid";
 
 export const Login = ({ modalOpen = false, setModalOpen }) => {
@@ -56,6 +58,50 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUploading, setIsSignUploading] = useState(false);
+  const[errMsg, setErrMsg] = useState("")
+
+  const userSignUp = async() => {
+    await axios.post(`${API_BASE}user/signup`, {email, password})
+    .then(res => {
+      const {data} = res
+      if(data.status === 200){
+        localStorage.setItem(
+          "USER_CREDENTIALS",
+          JSON.stringify(data?.accessToken),
+        );
+        window.location.reload()
+      }else{
+        setErrMsg(data?.message)
+      }
+      console.log(data?.accessToken)
+    })
+    .catch(err => {
+      console.log(err)
+      setErrMsg(err?.message)
+    })
+  }
+
+  const userLogin = async() => {
+    await axios.post(`${API_BASE}user/signin`, {email, password})
+    .then(res => {
+      const {data} = res
+      if(data.status === 200){
+        localStorage.setItem(
+          "USER_CREDENTIALS",
+          JSON.stringify(data?.accessToken),
+        );
+        window.location.reload()
+      }else{
+        setErrMsg(data?.message)
+      }
+      console.log(data)
+    })
+    .catch(err => {
+      console.log(err)
+      setErrMsg(err?.message)
+    })
+  }
+
   return (
     <>
       <div className="flex flex-col gap-4 justify-center md:px-40">
@@ -83,6 +129,7 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
           }}
         />
       </div>
+      {errMsg ? <p className="my-0" style={{color: 'red'}}>{errMsg}</p> : ''}
       <div
         className="flex justify-center cursor-pointer"
         onClick={() => setResetPassword(true)}
@@ -103,50 +150,13 @@ const LoginForm = ({ setResetPassword, setModalOpen }) => {
           btnText="Sign Up"
           isLoading={isSignUploading}
           className="bg-gray-misty shadow-lg"
-          onClick={async () => {
-            if (email && password) {
-              setIsSignUploading(true);
-              const loginToken = await RequestSignUp({
-                email,
-                password,
-              });
-              if (loginToken) {
-                setIsSignUploading(false);
-                localStorage.setItem(
-                  "USER_CREDENTIALS",
-                  JSON.stringify({
-                    accessToken: loginToken?.token?.accessToken,
-                    expiresIn: loginToken?.token?.expiresIn,
-                  }),
-                );
-              }
-            }
-          }}
+          onClick={userSignUp}
         />
         <Button
           btnText="Log In"
           isLoading={isLoading}
           className=" !bg-green-teal shadow-lg text-white px-5"
-          onClick={async () => {
-            if (email && password) {
-              setIsLoading(true);
-              const loginToken = await RequestLogin({
-                email,
-                password,
-              });
-              if (loginToken) {
-                setIsLoading(false);
-                localStorage.setItem(
-                  "USER_CREDENTIALS",
-                  JSON.stringify({
-                    accessToken: loginToken?.token?.accessToken,
-                    expiresIn: loginToken?.token?.expiresIn,
-                  }),
-                );
-              }
-            }
-          }}
-        />
+          onClick={userLogin}/>
       </div>
     </>
   );

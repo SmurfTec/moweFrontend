@@ -67,8 +67,8 @@
     background: rgba(255, 255, 255, 0.7);
     border-radius: 3px;
 }
-.time_picker span{
-    border: 1px solid silver;
+.time_picker{
+    border: 1px solid silver!important;
     /* border-radius: 3px; */
 }
 

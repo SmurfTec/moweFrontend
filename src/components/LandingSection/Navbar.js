@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Login } from "components/Login/Login";
 import { useNavigate } from "react-router-dom";
 import { Button } from "components/Common/Button/Button";
-import LandinImage from "assets/Images/LandingImage.jpg";
-import LandinImage1 from "assets/Images/CarouselImage2.jpg";
 import { ReactComponent as AppLogo } from "assets/Svgs/AppLogo.svg";
 import videoBackground from "assets/Videos/LandingVideo.mp4";
 import ClassNames from "Helpers/Common";
@@ -24,9 +22,16 @@ const VideoPlayer = () => {
 };
 export const Navbar = () => {
   const navigate = useNavigate();
+  const currUser = JSON.parse(localStorage.getItem("USER_CREDENTIALS"))
 
   const [modalOpen, setModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(TAB1);
+
+  const logoutNow = () => {
+    localStorage.clear()
+    navigate("/")
+    window.location.reload()
+  }
 
   return (
     <>
@@ -44,13 +49,21 @@ export const Navbar = () => {
         <div className="flex flex-row items-center justify-between -mt-10 z-10">
           <AppLogo className="h-80" />
           <div className="flex gap-10">
-            <Button
-              btnText="Log In"
-              className="w-40 !bg-green-teal !shadow-6xl text-white"
-              onClick={() => {
-                setModalOpen(true);
-              }}
-            />
+            {currUser ? 
+              <Button
+                btnText="Log Out"
+                className="w-40 !bg-green-teal !shadow-6xl text-white"
+                onClick={logoutNow}
+              />
+              :
+              <Button
+                btnText="Log In"
+                className="w-40 !bg-green-teal !shadow-6xl text-white"
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+              />
+            }
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white !shadow-6xl"

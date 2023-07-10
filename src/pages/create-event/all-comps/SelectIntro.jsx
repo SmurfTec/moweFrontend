@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import img2 from "../../../assets/Images/Video.png"
 import img3 from "../../../assets/Images/Video2.png"
+import { useDispatch } from 'react-redux'
+import { introduction } from 'redux/slices/eventSlice'
 
 const coverPics = [
     {id: 1, img: img2},
@@ -10,6 +12,11 @@ const coverPics = [
 ]
 
 const SelectIntro = (props) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(introduction("Dummy introduction..."))
+  }, [])
   return (
     <div className=''>
         <p className='text-xl mb-3'>

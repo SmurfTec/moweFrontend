@@ -13,11 +13,11 @@ import { API_BASE } from "Configs/secrets";
  */
 export const RequestLogin = async (payload) => {
   const response = await axios.post(
-    `${API_BASE}api/user/login`,
+    `${API_BASE}signup`,
     payload,
   );
-  console.log(`[RequestLogin][API_Response] - `, response.data.result);
-  return (response.data?.result);
+  console.log(`[RequestLogin][API_Response] - `, response.data);
+  return (response.data);
 };
 export const RequestSignUp = async (payload) => {
     const response = await axios.post(
