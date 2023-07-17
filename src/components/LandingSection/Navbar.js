@@ -46,7 +46,7 @@ export const Navbar = () => {
         }}
       >
         <VideoPlayer />
-        <div className="flex flex-row items-center justify-between -mt-10 z-10">
+        <div className="home_logo_wraper flex flex-row items-center justify-between -mt-10 z-10">
           <AppLogo className="h-80" />
           <div className="flex gap-10">
             {currUser ? 

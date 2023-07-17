@@ -4,10 +4,9 @@ import appLogo from "../../assets/Svgs/AppLogo.svg"
 import AllCompsSwitch from './AllCompsSwitch'
 import img3 from "../../assets/Images/Video2.png"
 import { Button } from 'components/Common/Button/Button'
-import { useSelector } from 'react-redux'
 
 const EventCreate = () => {
-    const eventDetails = useSelector(state => state.event.eventDetails)
+//   const eventDetails = useSelector(state => state.event.eventDetails)
   const[currComp, setCurrComp] = useState(1)
   const[activeImg, setActiveImg] = useState({id:1, img: img3})
   const changeCurrComp = (id) => {
@@ -16,7 +15,7 @@ const EventCreate = () => {
   const currentActiveImg = (id, img) => {
     setActiveImg({id, img})
   }
-console.log(eventDetails)
+
   return (
     <div className='create_event_main w-full h-100'>
         <a href="/">
@@ -42,7 +41,10 @@ console.log(eventDetails)
                     <Button 
                         className={"pl-6 pr-3 text-white"} 
                         style={{backgroundColor: '#69A88D'}}
-                        onClick={() => setCurrComp(currComp+1)}
+                        onClick={() => {
+                            if(currComp)
+                            setCurrComp(currComp+1)
+                        }}
                     >
                         Next Step
                     </Button>

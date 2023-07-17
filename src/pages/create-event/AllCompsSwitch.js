@@ -3,10 +3,9 @@ import Start from './all-comps/Start'
 import SelectIntro from './all-comps/SelectIntro'
 import ImgUpload from './all-comps/ImgUpload'
 import AddInfo from './all-comps/AddInfo'
-import { useNavigate } from 'react-router-dom'
+import CreatingEvent from './CreatingEvent'
 
 const AllCompsSwitch = (props) => {
-  const navigate = useNavigate()
   switch(props.currComp){
     case 1:
         return <Start 
@@ -22,7 +21,7 @@ const AllCompsSwitch = (props) => {
     case 4:
       return <AddInfo />
     case 5:
-        return navigate('/event-home')
+        return <CreatingEvent />
     
     default: return "no component selected"
   }

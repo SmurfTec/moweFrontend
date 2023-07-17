@@ -7,28 +7,42 @@ import { Button } from 'components/Common/Button/Button'
 import { optionBtns } from './allbtns'
 import OtherCompSwitch from './OtherCompSwitch'
 import { useEffect } from 'react'
-import { getUserProfile } from 'redux/slices/userSlices'
-import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { API_BASE } from 'Configs/secrets'
+import { useParams } from 'react-router-dom'
 
 const EventHome = () => {
-    const eventDetails = useSelector(state => state.event.eventDetails)
+    const params = useParams()
     const[currComp, setCurrComp] = useState(0)
-    const[preview, setPreview] = useState("")
 
+    const[eventInfo, setEventInfo] = useState({})
+    const id = params.id
+console.log(id)
     const changeCurrComp = (id) => {
         setCurrComp(id)
     }
 
+    const getEventData = async() => {
+        await axios.get(`${API_BASE}event/get-event?_id=${id}`)
+        .then((res) => {
+            const {data} = res
+            console.log(data)
+            setEventInfo(data?.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
     useEffect(() => {
-        getUserProfile()
-        setPreview(URL.createObjectURL(eventDetails?.file1))
+        getEventData()
     }, [])
   
     if(currComp===0 || currComp===1 ){
         return (
             <div 
                 className='event_home_main w-100 h-100'
-                style={{backgroundImage: `url(${preview})`}}
+                style={{backgroundImage: `url(${eventInfo?.file1})`}}
             >
                 <EventMenus 
                     menuIndex="1"
@@ -37,7 +51,9 @@ const EventHome = () => {
                 />
         
                 {currComp===0 || currComp===8 ? 
-                    <HomeDesignCreated /> 
+                    <HomeDesignCreated 
+                        eventInfo={eventInfo}
+                    /> 
                     :
                     <div className='bg_wraper_main flex flex-col items-center justify-center'>
                         <AllCompsSwitch

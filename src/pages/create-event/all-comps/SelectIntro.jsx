@@ -18,7 +18,7 @@ const SelectIntro = (props) => {
     dispatch(introduction("Dummy introduction..."))
   }, [])
   return (
-    <div className=''>
+    <div className='intro_main'>
         <p className='text-xl mb-3'>
             firstly, let’s make it epic! choose the intro for your invitation: 
         </p>

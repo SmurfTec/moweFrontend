@@ -28,7 +28,7 @@ function App() {
           }
         />
         <Route exact path="/event-creation" element={<EventCreate />} />
-        <Route exact path="/event-home" element={<EventHome />} />
+        <Route exact path="/event-home/:id" element={<EventHome />} />
         <Route exact path="/invitation" element={<MainBg />} />
         <Route exact path="/adminTable" element={<AdminTable />} />
         <Route exact path="/dashboard" element={<Dashboard />} />

@@ -14,3 +14,13 @@
     width: 100%; */
     object-fit: cover;
   }
+
+  .home_btns_wraper{
+
+  }
+
+  @media only screen and (max-width: 950px) {
+    .home_logo_wraper{
+      flex-direction: column;
+    }
+  }
