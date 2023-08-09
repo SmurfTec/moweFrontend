@@ -10,17 +10,23 @@ import {
   shareIcon,
 } from "svg-icons/icons";
 import { optionBtns } from "./allbtns";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import InvitaionPay from "components/invitation-success/InvitaionPay";
 import UserProfile from "components/profile-modals/UserProfile";
 import ChangePassword from "components/profile-modals/ChangePassword";
 import Help from "components/profile-modals/Help";
 import { loadStripe } from "@stripe/stripe-js";
-import { STRIPE_KEY } from "../../Configs/secrets";
+import {
+  STRIPE_KEY,
+  STRIPE_CANCEL_URL,
+  STRIPE_SUCCESS_URL,
+  STRIPE_PRICE_ID,
+} from "../../Configs/secrets";
 const stripePromise = loadStripe(STRIPE_KEY);
 
 const EventMenus = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
   const [isSuccessPayment, setIsSuccessPayment] = useState(false);
   const [profileModal, setProfileModal] = useState(0);
@@ -39,12 +45,13 @@ const EventMenus = (props) => {
   };
   const handleClick = async () => {
     const stripe = await stripePromise;
+
     const { error } = await stripe
       .redirectToCheckout({
-        lineItems: [{ price: "price_1NdCicJeMUkp1IBhQiQ5qViN", quantity: 1 }],
+        lineItems: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
         mode: "payment",
-        successUrl: "http://localhost:3000/event-home/64d38a89b582702ae74c938e",
-        cancelUrl: "http://localhost:3000/event-home/64d38a89b582702ae74c938e",
+        successUrl: STRIPE_SUCCESS_URL + location.pathname,
+        cancelUrl: STRIPE_CANCEL_URL + location.pathname,
       })
       .then((res) => {
         setIsSuccessPayment(true);
