@@ -27,6 +27,7 @@ const stripePromise = loadStripe(STRIPE_KEY);
 const EventMenus = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [modalOpen, setModalOpen] = useState(false);
   const [isSuccessPayment, setIsSuccessPayment] = useState(false);
   const [profileModal, setProfileModal] = useState(0);
@@ -46,16 +47,13 @@ const EventMenus = (props) => {
   const handleClick = async () => {
     const stripe = await stripePromise;
 
-    const { error } = await stripe
-      .redirectToCheckout({
-        lineItems: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
-        mode: "payment",
-        successUrl: STRIPE_SUCCESS_URL + location.pathname,
-        cancelUrl: STRIPE_CANCEL_URL + location.pathname,
-      })
-      .then((res) => {
-        setIsSuccessPayment(true);
-      });
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
+      mode: "payment",
+      successUrl:
+        STRIPE_SUCCESS_URL + location.pathname + `?payment_success=true`,
+      cancelUrl: STRIPE_CANCEL_URL + location.pathname,
+    });
 
     if (error) {
       console.error(error);
@@ -65,11 +63,14 @@ const EventMenus = (props) => {
   const handlePaymentRerouting = async () => {
     setTimeout(() => {}, 2000);
     setModalOpen(true);
+    navigate(location.pathname);
   };
 
   useEffect(() => {
-    handlePaymentRerouting();
-  }, [isSuccessPayment]);
+    if (location.search.includes("payment_success")) {
+      handlePaymentRerouting();
+    }
+  }, []);
   return (
     <>
       {profileModal === 1 && (
@@ -98,7 +99,10 @@ const EventMenus = (props) => {
         </div>
         <div className="left flex justify-between">
           <div className="left_inner flex flex-col justify-between pt-9 pb-4">
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(2)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{locIcon}</span>
               </div>
@@ -106,7 +110,10 @@ const EventMenus = (props) => {
                 Location
               </div>
             </div>
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(3)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{countDownIcon}</span>
               </div>
@@ -114,7 +121,10 @@ const EventMenus = (props) => {
                 Countdown
               </div>
             </div>
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(4)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{dressCodeIcon}</span>
               </div>
@@ -124,7 +134,10 @@ const EventMenus = (props) => {
             </div>
           </div>
           <div className="left_inner flex flex-col justify-between pt-9 pb-4">
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(6)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{giftIcon}</span>
               </div>
@@ -132,7 +145,10 @@ const EventMenus = (props) => {
                 Regalo
               </div>
             </div>
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(5)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{shareIcon}</span>
               </div>
@@ -140,7 +156,10 @@ const EventMenus = (props) => {
                 RRSS
               </div>
             </div>
-            <div className="menu_ w-full flex flex-col item-center">
+            <div
+              className="menu_ w-full flex flex-col item-center"
+              onClick={() => props.changeCurrComp(7)}
+            >
               <div className="cursor-pointer menu_item rounded-full flex items-center justify-center">
                 <span>{feedBackIcon}</span>
               </div>
