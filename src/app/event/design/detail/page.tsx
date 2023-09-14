@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "antd";
 import type { DatePickerProps } from "antd";
 import { DatePicker, Space } from "antd";
@@ -11,12 +11,29 @@ import { TimePicker } from "antd";
 const { TextArea } = Input;
 
 const Detail = () => {
+  const [details, setDetails] = useState({ text: "", date: "", time: "" });
+
+  useEffect(() => {
+    const storedDetails = localStorage.getItem("eventDetails");
+    if (storedDetails) {
+      setDetails(JSON.parse(storedDetails));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("eventDetails", JSON.stringify(details));
+  }, [details]);
+
   const onDateChange: DatePickerProps["onChange"] = (date, dateString) => {
-    console.log(date, dateString);
+    setDetails((prev) => ({ ...prev, date: dateString }));
   };
 
-  const onTimeChange = (time: any, timeString: string) => {
-    console.log(time, timeString);
+  const onTimeChange = (time: Dayjs | null, timeString: string) => {
+    setDetails((prev) => ({ ...prev, time: timeString }));
+  };
+
+  const onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDetails((prev) => ({ ...prev, text: e.target.value }));
   };
 
   return (
@@ -30,7 +47,7 @@ const Detail = () => {
               más adelante)
             </p>
           </div>
-          <TextArea rows={4} />
+          <TextArea rows={4} value={details.text} onChange={onTextChange} />
         </div>
         <div className="mt-10 space-y-4">
           <p>Fecha y hora del evento</p>
@@ -63,7 +80,7 @@ const Detail = () => {
             Previous Step
           </Button>
         </Link>
-        <Link href={"/event/detail"}>
+        <Link href={"/event/preview"}>
           <Button type="primary" size="large" shape="round">
             Next Step
           </Button>

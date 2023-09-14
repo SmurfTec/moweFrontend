@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import EventBackground from "../../../../public/event/event-bg.jpg";
 import {
@@ -23,11 +23,18 @@ import {
 } from "@/components/Icons";
 import Link from "next/link";
 const EventLayout = ({ children }: { children: React.ReactNode }) => {
-  console.log(localStorage.getItem("primaryMedia"));
+  const [primaryMedia, setPrimaryMedia] = useState("");
+
+  useEffect(() => {
+    const storedPrimaryMedia = localStorage.getItem("primaryMedia");
+    if (storedPrimaryMedia) {
+      setPrimaryMedia(storedPrimaryMedia);
+    }
+  }, []);
   return (
     <section
       className="h-screen flex flex-col"
-      style={{ backgroundImage: `url(${EventBackground.src})` }}
+      style={{ backgroundImage: `url(${primaryMedia || EventBackground.src})` }}
     >
       <div className="flex items-center container mx-auto">
         <div className="flex justify-between items-center w-full mt-10">
