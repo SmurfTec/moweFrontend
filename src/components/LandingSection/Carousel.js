@@ -24,7 +24,7 @@ export const Carousel = () => {
           currentSlide === 1 && "bg-beige",
           currentSlide === 2 && "bg-green-pale",
           currentSlide === 3 && "bg-red-fiery",
-          currentSlide === 4 && "bg-brown-deep",
+          currentSlide === 4 && "bg-brown-deep"
         )}
       >
         <div className="w-full h-full flex  items-center justify-center">
@@ -42,7 +42,7 @@ export const Carousel = () => {
           className={ClassNames(
             "min-w-[90%] grid grid-cols-2 items-center gap-20 ",
             currentSlide === prevSlide && !isLeftIconClicked && "animate-slide",
-            currentSlide === prevSlide && isLeftIconClicked && "animate-slidel",
+            currentSlide === prevSlide && isLeftIconClicked && "animate-slidel"
           )}
         >
           {currentSlide === 1 ? (
@@ -96,9 +96,14 @@ const SlideOne = () => {
           <Button
             btnText={"Crea tu diseño"}
             className={ClassNames(
-              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl"
             )}
-            onClick={() => {}}
+            onClick={() => {
+              window.open(
+                "https://mowe-tau.vercel.app/event/design/start",
+                "_self"
+              );
+            }}
           />
         </div>
       </div>
@@ -122,9 +127,14 @@ const SlideTwo = () => {
           <Button
             btnText={"Crea tu diseño"}
             className={ClassNames(
-              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl"
             )}
-            onClick={() => {}}
+            onClick={() => {
+              window.open(
+                "https://mowe-tau.vercel.app/event/design/start",
+                "_self"
+              );
+            }}
           />
         </div>
       </div>
@@ -159,9 +169,14 @@ const SlideThree = () => {
           <Button
             btnText={"Crea tu diseño"}
             className={ClassNames(
-              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl"
             )}
-            onClick={() => {}}
+            onClick={() => {
+              window.open(
+                "https://mowe-tau.vercel.app/event/design/start",
+                "_self"
+              );
+            }}
           />
         </div>
       </div>
@@ -185,7 +200,7 @@ const SlideFour = () => {
           <Button
             btnText={"Crea tu diseño"}
             className={ClassNames(
-              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl",
+              "w-72 !bg-black-pitch text-white py-3 text-md !shadow-5xl"
             )}
             onClick={() => {}}
           />

@@ -30,3 +30,4 @@ deploy/values.production.yaml
 .env
 .env.production
 
+.vercel

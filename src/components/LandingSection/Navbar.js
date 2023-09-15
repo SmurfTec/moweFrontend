@@ -22,23 +22,23 @@ const VideoPlayer = () => {
 };
 export const Navbar = () => {
   const navigate = useNavigate();
-  const currUser = JSON.parse(localStorage.getItem("USER_CREDENTIALS"))
+  const currUser = JSON.parse(localStorage.getItem("USER_CREDENTIALS"));
 
   const [modalOpen, setModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(TAB1);
 
   const logoutNow = () => {
-    localStorage.clear()
-    navigate("/")
-    window.location.reload()
-  }
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
 
   return (
     <>
       <div
         className={ClassNames(
           "transition-all duration-1000 ease-in-out h-screen flex flex-col justify-between px-10 pb-20",
-          modalOpen && "filter blur-md",
+          modalOpen && "filter blur-md"
         )}
         style={{
           backgroundSize: "cover",
@@ -49,13 +49,13 @@ export const Navbar = () => {
         <div className="home_logo_wraper flex flex-row items-center justify-between -mt-10 z-10">
           <AppLogo className="h-80" />
           <div className="flex gap-10">
-            {currUser ? 
+            {currUser ? (
               <Button
                 btnText="Log Out"
                 className="w-40 !bg-green-teal !shadow-6xl text-white"
                 onClick={logoutNow}
               />
-              :
+            ) : (
               <Button
                 btnText="Log In"
                 className="w-40 !bg-green-teal !shadow-6xl text-white"
@@ -63,11 +63,16 @@ export const Navbar = () => {
                   setModalOpen(true);
                 }}
               />
-            }
+            )}
             <Button
               btnText="Tu Invitación"
               className="w-60 bg-white !shadow-6xl"
-              onClick={() => navigate("/event-creation")}
+              onClick={() =>
+                window.open(
+                  "https://mowe-tau.vercel.app/event/design/start",
+                  "_self"
+                )
+              }
             />
           </div>
         </div>
@@ -84,7 +89,7 @@ export const Navbar = () => {
             }}
             className={ClassNames(
               "flex justify-center flex-col items-center",
-              activeTab === TAB1 && "font-semibold",
+              activeTab === TAB1 && "font-semibold"
             )}
           >
             Home
@@ -98,7 +103,7 @@ export const Navbar = () => {
             }}
             className={ClassNames(
               "flex justify-center flex-col items-center",
-              activeTab === TAB2 && "font-semibold",
+              activeTab === TAB2 && "font-semibold"
             )}
           >
             QUÉ HACEMOS
@@ -109,11 +114,10 @@ export const Navbar = () => {
           <div
             onClick={() => {
               setActiveTab(TAB3);
-              navigate("/event-creation");
             }}
             className={ClassNames(
               "flex justify-center flex-col items-center",
-              activeTab === TAB3 && "font-semibold",
+              activeTab === TAB3 && "font-semibold"
             )}
           >
             GALERÍA
@@ -127,7 +131,7 @@ export const Navbar = () => {
             }}
             className={ClassNames(
               "flex justify-center flex-col items-center",
-              activeTab === TAB4 && "font-semibold",
+              activeTab === TAB4 && "font-semibold"
             )}
           >
             FAQ
